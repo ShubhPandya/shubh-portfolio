@@ -1,0 +1,49 @@
+{
+  "profile": {
+    "name": "Shubh Pandya",
+    "title": "Cloud & Software Engineer",
+    "bio": "B.Tech Computer Science graduate passionate about cloud architecture, distributed backend systems, and scalable infrastructure.",
+    "github": "https://github.com/shubhdev",
+    "linkedin": "https://linkedin.com",
+    "email": "your-email@example.com"
+  },
+  "certifications": [
+    {
+      "name": "AWS Certified Cloud Practitioner (CCP)",
+      "issuer": "Amazon Web Services",
+      "status": "Active",
+      "date": "2026"
+    },
+    {
+      "name": "AWS Certified Solutions Architect – Associate (SAA)",
+      "issuer": "Amazon Web Services",
+      "status": "In Progress",
+      "date": "Target: 2026"
+    }
+  ],
+  "skills": [
+    "AWS (S3, CloudFront, Lambda, API Gateway, IAM, VPC)",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Docker",
+    "Terraform",
+    "Git & GitHub Actions"
+  ],
+  "projects": [
+    {
+      "title": "Cloud Resume & Dynamic Portfolio",
+      "description": "Serverless portfolio hosted privately on AWS S3, delivered globally with CloudFront, and automated with CI/CD via GitHub Actions.",
+      "techStack": ["AWS S3", "CloudFront", "GitHub Actions", "HTML/CSS/JS"],
+      "liveLink": "#",
+      "githubLink": "https://github.com/shubhdev"
+    },
+    {
+      "title": "High-Availability Two-Tier Web Architecture",
+      "description": "Custom multi-AZ VPC infrastructure provisioning an Application Load Balancer, Auto Scaling EC2 fleet, and private RDS database via Terraform.",
+      "techStack": ["Terraform", "AWS VPC", "ALB", "EC2", "RDS PostgreSQL"],
+      "liveLink": "#",
+      "githubLink": "https://github.com/shubhdev"
+    }
+  ]
+}

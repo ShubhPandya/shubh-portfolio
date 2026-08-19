@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="name">Loading...</h1>
+      <div id="title" class="subtitle"></div>
+      <p id="bio" class="bio"></p>
+      <div id="social-links" class="links"></div>
+    </header>
+
+    <section>
+      <h2>Certifications</h2>
+      <div id="certifications-list" class="grid"></div>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div id="skills-list" class="tags"></div>
+    </section>
+
+    <section>
+      <h2>Cloud & Engineering Projects</h2>
+      <div id="projects-list" class="grid"></div>
+    </section>
+  </div>
+
+  <script>
+    fetch('./data.json')
+      .then(response => response.json())
+      .then(data => {
+        // Render Profile Header
+        document.getElementById('name').textContent = data.profile.name;
+        document.getElementById('title').textContent = data.profile.title;
+        document.getElementById('bio').textContent = data.profile.bio;
+        
+        const linksContainer = document.getElementById('social-links');
+        linksContainer.innerHTML = `
+          <a href="${data.profile.github}" target="_blank">GitHub</a>
+          <a href="${data.profile.linkedin}" target="_blank">LinkedIn</a>
+          <a href="mailto:${data.profile.email}">Email</a>
+        `;
+
+        // Render Certifications
+        const certContainer = document.getElementById('certifications-list');
+        certContainer.innerHTML = data.certifications.map(cert => `
+          <div class="card">
+            <h3>${cert.name} <span class="status-badge">${cert.status}</span></h3>
+            <p>${cert.issuer} • ${cert.date}</p>
+          </div>
+        `).join('');
+
+        // Render Skills
+        const skillsContainer = document.getElementById('skills-list');
+        skillsContainer.innerHTML = data.skills.map(skill => `
+          <span class="tag">${skill}</span>
+        `).join('');
+
+        // Render Projects
+        const projContainer = document.getElementById('projects-list');
+        projContainer.innerHTML = data.projects.map(proj => `
+          <div class="card">
+            <h3>${proj.title}</h3>
+            <p>${proj.description}</p>
+            <div class="tags">
+              ${proj.techStack.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+            <div class="card-links" style="margin-top: 12px;">
+              <a href="${proj.githubLink}" target="_blank">GitHub Repo →</a>
+            </div>
+          </div>
+        `).join('');
+      })
+      .catch(err => console.error("Error loading portfolio data:", err));
+  </script>
+</body>
+</html>
