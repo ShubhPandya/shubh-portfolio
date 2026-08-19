@@ -14,7 +14,7 @@
       "status": "Active",
       "date": "2026",
       "badge_link": "https://www.credly.com/badges/09ee341d-97aa-47b1-ac16-6ac2c0cfddc8/public_url"
-    },
+    }
   ],
   "skills": [
     "AWS (S3, CloudFront, Lambda, API Gateway, IAM, DynamoDB)",
