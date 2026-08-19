@@ -3,22 +3,23 @@
     "name": "Shubh Pandya",
     "title": "Cloud & Software Engineer",
     "bio": "B.Tech Computer Science graduate passionate about cloud architecture, distributed backend systems, and scalable infrastructure.",
-    "github": "https://github.com/shubhdev",
-    "linkedin": "https://linkedin.com",
-    "email": "your-email@example.com"
+    "github": "https://github.com/ShubhPandya",
+    "linkedin": "www.linkedin.com/in/shubh-pandya-sp",
+    "email": "shubhaiml1@gmail.com"
   },
   "certifications": [
     {
       "name": "AWS Certified Cloud Practitioner (CCP)",
       "issuer": "Amazon Web Services",
       "status": "Active",
-      "date": "2026"
+      "date": "2026",
+      "badge_link": "https://www.credly.com/badges/09ee341d-97aa-47b1-ac16-6ac2c0cfddc8/public_url"
     },
     {
       "name": "AWS Certified Solutions Architect – Associate (SAA)",
       "issuer": "Amazon Web Services",
       "status": "In Progress",
-      "date": "Target: 2026"
+      "date": "Target: Feb 2027"
     }
   ],
   "skills": [
@@ -36,14 +37,14 @@
       "description": "Serverless portfolio hosted privately on AWS S3, delivered globally with CloudFront, and automated with CI/CD via GitHub Actions.",
       "techStack": ["AWS S3", "CloudFront", "GitHub Actions", "HTML/CSS/JS"],
       "liveLink": "#",
-      "githubLink": "https://github.com/shubhdev"
+      "githubLink": "https://github.com/ShubhPandya"
     },
     {
       "title": "High-Availability Two-Tier Web Architecture",
       "description": "Custom multi-AZ VPC infrastructure provisioning an Application Load Balancer, Auto Scaling EC2 fleet, and private RDS database via Terraform.",
       "techStack": ["Terraform", "AWS VPC", "ALB", "EC2", "RDS PostgreSQL"],
       "liveLink": "#",
-      "githubLink": "https://github.com/shubhdev"
+      "githubLink": "https://github.com/ShubhPandya"
     }
   ]
 }
