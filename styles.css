@@ -138,3 +138,22 @@ h2 {
   font-size: 0.85rem;
   margin-right: 12px;
 }
+
+/* Visitor Counter Badge */
+.visitor-counter {
+  margin-top: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 4px 12px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.visitor-counter #view-count {
+  font-weight: 600;
+  color: var(--accent-color);
+}

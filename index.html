@@ -13,6 +13,11 @@
       <div id="title" class="subtitle"></div>
       <p id="bio" class="bio"></p>
       <div id="social-links" class="links"></div>
+      
+      <!-- Serverless Visitor Counter -->
+      <div class="visitor-counter">
+        <span>👀 Live Views: </span><span id="view-count">Loading...</span>
+      </div>
     </header>
 
     <section>
@@ -32,6 +37,7 @@
   </div>
 
   <script>
+    // 1. Fetch Profile and Portfolio Data
     fetch('./data.json')
       .then(response => response.json())
       .then(data => {
@@ -78,6 +84,17 @@
         `).join('');
       })
       .catch(err => console.error("Error loading portfolio data:", err));
+
+    // 2. Fetch and Increment Live Visitor Count via API Gateway & Lambda
+    fetch('https://fa2mm1z6id.execute-api.ap-south-1.amazonaws.com/views')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('view-count').textContent = data.views;
+      })
+      .catch(err => {
+        console.error('Error fetching live views:', err);
+        document.getElementById('view-count').textContent = '—';
+      });
   </script>
 </body>
 </html>
