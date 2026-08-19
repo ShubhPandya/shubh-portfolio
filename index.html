@@ -48,17 +48,22 @@
         
         const linksContainer = document.getElementById('social-links');
         linksContainer.innerHTML = `
-          <a href="${data.profile.github}" target="_blank">GitHub</a>
-          <a href="${data.profile.linkedin}" target="_blank">LinkedIn</a>
+          <a href="${data.profile.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="${data.profile.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="mailto:${data.profile.email}">Email</a>
         `;
 
-        // Render Certifications
+        // Render Certifications (with badge link support)
         const certContainer = document.getElementById('certifications-list');
         certContainer.innerHTML = data.certifications.map(cert => `
           <div class="card">
             <h3>${cert.name} <span class="status-badge">${cert.status}</span></h3>
             <p>${cert.issuer} • ${cert.date}</p>
+            ${cert.badge_link ? `
+              <div class="card-links" style="margin-top: 8px;">
+                <a href="${cert.badge_link}" target="_blank" rel="noopener noreferrer">Verify Credly Badge ↗</a>
+              </div>
+            ` : ''}
           </div>
         `).join('');
 
@@ -78,14 +83,14 @@
               ${proj.techStack.map(t => `<span class="tag">${t}</span>`).join('')}
             </div>
             <div class="card-links" style="margin-top: 12px;">
-              <a href="${proj.githubLink}" target="_blank">GitHub Repo →</a>
+              <a href="${proj.githubLink}" target="_blank" rel="noopener noreferrer">GitHub Repo →</a>
             </div>
           </div>
         `).join('');
       })
       .catch(err => console.error("Error loading portfolio data:", err));
 
-    // 2. Fetch and Increment Live Visitor Count via API Gateway & Lambda
+    // 2. Fetch Live Visitor Count via API Gateway
     fetch('https://fa2mm1z6id.execute-api.ap-south-1.amazonaws.com/views')
       .then(response => response.json())
       .then(data => {
