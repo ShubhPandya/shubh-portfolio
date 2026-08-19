@@ -20,7 +20,7 @@ A production-grade, globally distributed cloud portfolio hosted entirely on **Am
                                                    │ (Atomic Updates)
                                                    ▼
                                          [ Amazon DynamoDB ]
-🚀 Key Engineering Highlights
+Key Engineering Highlights
 Global Edge Acceleration: Routed through Amazon CloudFront distribution with edge PoP caching, low-latency delivery, and automatic HTTPS redirection.
 
 Origin Security & Zero Public Exposure: S3 origin bucket configured with Block All Public Access enabled; access is restricted exclusively to CloudFront through Origin Access Control (OAC) and granular bucket policies.
@@ -33,26 +33,18 @@ DevOps & Automated CI/CD: Fully automated deployment pipeline using GitHub Actio
 
 Zero Cost Infrastructure: Built 100% within the permanent AWS Free Tier.
 
-🛠️ Tech Stack
+Tech Stack
 Cloud Provider: Amazon Web Services (AWS)
-
 Compute: AWS Lambda (Python)
-
 Storage & Edge: Amazon S3, Amazon CloudFront
-
 Database: Amazon DynamoDB (NoSQL)
-
 API Layer: Amazon API Gateway (HTTP API)
-
 DevOps / CI/CD: GitHub Actions, Git
-
 Frontend: HTML5, CSS3, JavaScript (Fetch API)
 
-⚙️ CI/CD Workflow Breakdown
+CI/CD Workflow Breakdown
 Code changes committed and pushed to the main branch trigger .github/workflows/deploy.yml.
-
 Pipeline authenticates via GitHub Secrets (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY).
-
 Assets are synced to the target S3 bucket via AWS CLI:
 
 Bash
@@ -61,9 +53,8 @@ Pipeline creates an invalidation on CloudFront to refresh edge caches globally:
 
 Bash
 aws cloudfront create-invalidation --distribution-id <DISTRIBUTION-ID> --paths "/*"
-👨‍💻 Author
+
+Author
 Name: Shubh Pandya
-
 GitHub: @ShubhPandya
-
 LinkedIn: shubh-pandya-sp
