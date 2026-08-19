@@ -4,7 +4,7 @@
     "title": "Cloud & Software Engineer",
     "bio": "B.Tech Computer Science graduate passionate about cloud architecture, distributed backend systems, and scalable infrastructure.",
     "github": "https://github.com/ShubhPandya",
-    "linkedin": "https://www.linkedin.com/in/shubh-pandya-sp"
+    "linkedin": "www.linkedin.com/in/shubh-pandya-sp",
     "email": "shubhaiml1@gmail.com"
   },
   "certifications": [
@@ -23,7 +23,7 @@
     }
   ],
   "skills": [
-    "AWS (S3, CloudFront, Lambda, API Gateway, IAM, VPC)",
+    "AWS (S3, CloudFront, Lambda, API Gateway, IAM, DynamoDB)",
     "Python",
     "FastAPI",
     "PostgreSQL",
@@ -33,18 +33,10 @@
   ],
   "projects": [
     {
-      "title": "Cloud Resume & Dynamic Portfolio",
-      "description": "Serverless portfolio hosted privately on AWS S3, delivered globally with CloudFront, and automated with CI/CD via GitHub Actions.",
-      "techStack": ["AWS S3", "CloudFront", "GitHub Actions", "HTML/CSS/JS"],
-      "liveLink": "#",
-      "githubLink": "https://github.com/ShubhPandya"
-    },
-    {
-      "title": "High-Availability Two-Tier Web Architecture",
-      "description": "Custom multi-AZ VPC infrastructure provisioning an Application Load Balancer, Auto Scaling EC2 fleet, and private RDS database via Terraform.",
-      "techStack": ["Terraform", "AWS VPC", "ALB", "EC2", "RDS PostgreSQL"],
-      "liveLink": "#",
-      "githubLink": "https://github.com/ShubhPandya"
+      "title": "Serverless Cloud Portfolio Architecture",
+      "description": "Production-grade portfolio with automated CI/CD pipeline, global edge CDN caching, and serverless visitor analytics.",
+      "techStack": ["AWS S3", "CloudFront", "Lambda", "DynamoDB", "API Gateway", "GitHub Actions"],
+      "githubLink": "https://github.com/ShubhPandya/shubh-portfolio"
     }
   ]
 }
