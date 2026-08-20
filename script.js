@@ -72,7 +72,7 @@ function enterPortfolio(roleKey) {
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Switch to screen 2 and load default page (About)
+  // Switch to Screen 2 and load default About view
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
   navigateToSection("about");
@@ -95,7 +95,6 @@ function setupNavigation() {
     }
   });
 
-  // Switch persona button back to Screen 1
   document.getElementById("switch-role-btn").addEventListener("click", () => {
     dropdownMenu.classList.remove("active");
     document.getElementById("main-content-screen").classList.remove("active");
@@ -107,20 +106,17 @@ function setupNavigation() {
   });
 }
 
-// Router for switching between the 5 dedicated section pages
+// Router for switching between the 5 dedicated section views
 function navigateToSection(sectionId) {
-  // Hide all pages
   document.querySelectorAll(".page-view").forEach((page) => {
     page.classList.remove("active");
   });
 
-  // Show selected page
   const targetPage = document.getElementById(`page-${sectionId}`);
   if (targetPage) {
     targetPage.classList.add("active");
   }
 
-  // Update active state on nav menu buttons
   document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
     btn.classList.remove("active");
     if (btn.getAttribute("onclick")?.includes(sectionId)) {
@@ -128,7 +124,6 @@ function navigateToSection(sectionId) {
     }
   });
 
-  // Close dropdown menu if open
   document.getElementById("dropdown-menu").classList.remove("active");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }

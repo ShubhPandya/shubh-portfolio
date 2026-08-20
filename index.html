@@ -12,7 +12,7 @@
   <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
     <div class="nav-brand" onclick="navigateToSection('about')">
-      <span class="neon-orange">SP</span>.<span class="neon-blue">cloud</span>
+      <span class="neon-orange">shubh</span><span class="neon-blue">.pandya</span>
     </div>
     <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
     <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu">
@@ -84,74 +84,118 @@
   <!-- SCREEN 2: MULTI-PAGE DEDICATED SECTIONS -->
   <main id="main-content-screen" class="view-screen">
     
-    <!-- SECTION 1: ABOUT ME PAGE -->
+    <!-- =========================================
+         SECTION 1: ABOUT ME PAGE (VIDEO LAYOUT)
+    ========================================= -->
     <section id="page-about" class="page-view active">
       <div class="container">
-        <h2 class="section-title"><span class="neon-orange">ABOUT</span> ME</h2>
         
-        <!-- Socials & Quick Bio -->
-        <div class="social-bar-card border-orange">
-          <div class="social-text">
-            <h3>Shubh Udaybhai Pandya</h3>
-            <p class="neon-blue">Cloud & Distributed Backend Systems Engineer</p>
+        <!-- Header Title & Subtitle -->
+        <div class="about-page-header">
+          <h2 class="about-main-title">about me</h2>
+          <p class="about-sub-title">man behind the code</p>
+        </div>
+
+        <!-- Hero Dual-Column: Tech Bio + Image Card -->
+        <div class="about-hero-layout">
+          <div class="about-hero-text">
+            <p class="about-lead-paragraph">
+              Cloud & Backend Engineer specializing in scalable serverless architectures, event-driven streaming data pipelines, and automated cloud deployments. Experienced in engineering low-latency microservices with robust, least-privilege security postures on AWS. When not designing infrastructure, you'll find me optimizing algorithms, exploring system internals, and leveling up in tactical gaming.
+            </p>
+            <div class="resume-cta-wrap">
+              <a href="https://github.com/ShubhPandya/shubh-portfolio/raw/main/ShubhPandya.pdf" target="_blank" class="download-resume-btn">
+                <i class="fa-solid fa-download"></i> Download Resume
+              </a>
+            </div>
           </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/shubh-pandya-sp" target="_blank" class="social-btn linkedin-btn" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/ShubhPandya" target="_blank" class="social-btn github-btn" title="GitHub Profile"><i class="fa-brands fa-github"></i> GitHub</a>
+
+          <div class="about-hero-visual">
+            <div class="visual-frame border-blue">
+              <div class="terminal-mock">
+                <div class="terminal-bar">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-blue"></span>
+                  <span class="term-title">shubh@cloud-node: ~</span>
+                </div>
+                <div class="terminal-code">
+                  <p><span class="neon-orange">$</span> aws sts get-caller-identity</p>
+                  <p class="neon-blue">"Arn": "arn:aws:iam::shubh:engineer"</p>
+                  <p><span class="neon-orange">$</span> status --profile</p>
+                  <p class="neon-yellow">&gt; AWS Certified (CCP)</p>
+                  <p class="neon-yellow">&gt; B.Tech CSE (VIT Chennai)</p>
+                  <p class="neon-red">&gt; 100% Serverless Uptime</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="about-grid">
-          <!-- Tech Summary Tile -->
-          <div class="about-card border-blue">
-            <div class="about-header">
-              <i class="fa-solid fa-terminal neon-blue"></i>
-              <h3>Shubh <span class="neon-blue">[Tech Summary]</span></h3>
+        <!-- Split Row: Education & Beyond the Code -->
+        <div class="about-split-row">
+          
+          <!-- Left Column: Education -->
+          <div class="about-col-left">
+            <h3 class="column-heading"><span class="heading-icon">🎓</span> education</h3>
+            <div class="edu-card border-blue">
+              <h4 class="edu-degree">Bachelor of Technology in Computer Science & Engineering</h4>
+              <p class="edu-institute">Vellore Institute of Technology (VIT Chennai) &bull; <span class="neon-yellow">2021–2025</span></p>
             </div>
-            <p class="about-desc">
-              Computer Science graduate specializing in scalable serverless architectures, event-driven streaming data pipelines, and automated cloud deployments. Experienced in engineering low-latency backend microservices with robust, least-privilege security postures.
-            </p>
-            <div class="mini-edu-box">
-              <span class="neon-yellow"><i class="fa-solid fa-graduation-cap"></i> Education</span>
-              <p><strong>B.Tech in Computer Science & Engineering</strong></p>
-              <p class="text-muted">Vellore Institute of Technology (VIT Chennai) &bull; 2021–2025</p>
+            
+            <div class="edu-illustration">
+              <div class="avatar-badge border-orange">
+                <i class="fa-solid fa-laptop-code neon-blue avatar-icon"></i>
+                <div class="avatar-tag neon-orange">&lt;Developer at Work /&gt;</div>
+              </div>
             </div>
           </div>
 
-          <!-- Non-Tech Pointers Tile -->
-          <div class="about-card border-yellow">
-            <div class="about-header">
-              <i class="fa-solid fa-gamepad neon-yellow"></i>
-              <h3>Shubh <span class="neon-yellow">[Non-Tech & Offline]</span></h3>
-            </div>
-            <ul class="pointer-list">
+          <!-- Right Column: Beyond the Code -->
+          <div class="about-col-right">
+            <h3 class="column-heading"><span class="heading-icon">⚡</span> beyond the code</h3>
+            <p class="beyond-lead">
+              When I'm not building streaming data pipelines or fine-tuning cloud infrastructure, here's what keeps me inspired:
+            </p>
+
+            <ul class="beyond-list">
               <li>
-                <div class="pointer-icon neon-orange"><i class="fa-solid fa-crosshairs"></i></div>
-                <div>
-                  <strong>Tactical Gaming:</strong> Active tactical FPS player (Valorant) and self-hosting multiplayer sandbox servers with Docker.
-                </div>
+                <span class="beyond-bullet neon-orange"><i class="fa-solid fa-gamepad"></i> Gamer at Heart</span>
+                <span class="dash">&mdash;</span>
+                <span>Whether it's tactical FPS matches (Valorant) or configuring multiplayer sandbox servers with Docker, I'm always down for a good session.</span>
               </li>
               <li>
-                <div class="pointer-icon neon-blue"><i class="fa-solid fa-baseball-bat-ball"></i></div>
-                <div>
-                  <strong>Cricket Enthusiast:</strong> Regular cricket player and auction strategist dissecting mid-season fantasy league economics.
-                </div>
+                <span class="beyond-bullet neon-blue"><i class="fa-solid fa-baseball-bat-ball"></i> Cricket & Strategy</span>
+                <span class="dash">&mdash;</span>
+                <span>Active on the cricket pitch and passionate about strategic auction economics and mid-season fantasy roster building.</span>
               </li>
               <li>
-                <div class="pointer-icon neon-red"><i class="fa-solid fa-film"></i></div>
-                <div>
-                  <strong>Psychological Thrillers:</strong> Big fan of mind-bending cinema, complex plot twists, and high-tension narrative arcs.
-                </div>
+                <span class="beyond-bullet neon-red"><i class="fa-solid fa-film"></i> Psychological Thrillers</span>
+                <span class="dash">&mdash;</span>
+                <span>I binge everything from mind-bending mysteries to complex plot twists—cinematic storytelling with high-tension payoffs is my escape zone.</span>
               </li>
               <li>
-                <div class="pointer-icon neon-yellow"><i class="fa-solid fa-mug-hot"></i></div>
-                <div>
-                  <strong>Beverage & Cafe Culture:</strong> Passionate about artisanal non-alcoholic craft brews, cafe vibes, and structured fitness walks.
-                </div>
+                <span class="beyond-bullet neon-yellow"><i class="fa-solid fa-mug-saucer"></i> Cafe & Brew Culture</span>
+                <span class="dash">&mdash;</span>
+                <span>Exploring artisanal non-alcoholic craft brews, structured fitness walks, and lifestyle optimization.</span>
               </li>
             </ul>
           </div>
+
         </div>
+
+        <!-- Get In Touch Section (Reference Footer Layout) -->
+        <div class="get-in-touch-section">
+          <h3 class="get-touch-title">get in touch</h3>
+          <p class="get-touch-subtitle">Interested in working together? Feel free to reach out through any of these channels.</p>
+          
+          <div class="social-circle-row">
+            <a href="mailto:shubhaiml1@gmail.com" class="social-circle circle-red" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/shubh-pandya-sp" target="_blank" class="social-circle circle-blue" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/ShubhPandya" target="_blank" class="social-circle circle-orange" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="tel:+916359172389" class="social-circle circle-yellow" title="Phone"><i class="fa-solid fa-phone"></i></a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -358,7 +402,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Built with AWS Serverless (CloudFront &bull; S3 &bull; Lambda &bull; API Gateway &bull; DynamoDB) &bull; Shubh Pandya</p>
+      <p>&copy; 2026 Shubh Pandya. All rights reserved &bull; Hosted on AWS Serverless</p>
     </div>
   </footer>
 
