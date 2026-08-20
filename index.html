@@ -11,7 +11,7 @@
 
   <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
-    <div class="nav-brand">
+    <div class="nav-brand" onclick="navigateToSection('about')">
       <span class="neon-orange">SP</span>.<span class="neon-blue">cloud</span>
     </div>
     <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
@@ -22,30 +22,31 @@
     </button>
   </header>
 
+  <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
-      <li><a href="#stats-view" class="nav-link"><i class="fa-solid fa-gauge-high neon-yellow"></i> Dashboard</a></li>
-      <li><a href="#about" class="nav-link"><i class="fa-solid fa-user-astronaut neon-orange"></i> About Me</a></li>
-      <li><a href="#skills" class="nav-link"><i class="fa-solid fa-microchip neon-blue"></i> Skills</a></li>
-      <li><a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase neon-red"></i> Experience</a></li>
-      <li><a href="#projects" class="nav-link"><i class="fa-solid fa-diagram-project neon-yellow"></i> Projects</a></li>
-      <li><a href="#certifications" class="nav-link"><i class="fa-solid fa-certificate neon-blue"></i> Certifications</a></li>
-      <li><button class="switch-role-btn" id="switch-role-btn"><i class="fa-solid fa-rotate neon-orange"></i> Switch Persona</button></li>
+      <li><button class="nav-menu-btn active" onclick="navigateToSection('about')"><i class="fa-solid fa-user-astronaut neon-orange"></i> About Me</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('projects')"><i class="fa-solid fa-diagram-project neon-yellow"></i> Projects</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('experience')"><i class="fa-solid fa-briefcase neon-red"></i> Experience</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('certifications')"><i class="fa-solid fa-certificate neon-blue"></i> Certifications</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('tools')"><i class="fa-solid fa-toolbox neon-orange"></i> Tools & Skills</button></li>
+      <li class="menu-divider"></li>
+      <li><button class="switch-role-btn" id="switch-role-btn"><i class="fa-solid fa-rotate neon-yellow"></i> Switch Persona</button></li>
     </ul>
   </nav>
 
-  <!-- PAGE 1: ROLE SELECTOR SCREEN -->
+  <!-- SCREEN 1: ROLE SELECTOR SCREEN -->
   <main id="role-selector-screen" class="view-screen active">
     <div class="role-container">
       <h1 class="glitch-title">INITIALIZE <span class="neon-blue">SESSION</span></h1>
-      <p class="role-subtitle">Identify your intent to decrypt custom metrics.</p>
+      <p class="role-subtitle">Select your persona to access tailored system insights.</p>
 
       <div class="role-grid">
         <!-- Recruiter Card -->
         <div class="role-card card-orange" data-role="recruiter">
           <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
-          <h2>Recruiter / Hiring Manager</h2>
-          <p>Production AWS architecture, distributed backends, CI/CD pipelines, and ROI-driven metrics.</p>
+          <h2>Recruiter</h2>
+          <p>Production AWS architecture, distributed backends, CI/CD automation, and production deliverables.</p>
           <div class="counter-box">
             <span class="counter-label">Recruiters Logged:</span>
             <span class="counter-val" id="recruiter-count">...</span>
@@ -57,7 +58,7 @@
         <div class="role-card card-red" data-role="admirer">
           <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
           <h2>Admirer / Stalker</h2>
-          <p>Curious observer? Tech stacks, non-tech personas, quirks, and live system footprints.</p>
+          <p>Curious observer? Tech pursuits, offline hobbies, gaming setups, and system footprints.</p>
           <div class="counter-box">
             <span class="counter-label">Stalkers Tracked:</span>
             <span class="counter-val" id="admirer-count">...</span>
@@ -68,8 +69,8 @@
         <!-- Batchmate Card -->
         <div class="role-card card-blue" data-role="batchmate">
           <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h2>Batchmate / Peer</h2>
-          <p>VIT CSE lineage, competitive programming logs, system projects, and mutual tech builds.</p>
+          <h2>Batchmate</h2>
+          <p>VIT CSE lineage, competitive programming logs, backend systems, and collaborative builds.</p>
           <div class="counter-box">
             <span class="counter-label">Peers Connected:</span>
             <span class="counter-val" id="batchmate-count">...</span>
@@ -80,164 +81,284 @@
     </div>
   </main>
 
-  <!-- PAGE 2: MAIN PORTFOLIO -->
+  <!-- SCREEN 2: MULTI-PAGE DEDICATED SECTIONS -->
   <main id="main-content-screen" class="view-screen">
     
-    <!-- DYNAMIC ROLE STATS HERO -->
-    <section id="stats-view" class="section stats-hero">
-      <div class="container" id="dynamic-stats-container">
-        <!-- Injected via JavaScript based on chosen role -->
-      </div>
-    </section>
-
-    <!-- ABOUT ME (2 SECTIONS) -->
-    <section id="about" class="section">
+    <!-- SECTION 1: ABOUT ME PAGE -->
+    <section id="page-about" class="page-view active">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">ABOUT</span> ME</h2>
+        
+        <!-- Socials & Quick Bio -->
+        <div class="social-bar-card border-orange">
+          <div class="social-text">
+            <h3>Shubh Udaybhai Pandya</h3>
+            <p class="neon-blue">Cloud & Distributed Backend Systems Engineer</p>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/shubh-pandya-sp" target="_blank" class="social-btn linkedin-btn" title="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/ShubhPandya" target="_blank" class="social-btn github-btn" title="GitHub Profile"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+
         <div class="about-grid">
-          <!-- Shubh When Tech -->
+          <!-- Tech Summary Tile -->
           <div class="about-card border-blue">
             <div class="about-header">
               <i class="fa-solid fa-terminal neon-blue"></i>
-              <h3>Shubh <span class="neon-blue">[when tech]</span></h3>
+              <h3>Shubh <span class="neon-blue">[Tech Summary]</span></h3>
             </div>
-            <ul class="about-list">
-              <li><i class="fa-solid fa-angle-right neon-blue"></i> <strong>What I Build:</strong> Serverless architectures, event-driven streaming ETL pipelines, and high-performance microservices.</li>
-              <li><i class="fa-solid fa-angle-right neon-blue"></i> <strong>What I Like:</strong> Low-latency distributed systems, least-privilege IAM policies, CI/CD automation, and clean system design.</li>
-              <li><i class="fa-solid fa-angle-right neon-blue"></i> <strong>Current Focus:</strong> AWS Solutions Architect Associate (SAA) patterns and distributed systems fundamentals.</li>
-            </ul>
+            <p class="about-desc">
+              Computer Science graduate specializing in scalable serverless architectures, event-driven streaming data pipelines, and automated cloud deployments. Experienced in engineering low-latency backend microservices with robust, least-privilege security postures.
+            </p>
+            <div class="mini-edu-box">
+              <span class="neon-yellow"><i class="fa-solid fa-graduation-cap"></i> Education</span>
+              <p><strong>B.Tech in Computer Science & Engineering</strong></p>
+              <p class="text-muted">Vellore Institute of Technology (VIT Chennai) &bull; 2021–2025</p>
+            </div>
           </div>
 
-          <!-- Shubh When No Tech -->
+          <!-- Non-Tech Pointers Tile -->
           <div class="about-card border-yellow">
             <div class="about-header">
               <i class="fa-solid fa-gamepad neon-yellow"></i>
-              <h3>Shubh <span class="neon-yellow">[when no tech]</span></h3>
+              <h3>Shubh <span class="neon-yellow">[Non-Tech & Offline]</span></h3>
             </div>
-            <ul class="about-list">
-              <li><i class="fa-solid fa-angle-right neon-yellow"></i> <strong>What I Do:</strong> Tactical FPS gaming, outdoor walks, fitness routines, and deep psychological thriller movie analysis.</li>
-              <li><i class="fa-solid fa-angle-right neon-yellow"></i> <strong>What I Like:</strong> Cricket strategy, analyzing auction dynamics, and high-adrenaline twists.</li>
-              <li><i class="fa-solid fa-angle-right neon-yellow"></i> <strong>Alternate Reality:</strong> If not in tech, likely running a high-energy beverage lounge or sports analytics venture.</li>
+            <ul class="pointer-list">
+              <li>
+                <div class="pointer-icon neon-orange"><i class="fa-solid fa-crosshairs"></i></div>
+                <div>
+                  <strong>Tactical Gaming:</strong> Active tactical FPS player (Valorant) and self-hosting multiplayer sandbox servers with Docker.
+                </div>
+              </li>
+              <li>
+                <div class="pointer-icon neon-blue"><i class="fa-solid fa-baseball-bat-ball"></i></div>
+                <div>
+                  <strong>Cricket Enthusiast:</strong> Regular cricket player and auction strategist dissecting mid-season fantasy league economics.
+                </div>
+              </li>
+              <li>
+                <div class="pointer-icon neon-red"><i class="fa-solid fa-film"></i></div>
+                <div>
+                  <strong>Psychological Thrillers:</strong> Big fan of mind-bending cinema, complex plot twists, and high-tension narrative arcs.
+                </div>
+              </li>
+              <li>
+                <div class="pointer-icon neon-yellow"><i class="fa-solid fa-mug-hot"></i></div>
+                <div>
+                  <strong>Beverage & Cafe Culture:</strong> Passionate about artisanal non-alcoholic craft brews, cafe vibes, and structured fitness walks.
+                </div>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section">
-      <div class="container">
-        <h2 class="section-title"><span class="neon-blue">TECH</span> STACK</h2>
-        <div class="skills-grid">
-          <div class="skill-item" data-tooltip="AWS Cloud (S3, CloudFront, Lambda, API GW, DynamoDB)"><i class="fa-brands fa-aws neon-orange"></i></div>
-          <div class="skill-item" data-tooltip="Python (FastAPI, Boto3, PyTorch)"><i class="fa-brands fa-python neon-yellow"></i></div>
-          <div class="skill-item" data-tooltip="Docker & Containerization"><i class="fa-brands fa-docker neon-blue"></i></div>
-          <div class="skill-item" data-tooltip="GitHub Actions CI/CD"><i class="fa-brands fa-github neon-red"></i></div>
-          <div class="skill-item" data-tooltip="PostgreSQL & Relational DBs"><i class="fa-solid fa-database neon-blue"></i></div>
-          <div class="skill-item" data-tooltip="Apache Kafka Streaming"><i class="fa-solid fa-network-wired neon-orange"></i></div>
-          <div class="skill-item" data-tooltip="Linux & Bash Scripting"><i class="fa-brands fa-linux neon-yellow"></i></div>
-          <div class="skill-item" data-tooltip="Modern RESTful APIs & Microservices"><i class="fa-solid fa-server neon-red"></i></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION (NON-CLICKABLE BANNERS) -->
-    <section id="experience" class="section">
-      <div class="container">
-        <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
-        <div class="experience-stack">
-          <!-- Genisys Group -->
-          <div class="exp-banner banner-red">
-            <div class="exp-meta">
-              <div class="exp-role">Software Engineer Intern</div>
-              <div class="exp-company neon-red">Genisys Group &bull; Bangalore, India</div>
-              <div class="exp-date">Feb 2025 – May 2025</div>
-            </div>
-            <div class="exp-body">
-              <p>Engineered an automated code quality engine integrating machine learning models into CI/CD pipelines to detect software anti-patterns and enforce maintainability standards across production codebases.</p>
-              <div class="tag-row">
-                <span class="tag">Python</span><span class="tag">ML Classification</span><span class="tag">CI/CD</span><span class="tag">Code Analytics</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Squadron Technology -->
-          <div class="exp-banner banner-blue">
-            <div class="exp-meta">
-              <div class="exp-role">Cloud & Data Engineer Intern</div>
-              <div class="exp-company neon-blue">Squadron Technology &bull; Ahmedabad, India</div>
-              <div class="exp-date">Sept 2023 – Nov 2023</div>
-            </div>
-            <div class="exp-body">
-              <p>Architected real-time streaming ETL pipelines using Python and Apache Kafka to ingest, validate, and clean telemetry events into MySQL databases, cutting downstream pipeline latency.</p>
-              <div class="tag-row">
-                <span class="tag">Apache Kafka</span><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Streaming ETL</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS SECTION (CLICKABLE MODALS) -->
-    <section id="projects" class="section">
+    <!-- SECTION 2: PROJECTS PAGE -->
+    <section id="page-projects" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
-        <div class="projects-grid">
+        <div class="projects-tile-grid">
+          
           <!-- Project 1 -->
-          <div class="project-card border-orange" onclick="openProjectModal('portfolio')">
-            <div class="project-thumb thumb-portfolio">
-              <i class="fa-solid fa-cloud neon-orange"></i>
+          <div class="project-tile border-orange">
+            <div class="project-tile-header">
+              <div class="project-title-group">
+                <i class="fa-solid fa-cloud-bolt neon-orange project-icon"></i>
+                <div>
+                  <h3>Serverless Cloud Portfolio Architecture</h3>
+                  <span class="badge-tag neon-orange">AWS Serverless & DevOps</span>
+                </div>
+              </div>
             </div>
-            <div class="project-info">
-              <h3>Serverless Cloud Architecture</h3>
-              <p>Globally distributed web app on CloudFront, private S3 via OAC, and real-time DynamoDB state tracking.</p>
-              <span class="modal-prompt neon-orange">Inspect Project &rarr;</span>
+            <p class="project-summary">
+              Architected a globally distributed static web application on CloudFront backed by a private S3 origin secured via Origin Access Control (OAC). Built a serverless analytics microservice using API Gateway and AWS Lambda (Python 3.12) with atomic DynamoDB updates. Automated deployments via GitHub Actions CI/CD.
+            </p>
+            <div class="tech-stack-row">
+              <span class="tag">AWS S3</span>
+              <span class="tag">CloudFront</span>
+              <span class="tag">Lambda</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">GitHub Actions</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/ShubhPandya/shubh-portfolio" target="_blank" class="repo-link neon-orange"><i class="fa-brands fa-github"></i> Inspect GitHub Repository &rarr;</a>
             </div>
           </div>
 
           <!-- Project 2 -->
-          <div class="project-card border-blue" onclick="openProjectModal('cv')">
-            <div class="project-thumb thumb-cv">
-              <i class="fa-solid fa-brain neon-blue"></i>
+          <div class="project-tile border-blue">
+            <div class="project-tile-header">
+              <div class="project-title-group">
+                <i class="fa-solid fa-satellite-dish neon-blue project-icon"></i>
+                <div>
+                  <h3>Deep Learning Urban Change Detection System</h3>
+                  <span class="badge-tag neon-blue">Computer Vision & AI</span>
+                </div>
+              </div>
             </div>
-            <div class="project-info">
-              <h3>Urban Change Detection System</h3>
-              <p>U-Net deep learning framework for satellite imagery feature extraction and spatial transformation tracking.</p>
-              <span class="modal-prompt neon-blue">Inspect Project &rarr;</span>
+            <p class="project-summary">
+              Designed a U-Net convolutional neural network to detect spatial and structural transformations using multi-spectral satellite imagery. Implemented robust image preprocessing pipelines (normalization, noise filtering, augmentation) and temporal confidence scoring for high-accuracy segmentation.
+            </p>
+            <div class="tech-stack-row">
+              <span class="tag">Python</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">GDAL</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Scikit-Learn</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/ShubhPandya" target="_blank" class="repo-link neon-blue"><i class="fa-brands fa-github"></i> Inspect GitHub Repository &rarr;</a>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- CERTIFICATIONS (CLICKABLE MODALS) -->
-    <section id="certifications" class="section">
+    <!-- SECTION 3: EXPERIENCE PAGE -->
+    <section id="page-experience" class="page-view">
       <div class="container">
-        <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CREDENTIALS</h2>
-        <div class="certs-grid">
-          <div class="cert-card border-yellow" onclick="openCertModal('ccp')">
-            <i class="fa-brands fa-aws cert-icon neon-yellow"></i>
-            <h3>AWS Certified Cloud Practitioner</h3>
-            <p>Amazon Web Services &bull; Active (2026)</p>
-            <span class="modal-prompt neon-yellow">View Purpose & Proof &rarr;</span>
+        <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
+        <div class="experience-stack">
+          
+          <!-- Role 1 -->
+          <div class="exp-card border-red">
+            <div class="exp-header-row">
+              <div>
+                <h3 class="exp-org neon-red">Genisys Group</h3>
+                <div class="exp-role">Software Engineer Intern</div>
+              </div>
+              <div class="exp-timeline neon-yellow">Feb 2025 &ndash; May 2025 &bull; Bangalore, India</div>
+            </div>
+            <div class="exp-desc">
+              <p>Contributed to an automated code quality validation engine to detect software anti-patterns and maintainability metrics across codebases. Integrated machine learning classification models into active CI/CD pipelines to assess syntax structure and enforce code readability standards automatically.</p>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tag">Python</span>
+              <span class="tag">CI/CD Automation</span>
+              <span class="tag">Static Code Analysis</span>
+              <span class="tag">Git</span>
+            </div>
           </div>
+
+          <!-- Role 2 -->
+          <div class="exp-card border-blue">
+            <div class="exp-header-row">
+              <div>
+                <h3 class="exp-org neon-blue">Squadron Technology</h3>
+                <div class="exp-role">Cloud & Data Engineer Intern</div>
+              </div>
+              <div class="exp-timeline neon-yellow">Sept 2023 &ndash; Nov 2023 &bull; Ahmedabad, India</div>
+            </div>
+            <div class="exp-desc">
+              <p>Built real-time streaming ETL pipelines using Python and Apache Kafka to ingest, validate, and clean event data for low-latency analytics. Designed structured schemas and automated ingestion workflows into MySQL databases with alerting hooks to eliminate pipeline downtime.</p>
+            </div>
+            <div class="tech-stack-row">
+              <span class="tag">Apache Kafka</span>
+              <span class="tag">Python</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Streaming ETL</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- MODAL DRAWER CONTAINER -->
-  <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
-    <div class="modal-window" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <div id="modal-content-body"></div>
-    </div>
-  </div>
+    <!-- SECTION 4: CERTIFICATIONS PAGE -->
+    <section id="page-certifications" class="page-view">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
+        <div class="certs-stack">
+          
+          <!-- AWS CCP Card -->
+          <div class="cert-detail-card border-yellow">
+            <div class="cert-header">
+              <div class="cert-title-group">
+                <i class="fa-brands fa-aws cert-logo neon-yellow"></i>
+                <div>
+                  <h3>AWS Certified Cloud Practitioner (CCP)</h3>
+                  <span class="cert-org neon-orange">Amazon Web Services (AWS) &bull; Active (2026)</span>
+                </div>
+              </div>
+              <a href="https://www.credly.com/badges/09ee341d-97aa-47b1-ac16-6ac2c0cfddc8/public_url" target="_blank" class="verify-badge-btn"><i class="fa-solid fa-award"></i> Verify Badge &nearr;</a>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-info-block">
+                <h4 class="neon-blue"><i class="fa-solid fa-circle-check"></i> Industry Usefulness</h4>
+                <p>Validates comprehensive, production-level understanding of cloud infrastructure, core AWS services, cloud security architectures (IAM, VPC, OAC), billing governance, and global compliance models.</p>
+              </div>
+
+              <div class="cert-info-block">
+                <h4 class="neon-blue"><i class="fa-solid fa-screwdriver-wrench"></i> Core Competencies Demonstrated</h4>
+                <div class="competency-tags">
+                  <span class="tag">AWS Cloud Architecture</span>
+                  <span class="tag">Least-Privilege Security (IAM)</span>
+                  <span class="tag">Global Edge Delivery (CloudFront)</span>
+                  <span class="tag">Serverless Primitives</span>
+                  <span class="tag">High Availability & Reliability</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: TOOLS & SKILLS PAGE -->
+    <section id="page-tools" class="page-view">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
+        
+        <!-- Group 1: Cloud & DevOps -->
+        <div class="tools-group">
+          <h3 class="group-title neon-orange"><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h3>
+          <div class="skills-grid">
+            <div class="skill-item" data-tooltip="AWS Cloud Infrastructure"><i class="fa-brands fa-aws neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Docker Containerization"><i class="fa-brands fa-docker neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="GitHub Actions CI/CD"><i class="fa-brands fa-github neon-red"></i></div>
+            <div class="skill-item" data-tooltip="Git Version Control"><i class="fa-brands fa-git-alt neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Linux & Bash Scripting"><i class="fa-brands fa-linux neon-yellow"></i></div>
+          </div>
+        </div>
+
+        <!-- Group 2: Languages & Backend -->
+        <div class="tools-group">
+          <h3 class="group-title neon-blue"><i class="fa-solid fa-code"></i> Languages & Backend</h3>
+          <div class="skills-grid">
+            <div class="skill-item" data-tooltip="Python Programming"><i class="fa-brands fa-python neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="C++"><i class="fa-solid fa-c neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="FastAPI Microservices"><i class="fa-solid fa-bolt neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="RESTful APIs Architecture"><i class="fa-solid fa-server neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="PostgreSQL"><i class="fa-solid fa-database neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="MySQL"><i class="fa-solid fa-table neon-red"></i></div>
+          </div>
+        </div>
+
+        <!-- Group 3: Data Systems & Streaming -->
+        <div class="tools-group">
+          <h3 class="group-title neon-yellow"><i class="fa-solid fa-network-wired"></i> Streaming & Data Systems</h3>
+          <div class="skills-grid">
+            <div class="skill-item" data-tooltip="Apache Kafka Streaming"><i class="fa-solid fa-layer-group neon-red"></i></div>
+            <div class="skill-item" data-tooltip="ETL Data Pipelines"><i class="fa-solid fa-arrows-split-up-and-left neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Amazon DynamoDB"><i class="fa-solid fa-cubes neon-blue"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
 
   <footer class="footer">
     <div class="container">
-      <p>Built with AWS (CloudFront, S3, API Gateway, Lambda, DynamoDB) &bull; Shubh Pandya</p>
+      <p>Built with AWS Serverless (CloudFront &bull; S3 &bull; Lambda &bull; API Gateway &bull; DynamoDB) &bull; Shubh Pandya</p>
     </div>
   </footer>
 
