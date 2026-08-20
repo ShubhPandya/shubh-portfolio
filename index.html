@@ -139,15 +139,36 @@
 
         <!-- Recruiter Fast-Review Grid -->
         <div class="recruiter-fast-grid">
-          <!-- Column 1: Core Competencies -->
+          <!-- Column 1: Core Competencies (Aligned Structure) -->
           <div class="fast-card border-blue">
             <h3 class="fast-heading neon-blue"><i class="fa-solid fa-layer-group"></i> Core Production Capabilities</h3>
-            <ul class="fast-list">
-              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>Serverless Architectures:</strong> Event-driven systems using AWS Lambda, API Gateway, and DynamoDB.</li>
-              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>Data Engineering:</strong> Streaming ETL pipelines using Apache Kafka, Python, and MySQL.</li>
-              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>CI/CD & Code Quality:</strong> Automated build/deploy workflows with GitHub Actions and static analysis integration.</li>
-              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>Security Postures:</strong> Least-privilege IAM policies, CloudFront Origin Access Control (OAC), and secure API endpoints.</li>
-            </ul>
+            <div class="capabilities-table">
+              
+              <div class="capability-row">
+                <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="cap-label">Serverless:</div>
+                <div class="cap-desc">Event-driven microservices using AWS Lambda, API Gateway, and DynamoDB.</div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="cap-label">Data Systems:</div>
+                <div class="cap-desc">Streaming ETL pipelines using Apache Kafka, Python, and MySQL.</div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="cap-label">CI/CD & DevOps:</div>
+                <div class="cap-desc">Automated build/deploy workflows with GitHub Actions and static analysis integration.</div>
+              </div>
+
+              <div class="capability-row">
+                <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="cap-label">Cloud Security:</div>
+                <div class="cap-desc">Least-privilege IAM policies, CloudFront Origin Access Control (OAC), and secure API endpoints.</div>
+              </div>
+
+            </div>
           </div>
 
           <!-- Column 2: Quick Navigation Actions -->
@@ -226,7 +247,7 @@
             </div>
           </div>
 
-          <!-- Right Column: Beyond The Stack (Pointers) -->
+          <!-- Right Column: Beyond The Stack -->
           <div class="about-col-right">
             <h3 class="column-heading"><i class="fa-solid fa-compass neon-yellow"></i> Beyond The Stack</h3>
             

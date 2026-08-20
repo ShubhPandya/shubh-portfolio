@@ -310,7 +310,7 @@ body {
 .btn:hover { filter: brightness(1.2); }
 
 /* =========================================
-   RECRUITER DASHBOARD VIEW (FIXED STYLING)
+   RECRUITER DASHBOARD VIEW
 ========================================= */
 .recruiter-hero-card {
   background: var(--bg-card);
@@ -418,23 +418,36 @@ body {
   gap: 10px;
 }
 
-.fast-list {
-  list-style: none;
+/* Strict Alignments for Production Capabilities Table */
+.capabilities-table {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.4rem;
 }
 
-.fast-list li {
+.capability-row {
+  display: grid;
+  grid-template-columns: 24px 135px 1fr;
+  align-items: start;
+  gap: 12px;
+}
+
+.cap-bullet {
+  font-size: 1rem;
+  margin-top: 3px;
+}
+
+.cap-label {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.cap-desc {
   font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.6;
-  display: flex;
-  gap: 10px;
-}
-
-.fast-list li i {
-  margin-top: 4px;
+  line-height: 1.5;
 }
 
 .quick-nav-stack {
@@ -801,4 +814,7 @@ body {
 
 @media (max-width: 850px) {
   .about-hero-layout, .about-split-row, .recruiter-fast-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .capability-row { grid-template-columns: 24px 1fr; }
+  .cap-label { grid-column: 2; }
+  .cap-desc { grid-column: 2; }
 }
