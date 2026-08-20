@@ -1,7 +1,6 @@
 /* ==========================================================================
    CONFIG & STATE MANAGEMENT
    ========================================================================== */
-// Replace with your real Amazon API Gateway Invoke URL endpoint
 const API_URL = "https://fa2mm1z6id.execute-api.ap-south-1.amazonaws.com/views";
 
 const ROLE_DATA = {
@@ -88,28 +87,42 @@ const ROLE_DATA = {
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   setupNavigation();
-  fetchRoleCounters();
+  fetchRoleCounters(); // Read-only fetch on page load (increments nothing)
   setupRoleCards();
 });
 
-// Fetch view counters (simulated fallback to local storage if API is offline)
+// Read-only fetch: fetches current numbers without incrementing
 async function fetchRoleCounters() {
   try {
     const res = await fetch(API_URL);
     if (!res.ok) throw new Error("API Gateway unreachable");
     const data = await res.json();
     
-    // If backend returns a unified views object or number:
-    const totalViews = data.views || 42;
-    document.getElementById("recruiter-count").innerText = totalViews;
-    document.getElementById("admirer-count").innerText = Math.floor(totalViews * 0.6);
-    document.getElementById("batchmate-count").innerText = Math.floor(totalViews * 0.4);
+    updateCounterUI(data);
   } catch (err) {
-    console.warn("Using local fallback counter:", err);
-    document.getElementById("recruiter-count").innerText = "142";
-    document.getElementById("admirer-count").innerText = "89";
-    document.getElementById("batchmate-count").innerText = "64";
+    console.warn("API offline, using fallback counters:", err);
+    document.getElementById("recruiter-count").innerText = "0";
+    document.getElementById("admirer-count").innerText = "0";
+    document.getElementById("batchmate-count").innerText = "0";
   }
+}
+
+// Increment specifically on role selection click
+async function incrementRoleCounter(role) {
+  try {
+    const res = await fetch(`${API_URL}?role=${encodeURIComponent(role)}`);
+    if (!res.ok) throw new Error("Increment request failed");
+    const data = await res.json();
+    updateCounterUI(data);
+  } catch (err) {
+    console.warn("Could not increment remote counter:", err);
+  }
+}
+
+function updateCounterUI(data) {
+  document.getElementById("recruiter-count").innerText = data.recruiter_views ?? 0;
+  document.getElementById("admirer-count").innerText = data.admirer_views ?? 0;
+  document.getElementById("batchmate-count").innerText = data.batchmate_views ?? 0;
 }
 
 /* ==========================================================================
@@ -123,7 +136,6 @@ function setupNavigation() {
     dropdownMenu.classList.toggle("active");
   });
 
-  // Close dropdown on click outside
   document.addEventListener("click", (e) => {
     if (!burgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
       dropdownMenu.classList.remove("active");
@@ -135,6 +147,7 @@ function setupNavigation() {
     document.getElementById("main-content-screen").classList.remove("active");
     document.getElementById("role-selector-screen").classList.add("active");
     document.getElementById("current-role-badge").innerText = "Select Persona";
+    fetchRoleCounters(); // Refresh stats when returning to role screen
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
@@ -143,6 +156,7 @@ function setupRoleCards() {
   document.querySelectorAll(".role-card").forEach((card) => {
     card.addEventListener("click", () => {
       const role = card.getAttribute("data-role");
+      incrementRoleCounter(role); // Increment ONLY this persona
       selectRole(role);
     });
   });
@@ -152,15 +166,12 @@ function selectRole(roleKey) {
   const role = ROLE_DATA[roleKey];
   if (!role) return;
 
-  // Update navbar role badge
   const badge = document.getElementById("current-role-badge");
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Render hero stats
   document.getElementById("dynamic-stats-container").innerHTML = role.renderHero();
 
-  // Switch screens
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
   window.scrollTo({ top: 0, behavior: "smooth" });
