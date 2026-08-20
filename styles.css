@@ -295,11 +295,11 @@ body {
 .btn:hover  { filter: brightness(1.2); }
 
 /* =========================================
-   ABOUT ME (MATCHING SCREEN RECORDING)
+   ABOUT ME SECTION
 ========================================= */
 .about-page-header {
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .about-main-title {
@@ -310,17 +310,16 @@ body {
 }
 
 .about-sub-title {
-  color: var(--text-muted);
   font-size: 0.95rem;
-  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
 }
 
 .about-hero-layout {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1.3fr 0.9fr;
   gap: 3rem;
   align-items: center;
-  margin-bottom: 4.5rem;
+  margin-bottom: 4rem;
 }
 
 .about-lead-paragraph {
@@ -334,8 +333,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #1c1d29;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #151722;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   padding: 0.8rem 1.6rem;
   border-radius: 8px;
@@ -346,9 +345,9 @@ body {
 }
 
 .download-resume-btn:hover {
-  background: #252839;
-  border-color: var(--neon-blue);
-  box-shadow: var(--glow-blue);
+  background: #1e2130;
+  border-color: var(--neon-orange);
+  box-shadow: var(--glow-orange);
   transform: translateY(-2px);
 }
 
@@ -357,154 +356,120 @@ body {
   justify-content: center;
 }
 
-.visual-frame {
+.profile-media-frame {
   width: 100%;
-  max-width: 380px;
-  background: #0d0e14;
-  border-radius: 12px;
-  overflow: hidden;
+  max-width: 320px;
+  aspect-ratio: 1;
+  background: var(--bg-card);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(0, 180, 216, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
-.terminal-bar {
-  background: #161722;
-  padding: 0.6rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.dot-red    { background: var(--neon-red); }
-.dot-yellow { background: var(--neon-yellow); }
-.dot-blue   { background: var(--neon-blue); }
-
-.term-title {
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  margin-left: auto;
-}
-
-.terminal-code {
-  padding: 1.2rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+.placeholder-icon-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 12px;
 }
 
-/* Dual Column Row: Education vs Beyond the Code */
+.placeholder-icon-box i {
+  font-size: 4rem;
+}
+
+.placeholder-label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Dual Column Row: Education vs Beyond the Stack */
 .about-split-row {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 3.5rem;
-  margin-bottom: 5rem;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  margin-bottom: 4.5rem;
 }
 
 .column-heading {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .edu-card {
   background: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: 10px;
+  padding: 1.8rem;
+  border-radius: 12px;
   border-left: 4px solid var(--neon-blue);
-  margin-bottom: 2rem;
 }
 
 .edu-degree {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
 }
 
 .edu-institute {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
+  margin-bottom: 0.5rem;
 }
 
-.edu-illustration {
-  display: flex;
-  justify-content: center;
-}
-
-.avatar-badge {
-  background: #0f1017;
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-  border: 1px solid rgba(255, 119, 0, 0.3);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-  width: 100%;
-  max-width: 260px;
-}
-
-.avatar-icon {
-  font-size: 3.5rem;
+.edu-meta {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
   margin-bottom: 1rem;
 }
 
-.avatar-tag {
-  font-family: var(--font-mono);
+.edu-coursework {
   font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.beyond-lead {
-  font-size: 0.95rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  line-height: 1.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.8rem;
 }
 
 .beyond-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: 1.2rem;
 }
 
 .beyond-list li {
+  display: flex;
+  gap: 12px;
   font-size: 0.92rem;
   line-height: 1.6;
   color: #cfd4df;
+  align-items: flex-start;
 }
 
-.beyond-bullet {
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.pointer-badge {
+  font-size: 1.1rem;
+  margin-top: 3px;
 }
 
-.dash {
-  color: var(--text-muted);
-  margin: 0 6px;
-}
-
-/* Get In Touch Footer Box */
+/* Contact Dock Footer Box */
 .get-in-touch-section {
   text-align: center;
-  padding: 3.5rem 1.5rem;
-  background: #0a0b10;
+  padding: 3rem 1.5rem;
+  background: #0d0e14;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 119, 0, 0.3);
 }
 
 .get-touch-title {
   font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .get-touch-subtitle {
@@ -521,13 +486,13 @@ body {
 }
 
 .social-circle {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-decoration: none;
   color: #fff;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -536,7 +501,6 @@ body {
 .circle-red    { background: #e63946; }
 .circle-blue   { background: #0077b5; }
 .circle-orange { background: #24292e; border: 1px solid rgba(255, 255, 255, 0.2); }
-.circle-yellow { background: #38b000; }
 
 .social-circle:hover {
   transform: translateY(-4px) scale(1.08);
@@ -665,7 +629,6 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive adjustments */
 @media (max-width: 850px) {
   .about-hero-layout, .about-split-row { grid-template-columns: 1fr; gap: 2.5rem; }
 }

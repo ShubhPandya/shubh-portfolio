@@ -12,7 +12,7 @@
   <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
     <div class="nav-brand" onclick="navigateToSection('about')">
-      <span class="neon-orange">shubh</span><span class="neon-blue">.pandya</span>
+      <span class="neon-orange">SP</span>.<span class="neon-blue">cloud</span>
     </div>
     <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
     <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu">
@@ -46,7 +46,7 @@
         <div class="role-card card-orange" data-role="recruiter">
           <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
           <h2>Recruiter</h2>
-          <p>Production AWS architecture, distributed backends, CI/CD automation, and production deliverables.</p>
+          <p>Production AWS architecture, distributed backends, CI/CD automation, and engineering deliverables.</p>
           <div class="counter-box">
             <span class="counter-label">Recruiters Logged:</span>
             <span class="counter-val" id="recruiter-count">...</span>
@@ -58,7 +58,7 @@
         <div class="role-card card-red" data-role="admirer">
           <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
           <h2>Admirer / Stalker</h2>
-          <p>Curious observer? Tech pursuits, offline hobbies, gaming setups, and system footprints.</p>
+          <p>Curious observer? Technical builds, offline pursuits, tactical gaming, and system footprints.</p>
           <div class="counter-box">
             <span class="counter-label">Stalkers Tracked:</span>
             <span class="counter-val" id="admirer-count">...</span>
@@ -70,7 +70,7 @@
         <div class="role-card card-blue" data-role="batchmate">
           <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <h2>Batchmate</h2>
-          <p>VIT CSE lineage, competitive programming logs, backend systems, and collaborative builds.</p>
+          <p>VIT CSE lineage, competitive programming logs, backend systems, and collaborative projects.</p>
           <div class="counter-box">
             <span class="counter-label">Peers Connected:</span>
             <span class="counter-val" id="batchmate-count">...</span>
@@ -85,121 +85,107 @@
   <main id="main-content-screen" class="view-screen">
     
     <!-- =========================================
-         SECTION 1: ABOUT ME PAGE (VIDEO LAYOUT)
+         SECTION 1: ABOUT ME PAGE
     ========================================= -->
     <section id="page-about" class="page-view active">
       <div class="container">
         
         <!-- Header Title & Subtitle -->
         <div class="about-page-header">
-          <h2 class="about-main-title">about me</h2>
-          <p class="about-sub-title">man behind the code</p>
+          <h2 class="about-main-title">About Me</h2>
+          <p class="about-sub-title neon-blue">Systems Engineering &bull; Cloud Infrastructure &bull; Core Computing</p>
         </div>
 
-        <!-- Hero Dual-Column: Tech Bio + Image Card -->
+        <!-- Hero Dual-Column: Tech Bio + Clean Media Frame -->
         <div class="about-hero-layout">
           <div class="about-hero-text">
             <p class="about-lead-paragraph">
-              Cloud & Backend Engineer specializing in scalable serverless architectures, event-driven streaming data pipelines, and automated cloud deployments. Experienced in engineering low-latency microservices with robust, least-privilege security postures on AWS. When not designing infrastructure, you'll find me optimizing algorithms, exploring system internals, and leveling up in tactical gaming.
+              I am a Software & Cloud Engineer focused on architecting resilient serverless environments, event-driven streaming data pipelines, and automated CI/CD infrastructure. My work emphasizes least-privilege security postures, high data throughput, and low-latency API design across distributed systems.
             </p>
             <div class="resume-cta-wrap">
               <a href="https://github.com/ShubhPandya/shubh-portfolio/raw/main/ShubhPandya.pdf" target="_blank" class="download-resume-btn">
-                <i class="fa-solid fa-download"></i> Download Resume
+                <i class="fa-solid fa-file-arrow-down neon-orange"></i> Download Resume
               </a>
             </div>
           </div>
 
+          <!-- Clean Image/Media Container (Replace icon with your photo anytime) -->
           <div class="about-hero-visual">
-            <div class="visual-frame border-blue">
-              <div class="terminal-mock">
-                <div class="terminal-bar">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-blue"></span>
-                  <span class="term-title">shubh@cloud-node: ~</span>
-                </div>
-                <div class="terminal-code">
-                  <p><span class="neon-orange">$</span> aws sts get-caller-identity</p>
-                  <p class="neon-blue">"Arn": "arn:aws:iam::shubh:engineer"</p>
-                  <p><span class="neon-orange">$</span> status --profile</p>
-                  <p class="neon-yellow">&gt; AWS Certified (CCP)</p>
-                  <p class="neon-yellow">&gt; B.Tech CSE (VIT Chennai)</p>
-                  <p class="neon-red">&gt; 100% Serverless Uptime</p>
-                </div>
+            <div class="profile-media-frame border-blue">
+              <div class="placeholder-icon-box">
+                <i class="fa-solid fa-user-astronaut neon-blue"></i>
+                <span class="placeholder-label neon-orange">Shubh Pandya</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Split Row: Education & Beyond the Code -->
+        <!-- Split Row: Education & Beyond The Stack -->
         <div class="about-split-row">
           
           <!-- Left Column: Education -->
           <div class="about-col-left">
-            <h3 class="column-heading"><span class="heading-icon">🎓</span> education</h3>
+            <h3 class="column-heading"><i class="fa-solid fa-graduation-cap neon-blue"></i> Academic Background</h3>
             <div class="edu-card border-blue">
               <h4 class="edu-degree">Bachelor of Technology in Computer Science & Engineering</h4>
-              <p class="edu-institute">Vellore Institute of Technology (VIT Chennai) &bull; <span class="neon-yellow">2021–2025</span></p>
-            </div>
-            
-            <div class="edu-illustration">
-              <div class="avatar-badge border-orange">
-                <i class="fa-solid fa-laptop-code neon-blue avatar-icon"></i>
-                <div class="avatar-tag neon-orange">&lt;Developer at Work /&gt;</div>
-              </div>
+              <p class="edu-institute">Vellore Institute of Technology (VIT Chennai)</p>
+              <p class="edu-meta"><span class="neon-yellow">2021 &ndash; 2025</span> &bull; <strong>CGPA: 7.70</strong></p>
+              <p class="edu-coursework"><strong>Key Focus:</strong> Distributed Systems, Operating Systems, Database Management Systems, Data Structures & Algorithms</p>
             </div>
           </div>
 
-          <!-- Right Column: Beyond the Code -->
+          <!-- Right Column: Beyond The Stack (Pointers) -->
           <div class="about-col-right">
-            <h3 class="column-heading"><span class="heading-icon">⚡</span> beyond the code</h3>
-            <p class="beyond-lead">
-              When I'm not building streaming data pipelines or fine-tuning cloud infrastructure, here's what keeps me inspired:
-            </p>
-
+            <h3 class="column-heading"><i class="fa-solid fa-compass neon-yellow"></i> Beyond The Stack</h3>
+            
             <ul class="beyond-list">
               <li>
-                <span class="beyond-bullet neon-orange"><i class="fa-solid fa-gamepad"></i> Gamer at Heart</span>
-                <span class="dash">&mdash;</span>
-                <span>Whether it's tactical FPS matches (Valorant) or configuring multiplayer sandbox servers with Docker, I'm always down for a good session.</span>
+                <div class="pointer-badge neon-orange"><i class="fa-solid fa-crosshairs"></i></div>
+                <div>
+                  <strong>Tactical Gaming:</strong> Competitive tactical FPS player (Valorant) and self-hosting multiplayer game environments via Docker containers.
+                </div>
               </li>
               <li>
-                <span class="beyond-bullet neon-blue"><i class="fa-solid fa-baseball-bat-ball"></i> Cricket & Strategy</span>
-                <span class="dash">&mdash;</span>
-                <span>Active on the cricket pitch and passionate about strategic auction economics and mid-season fantasy roster building.</span>
+                <div class="pointer-badge neon-blue"><i class="fa-solid fa-baseball-bat-ball"></i></div>
+                <div>
+                  <strong>Cricket & Fantasy Strategy:</strong> Active on the field and analytical off it, breaking down squad dynamics, match matchups, and auction economics.
+                </div>
               </li>
               <li>
-                <span class="beyond-bullet neon-red"><i class="fa-solid fa-film"></i> Psychological Thrillers</span>
-                <span class="dash">&mdash;</span>
-                <span>I binge everything from mind-bending mysteries to complex plot twists—cinematic storytelling with high-tension payoffs is my escape zone.</span>
+                <div class="pointer-badge neon-red"><i class="fa-solid fa-film"></i></div>
+                <div>
+                  <strong>Psychological Cinema:</strong> Big enthusiast of mind-bending psychological thrillers with high-tension plots and sharp twists.
+                </div>
               </li>
               <li>
-                <span class="beyond-bullet neon-yellow"><i class="fa-solid fa-mug-saucer"></i> Cafe & Brew Culture</span>
-                <span class="dash">&mdash;</span>
-                <span>Exploring artisanal non-alcoholic craft brews, structured fitness walks, and lifestyle optimization.</span>
+                <div class="pointer-badge neon-yellow"><i class="fa-solid fa-mug-hot"></i></div>
+                <div>
+                  <strong>Fitness & Craft Brews:</strong> Dedicated to daily fitness walking routines, green tea habits, and exploring artisanal beverage concepts.
+                </div>
               </li>
             </ul>
           </div>
 
         </div>
 
-        <!-- Get In Touch Section (Reference Footer Layout) -->
-        <div class="get-in-touch-section">
-          <h3 class="get-touch-title">get in touch</h3>
-          <p class="get-touch-subtitle">Interested in working together? Feel free to reach out through any of these channels.</p>
+        <!-- Contact Dock: Direct Mailto & Socials (No Phone) -->
+        <div class="get-in-touch-section border-orange">
+          <h3 class="get-touch-title">Let's Connect</h3>
+          <p class="get-touch-subtitle">Open for conversations on cloud architecture, backend systems, and engineering roles.</p>
           
           <div class="social-circle-row">
-            <a href="mailto:shubhaiml1@gmail.com" class="social-circle circle-red" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/shubh-pandya-sp" target="_blank" class="social-circle circle-blue" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://github.com/ShubhPandya" target="_blank" class="social-circle circle-orange" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="tel:+916359172389" class="social-circle circle-yellow" title="Phone"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:shubhaiml1@gmail.com" class="social-circle circle-red" title="Send Email (shubhaiml1@gmail.com)"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/shubh-pandya-sp" target="_blank" class="social-circle circle-blue" title="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/ShubhPandya" target="_blank" class="social-circle circle-orange" title="GitHub Profile"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION 2: PROJECTS PAGE -->
+    <!-- =========================================
+         SECTION 2: PROJECTS PAGE
+    ========================================= -->
     <section id="page-projects" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
@@ -263,7 +249,9 @@
       </div>
     </section>
 
-    <!-- SECTION 3: EXPERIENCE PAGE -->
+    <!-- =========================================
+         SECTION 3: EXPERIENCE PAGE
+    ========================================= -->
     <section id="page-experience" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
@@ -313,7 +301,9 @@
       </div>
     </section>
 
-    <!-- SECTION 4: CERTIFICATIONS PAGE -->
+    <!-- =========================================
+         SECTION 4: CERTIFICATIONS PAGE
+    ========================================= -->
     <section id="page-certifications" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
@@ -355,7 +345,9 @@
       </div>
     </section>
 
-    <!-- SECTION 5: TOOLS & SKILLS PAGE -->
+    <!-- =========================================
+         SECTION 5: TOOLS & SKILLS PAGE
+    ========================================= -->
     <section id="page-tools" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
