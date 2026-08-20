@@ -59,14 +59,11 @@ function openEmailClient() {
   const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
   if (isMobile) {
-    // Open default mail app on mobile
     window.location.href = `mailto:${EMAIL_ADDRESS}?subject=Opportunity%20Discussion%20-%20Shubh%20Pandya`;
   } else {
-    // Open direct Gmail compose tab in browser for desktop
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL_ADDRESS)}&su=${encodeURIComponent("Opportunity Discussion - Shubh Pandya")}`;
     const win = window.open(gmailUrl, '_blank');
     
-    // Copy to clipboard & show feedback toast if popups are blocked
     navigator.clipboard.writeText(EMAIL_ADDRESS).then(() => {
       showToast("Email copied to clipboard!");
     }).catch(() => {
@@ -107,7 +104,10 @@ function enterPortfolio(roleKey) {
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Switch to Screen 2 and load the tailored landing dashboard directly
+  // Remove viewport scroll-lock class when leaving Screen 1
+  document.body.classList.remove("role-screen-active");
+
+  // Switch to Screen 2 and load dashboard
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
   navigateToSection("dashboard");
@@ -134,6 +134,10 @@ function setupNavigation() {
     dropdownMenu.classList.remove("active");
     document.getElementById("main-content-screen").classList.remove("active");
     document.getElementById("role-selector-screen").classList.add("active");
+    
+    // Re-enable strict viewport lock on Screen 1
+    document.body.classList.add("role-screen-active");
+
     document.getElementById("current-role-badge").innerText = "Select Persona";
     document.getElementById("current-role-badge").className = "nav-role-badge";
     fetchRoleCounters();

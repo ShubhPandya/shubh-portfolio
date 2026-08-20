@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-<body class="theme-black">
+<body class="theme-black role-screen-active">
 
   <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
@@ -36,7 +36,7 @@
     </ul>
   </nav>
 
-  <!-- SCREEN 1: SINGLE-VIEWPORT ROLE SELECTOR -->
+  <!-- SCREEN 1: STRICT ZERO-SCROLL ROLE SELECTOR -->
   <main id="role-selector-screen" class="view-screen screen-single-viewport active">
     <div class="role-container">
       
@@ -51,12 +51,12 @@
       <div class="role-grid">
         <!-- Recruiter Card -->
         <div class="role-card card-orange" data-role="recruiter">
-          <div>
+          <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
             <h2>Recruiter</h2>
             <p>Production AWS architecture, distributed backends, CI/CD automation, and engineering deliverables.</p>
           </div>
-          <div>
+          <div class="card-bottom">
             <div class="counter-box">
               <span class="counter-label">Recruiters Logged:</span>
               <span class="counter-val" id="recruiter-count">...</span>
@@ -67,12 +67,12 @@
 
         <!-- Admirer / Stalker Card -->
         <div class="role-card card-red" data-role="admirer">
-          <div>
+          <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
             <h2>Admirer / Stalker</h2>
             <p>Curious observer? Technical builds, offline pursuits, tactical gaming, and system footprints.</p>
           </div>
-          <div>
+          <div class="card-bottom">
             <div class="counter-box">
               <span class="counter-label">Stalkers Tracked:</span>
               <span class="counter-val" id="admirer-count">...</span>
@@ -83,12 +83,12 @@
 
         <!-- Batchmate Card -->
         <div class="role-card card-blue" data-role="batchmate">
-          <div>
+          <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <h2>Batchmate</h2>
             <p>VIT CSE lineage, competitive programming logs, backend systems, and collaborative projects.</p>
           </div>
-          <div>
+          <div class="card-bottom">
             <div class="counter-box">
               <span class="counter-label">Peers Connected:</span>
               <span class="counter-val" id="batchmate-count">...</span>
@@ -157,39 +157,32 @@
 
         <!-- Recruiter Fast-Review Grid -->
         <div class="recruiter-fast-grid">
-          <!-- Column 1: Core Competencies -->
           <div class="fast-card border-blue">
             <h3 class="fast-heading neon-blue"><i class="fa-solid fa-layer-group"></i> Core Production Capabilities</h3>
             <div class="capabilities-table">
-              
               <div class="capability-row">
                 <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
                 <div class="cap-label">Serverless:</div>
                 <div class="cap-desc">Event-driven microservices using AWS Lambda, API Gateway, and DynamoDB.</div>
               </div>
-
               <div class="capability-row">
                 <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
                 <div class="cap-label">Data Systems:</div>
                 <div class="cap-desc">Streaming ETL pipelines using Apache Kafka, Python, and MySQL.</div>
               </div>
-
               <div class="capability-row">
                 <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
                 <div class="cap-label">CI/CD & DevOps:</div>
                 <div class="cap-desc">Automated build/deploy workflows with GitHub Actions and static analysis integration.</div>
               </div>
-
               <div class="capability-row">
                 <div class="cap-bullet neon-blue"><i class="fa-solid fa-circle-check"></i></div>
                 <div class="cap-label">Cloud Security:</div>
                 <div class="cap-desc">Least-privilege IAM policies, CloudFront Origin Access Control (OAC), and secure API endpoints.</div>
               </div>
-
             </div>
           </div>
 
-          <!-- Column 2: Quick Navigation Actions -->
           <div class="fast-card border-yellow">
             <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compass"></i> Detailed Candidate Files</h3>
             <div class="quick-nav-stack">
@@ -222,13 +215,11 @@
     <section id="page-about" class="page-view">
       <div class="container">
         
-        <!-- Header Title & Subtitle -->
         <div class="about-page-header">
           <h2 class="about-main-title">About Me</h2>
           <p class="about-sub-title neon-blue">Systems Engineering &bull; Cloud Infrastructure &bull; Core Computing</p>
         </div>
 
-        <!-- Hero Dual-Column: Tech Bio + Clean Media Frame -->
         <div class="about-hero-layout">
           <div class="about-hero-text">
             <p class="about-lead-paragraph">
@@ -251,10 +242,7 @@
           </div>
         </div>
 
-        <!-- Split Row: Education & Beyond The Stack -->
         <div class="about-split-row">
-          
-          <!-- Left Column: Education -->
           <div class="about-col-left">
             <h3 class="column-heading"><i class="fa-solid fa-graduation-cap neon-blue"></i> Academic Background</h3>
             <div class="edu-card border-blue">
@@ -265,10 +253,8 @@
             </div>
           </div>
 
-          <!-- Right Column: Beyond The Stack -->
           <div class="about-col-right">
             <h3 class="column-heading"><i class="fa-solid fa-compass neon-yellow"></i> Beyond The Stack</h3>
-            
             <ul class="beyond-list">
               <li>
                 <div class="pointer-badge neon-orange"><i class="fa-solid fa-crosshairs"></i></div>
@@ -296,10 +282,8 @@
               </li>
             </ul>
           </div>
-
         </div>
 
-        <!-- Contact Dock: Universal Smart Mail Dispatcher -->
         <div class="get-in-touch-section border-orange">
           <h3 class="get-touch-title">Let's Connect</h3>
           <p class="get-touch-subtitle">Open for conversations on cloud architecture, backend systems, and engineering roles.</p>
@@ -328,7 +312,6 @@
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
         <div class="projects-tile-grid">
           
-          <!-- Project 1 -->
           <div class="project-tile border-orange">
             <div class="project-tile-header">
               <div class="project-title-group">
@@ -355,7 +338,6 @@
             </div>
           </div>
 
-          <!-- Project 2 -->
           <div class="project-tile border-blue">
             <div class="project-tile-header">
               <div class="project-title-group">
@@ -394,7 +376,6 @@
         <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
         <div class="experience-stack">
           
-          <!-- Role 1 -->
           <div class="exp-card border-red">
             <div class="exp-header-row">
               <div>
@@ -414,7 +395,6 @@
             </div>
           </div>
 
-          <!-- Role 2 -->
           <div class="exp-card border-blue">
             <div class="exp-header-row">
               <div>
@@ -446,7 +426,6 @@
         <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
         <div class="certs-stack">
           
-          <!-- AWS CCP Card -->
           <div class="cert-detail-card border-yellow">
             <div class="cert-header">
               <div class="cert-title-group">
@@ -489,7 +468,6 @@
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
         
-        <!-- Group 1: Cloud & DevOps -->
         <div class="tools-group">
           <h3 class="group-title neon-orange"><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h3>
           <div class="skills-grid">
@@ -501,7 +479,6 @@
           </div>
         </div>
 
-        <!-- Group 2: Languages & Backend -->
         <div class="tools-group">
           <h3 class="group-title neon-blue"><i class="fa-solid fa-code"></i> Languages & Backend</h3>
           <div class="skills-grid">
@@ -514,7 +491,6 @@
           </div>
         </div>
 
-        <!-- Group 3: Data Systems & Streaming -->
         <div class="tools-group">
           <h3 class="group-title neon-yellow"><i class="fa-solid fa-network-wired"></i> Streaming & Data Systems</h3>
           <div class="skills-grid">
@@ -529,10 +505,9 @@
 
   </main>
 
-  <!-- Notification Toast -->
   <div id="toast" class="toast">Email copied to clipboard!</div>
 
-  <footer class="footer">
+  <footer class="footer" id="app-footer">
     <div class="container">
       <p>&copy; 2026 Shubh Pandya. All rights reserved &bull; Hosted on AWS Serverless</p>
     </div>
