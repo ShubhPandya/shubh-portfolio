@@ -683,6 +683,8 @@ body {
   font-size: 1.3rem;
   text-decoration: none;
   color: #fff;
+  border: none;
+  cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -693,6 +695,32 @@ body {
 .social-circle:hover {
   transform: translateY(-4px) scale(1.08);
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Toast Message */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #161722;
+  color: var(--neon-orange);
+  border: 1px solid var(--neon-orange);
+  padding: 0.8rem 1.6rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 3000;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  bottom: 40px;
 }
 
 /* =========================================

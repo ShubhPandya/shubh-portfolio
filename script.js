@@ -2,6 +2,7 @@
    CONFIG & STATE MANAGEMENT
    ========================================================================== */
 const API_URL = "https://fa2mm1z6id.execute-api.ap-south-1.amazonaws.com/views";
+const EMAIL_ADDRESS = "shubhaiml1@gmail.com";
 
 const ROLE_CONFIG = {
   recruiter: { badge: "Recruiter Mode", color: "neon-orange" },
@@ -49,6 +50,40 @@ function updateCounterUI(data) {
   document.getElementById("recruiter-count").innerText = data.recruiter_views ?? 0;
   document.getElementById("admirer-count").innerText = data.admirer_views ?? 0;
   document.getElementById("batchmate-count").innerText = data.batchmate_views ?? 0;
+}
+
+/* ==========================================================================
+   SMART UNIVERSAL EMAIL DISPATCHER
+   ========================================================================== */
+function openEmailClient() {
+  const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // Open default mail app on mobile
+    window.location.href = `mailto:${EMAIL_ADDRESS}?subject=Opportunity%20Discussion%20-%20Shubh%20Pandya`;
+  } else {
+    // Open direct Gmail compose tab in browser for desktop
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL_ADDRESS)}&su=${encodeURIComponent("Opportunity Discussion - Shubh Pandya")}`;
+    const win = window.open(gmailUrl, '_blank');
+    
+    // Copy to clipboard & show feedback toast if popups are blocked
+    navigator.clipboard.writeText(EMAIL_ADDRESS).then(() => {
+      showToast("Email copied to clipboard!");
+    }).catch(() => {
+      if (!win) {
+        window.location.href = `mailto:${EMAIL_ADDRESS}`;
+      }
+    });
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
 }
 
 /* ==========================================================================
@@ -106,7 +141,6 @@ function setupNavigation() {
   });
 }
 
-// Router for switching between the dedicated section views
 function navigateToSection(sectionId) {
   document.querySelectorAll(".page-view").forEach((page) => {
     page.classList.remove("active");
