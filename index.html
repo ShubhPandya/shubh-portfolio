@@ -11,8 +11,8 @@
 
   <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
-    <div class="nav-brand" onclick="navigateToSection('about')">
-      <span class="neon-orange">SP</span>.<span class="neon-blue">cloud</span>
+    <div class="nav-brand" onclick="navigateToSection('dashboard')">
+      <span class="neon-orange">Shubh</span>
     </div>
     <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
     <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu">
@@ -25,10 +25,11 @@
   <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
-      <li><button class="nav-menu-btn active" onclick="navigateToSection('about')"><i class="fa-solid fa-user-astronaut neon-orange"></i> About Me</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('projects')"><i class="fa-solid fa-diagram-project neon-yellow"></i> Projects</button></li>
+      <li><button class="nav-menu-btn active" onclick="navigateToSection('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('about')"><i class="fa-solid fa-user-astronaut neon-yellow"></i> About Me</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('projects')"><i class="fa-solid fa-diagram-project neon-blue"></i> Projects</button></li>
       <li><button class="nav-menu-btn" onclick="navigateToSection('experience')"><i class="fa-solid fa-briefcase neon-red"></i> Experience</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('certifications')"><i class="fa-solid fa-certificate neon-blue"></i> Certifications</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateToSection('certifications')"><i class="fa-solid fa-certificate neon-yellow"></i> Certifications</button></li>
       <li><button class="nav-menu-btn" onclick="navigateToSection('tools')"><i class="fa-solid fa-toolbox neon-orange"></i> Tools & Skills</button></li>
       <li class="menu-divider"></li>
       <li><button class="switch-role-btn" id="switch-role-btn"><i class="fa-solid fa-rotate neon-yellow"></i> Switch Persona</button></li>
@@ -85,9 +86,101 @@
   <main id="main-content-screen" class="view-screen">
     
     <!-- =========================================
+         LANDING: RECRUITER DASHBOARD
+    ========================================= -->
+    <section id="page-dashboard" class="page-view active">
+      <div class="container">
+        
+        <!-- Recruiter Header Card -->
+        <div class="recruiter-hero-card border-orange">
+          <div class="hero-top-row">
+            <div>
+              <div class="badge-role-tag neon-orange">Candidate Executive Overview</div>
+              <h2 class="hero-name">Shubh Udaybhai Pandya</h2>
+              <p class="hero-sub neon-blue">Cloud & Backend Systems Engineer &bull; AWS Certified</p>
+            </div>
+            <div class="hero-cta-group">
+              <a href="https://drive.google.com/file/d/1XseiKJG_uYXwTU4zkX6z93Fh7KUhqfiE/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-orange">
+                <i class="fa-solid fa-file-arrow-down"></i> One-Page Resume
+              </a>
+              <a href="mailto:shubhaiml1@gmail.com" class="btn btn-outline-blue">
+                <i class="fa-solid fa-envelope"></i> Quick Connect
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Cards Grid -->
+        <div class="stats-kpi-grid">
+          <div class="kpi-card border-blue">
+            <span class="kpi-number neon-blue">AWS CCP</span>
+            <span class="kpi-title">Certified Practitioner</span>
+            <p class="kpi-detail">Active 2026 &bull; IAM, VPC, S3, CloudFront & Serverless Architecture</p>
+          </div>
+
+          <div class="kpi-card border-yellow">
+            <span class="kpi-number neon-yellow">2 Internships</span>
+            <span class="kpi-title">Production Experience</span>
+            <p class="kpi-detail">Genisys Group (CI/CD Static Analysis) & Squadron Tech (Kafka Streaming ETL)</p>
+          </div>
+
+          <div class="kpi-card border-orange">
+            <span class="kpi-number neon-orange">7.70 CGPA</span>
+            <span class="kpi-title">B.Tech Computer Science</span>
+            <p class="kpi-detail">Vellore Institute of Technology (VIT Chennai) &bull; Graduated 2025</p>
+          </div>
+
+          <div class="kpi-card border-red">
+            <span class="kpi-number neon-red">100%</span>
+            <span class="kpi-title">Serverless Architecture</span>
+            <p class="kpi-detail">CloudFront CDN, S3 OAC, API Gateway, Lambda & Atomic DynamoDB</p>
+          </div>
+        </div>
+
+        <!-- Recruiter Fast-Review Grid -->
+        <div class="recruiter-fast-grid">
+          <!-- Column 1: Core Competencies -->
+          <div class="fast-card border-blue">
+            <h3 class="fast-heading neon-blue"><i class="fa-solid fa-layer-group"></i> Core Production Capabilities</h3>
+            <ul class="fast-list">
+              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>Serverless Architectures:</strong> Event-driven systems using AWS Lambda, API Gateway, and DynamoDB.</li>
+              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>Data Engineering:</strong> Streaming ETL pipelines using Apache Kafka, Python, and MySQL.</li>
+              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>CI/CD & Code Quality:</strong> Automated build/deploy workflows with GitHub Actions and static analysis integration.</li>
+              <li><i class="fa-solid fa-circle-check neon-blue"></i> <strong>Security Postures:</strong> Least-privilege IAM policies, CloudFront Origin Access Control (OAC), and secure API endpoints.</li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Quick Navigation Actions -->
+          <div class="fast-card border-yellow">
+            <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compass"></i> Detailed Candidate Files</h3>
+            <div class="quick-nav-stack">
+              <button onclick="navigateToSection('experience')" class="quick-nav-btn">
+                <span><i class="fa-solid fa-briefcase neon-red"></i> Verified Experience Logs</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button onclick="navigateToSection('projects')" class="quick-nav-btn">
+                <span><i class="fa-solid fa-diagram-project neon-yellow"></i> Production Architecture Projects</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button onclick="navigateToSection('tools')" class="quick-nav-btn">
+                <span><i class="fa-solid fa-toolbox neon-orange"></i> Full Tech Stack & Tooling</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+              <button onclick="navigateToSection('certifications')" class="quick-nav-btn">
+                <span><i class="fa-solid fa-certificate neon-blue"></i> AWS Badge & Verification</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================
          SECTION 1: ABOUT ME PAGE
     ========================================= -->
-    <section id="page-about" class="page-view active">
+    <section id="page-about" class="page-view">
       <div class="container">
         
         <!-- Header Title & Subtitle -->
@@ -103,13 +196,12 @@
               I am a Software & Cloud Engineer focused on architecting resilient serverless environments, event-driven streaming data pipelines, and automated CI/CD infrastructure. My work emphasizes least-privilege security postures, high data throughput, and low-latency API design across distributed systems.
             </p>
             <div class="resume-cta-wrap">
-              <a href="https://drive.google.com/file/d/1XseiKJG_uYXwTU4zkX6z93Fh7KUhqfiE/view?usp=sharing" target="_blank" class="download-resume-btn">
+              <a href="https://drive.google.com/file/d/1XseiKJG_uYXwTU4zkX6z93Fh7KUhqfiE/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="download-resume-btn">
                 <i class="fa-solid fa-file-arrow-down neon-orange"></i> Download Resume
               </a>
             </div>
           </div>
 
-          <!-- Clean Image/Media Container (Replace icon with your photo anytime) -->
           <div class="about-hero-visual">
             <div class="profile-media-frame border-blue">
               <div class="placeholder-icon-box">
@@ -127,10 +219,10 @@
           <div class="about-col-left">
             <h3 class="column-heading"><i class="fa-solid fa-graduation-cap neon-blue"></i> Academic Background</h3>
             <div class="edu-card border-blue">
-              <h4 class="edu-degree">Bachelor of Technology in Computer Science & Engineering</h4>
-              <p class="edu-institute">Vellore Institute of Technology (VIT Chennai)</p>
-              <p class="edu-meta"><span class="neon-yellow">2021 &ndash; 2025</span> &bull; <strong>CGPA: 7.70</strong></p>
-              <p class="edu-coursework"><strong>Key Focus:</strong> Distributed Systems, Operating Systems, Database Management Systems, Data Structures & Algorithms</p>
+              <h4 class="edu-degree">Bachelor of Technology in Computer Science & Engineering[cite: 1, 2]</h4>
+              <p class="edu-institute">Vellore Institute of Technology (VIT Chennai)[cite: 1, 2]</p>
+              <p class="edu-meta"><span class="neon-yellow">2021 &ndash; 2025</span> &bull; <strong>CGPA: 7.70</strong>[cite: 1, 2]</p>
+              <p class="edu-coursework"><strong>Key Focus:</strong> Distributed Systems, Operating Systems, Database Management Systems, Data Structures & Algorithms[cite: 1, 2]</p>
             </div>
           </div>
 
@@ -142,7 +234,7 @@
               <li>
                 <div class="pointer-badge neon-orange"><i class="fa-solid fa-crosshairs"></i></div>
                 <div>
-                  <strong>Tactical Gaming:</strong> Competitive FPS player who’s all about strategy, teamwork, and clutch plays.
+                  <strong>Tactical Gaming:</strong> Competitive tactical FPS player (Valorant) and self-hosting multiplayer game environments via Docker containers.
                 </div>
               </li>
               <li>
@@ -160,7 +252,7 @@
               <li>
                 <div class="pointer-badge neon-yellow"><i class="fa-solid fa-mug-hot"></i></div>
                 <div>
-                  <strong>Fitness & Craft Brews:</strong> Exploring specialty coffee, creative mocktails, and real fruit extracts — basically anything that turns great ingredients into something worth obsessing over and exploring artisanal beverage concepts.
+                  <strong>Fitness & Craft Brews:</strong> Dedicated to daily fitness walking routines, green tea habits, and exploring artisanal beverage concepts.
                 </div>
               </li>
             </ul>
@@ -168,7 +260,7 @@
 
         </div>
 
-        <!-- Contact Dock: Direct Mailto & Socials (No Phone) -->
+        <!-- Contact Dock: Direct Mailto & Socials -->
         <div class="get-in-touch-section border-orange">
           <h3 class="get-touch-title">Let's Connect</h3>
           <p class="get-touch-subtitle">Open for conversations on cloud architecture, backend systems, and engineering roles.</p>
@@ -198,12 +290,12 @@
                 <i class="fa-solid fa-cloud-bolt neon-orange project-icon"></i>
                 <div>
                   <h3>Serverless Cloud Portfolio Architecture</h3>
-                  <span class="badge-tag neon-orange">AWS Serverless & DevOps</span>
+                  <span class="badge-tag neon-orange">AWS Serverless & DevOps[cite: 1, 2]</span>
                 </div>
               </div>
             </div>
             <p class="project-summary">
-              Architected a globally distributed static web application on CloudFront backed by a private S3 origin secured via Origin Access Control (OAC). Built a serverless analytics microservice using API Gateway and AWS Lambda (Python 3.12) with atomic DynamoDB updates. Automated deployments via GitHub Actions CI/CD.
+              Architected a globally distributed static web application on CloudFront backed by a private S3 origin secured via Origin Access Control (OAC)[cite: 1, 2]. Built a serverless analytics microservice using API Gateway and AWS Lambda (Python 3.12) with atomic DynamoDB updates[cite: 1, 2]. Automated deployments via GitHub Actions CI/CD[cite: 1, 2].
             </p>
             <div class="tech-stack-row">
               <span class="tag">AWS S3</span>
@@ -225,12 +317,12 @@
                 <i class="fa-solid fa-satellite-dish neon-blue project-icon"></i>
                 <div>
                   <h3>Deep Learning Urban Change Detection System</h3>
-                  <span class="badge-tag neon-blue">Computer Vision & AI</span>
+                  <span class="badge-tag neon-blue">Computer Vision & AI[cite: 1, 2]</span>
                 </div>
               </div>
             </div>
             <p class="project-summary">
-              Designed a U-Net convolutional neural network to detect spatial and structural transformations using multi-spectral satellite imagery. Implemented robust image preprocessing pipelines (normalization, noise filtering, augmentation) and temporal confidence scoring for high-accuracy segmentation.
+              Designed a U-Net convolutional neural network to detect spatial and structural transformations using multi-spectral satellite imagery[cite: 1, 2]. Implemented robust image preprocessing pipelines (normalization, noise filtering, augmentation) and temporal confidence scoring for high-accuracy segmentation[cite: 1, 2].
             </p>
             <div class="tech-stack-row">
               <span class="tag">Python</span>
@@ -262,12 +354,12 @@
             <div class="exp-header-row">
               <div>
                 <h3 class="exp-org neon-red">Genisys Group</h3>
-                <div class="exp-role">Software Engineer Intern</div>
+                <div class="exp-role">Software Engineer Intern[cite: 1, 2]</div>
               </div>
-              <div class="exp-timeline neon-yellow">Feb 2025 &ndash; May 2025 &bull; Bangalore, India</div>
+              <div class="exp-timeline neon-yellow">Feb 2025 &ndash; May 2025 &bull; Bangalore, India[cite: 1, 2]</div>
             </div>
             <div class="exp-desc">
-              <p>Contributed to an automated code quality validation engine to detect software anti-patterns and maintainability metrics across codebases. Integrated machine learning classification models into active CI/CD pipelines to assess syntax structure and enforce code readability standards automatically.</p>
+              <p>Contributed to an automated code quality validation engine to detect software anti-patterns and maintainability metrics across codebases[cite: 1, 2]. Integrated machine learning classification models into active CI/CD pipelines to assess syntax structure and enforce code readability standards automatically[cite: 1, 2].</p>
             </div>
             <div class="tech-stack-row">
               <span class="tag">Python</span>
@@ -282,12 +374,12 @@
             <div class="exp-header-row">
               <div>
                 <h3 class="exp-org neon-blue">Squadron Technology</h3>
-                <div class="exp-role">Cloud & Data Engineer Intern</div>
+                <div class="exp-role">Cloud & Data Engineer Intern[cite: 1, 2]</div>
               </div>
-              <div class="exp-timeline neon-yellow">Sept 2023 &ndash; Nov 2023 &bull; Ahmedabad, India</div>
+              <div class="exp-timeline neon-yellow">Sept 2023 &ndash; Nov 2023 &bull; Ahmedabad, India[cite: 1, 2]</div>
             </div>
             <div class="exp-desc">
-              <p>Built real-time streaming ETL pipelines using Python and Apache Kafka to ingest, validate, and clean event data for low-latency analytics. Designed structured schemas and automated ingestion workflows into MySQL databases with alerting hooks to eliminate pipeline downtime.</p>
+              <p>Built real-time streaming ETL pipelines using Python and Apache Kafka to ingest, validate, and clean event data for low-latency analytics[cite: 1, 2]. Designed structured schemas and automated ingestion workflows into MySQL databases with alerting hooks to eliminate pipeline downtime[cite: 1, 2].</p>
             </div>
             <div class="tech-stack-row">
               <span class="tag">Apache Kafka</span>
@@ -315,8 +407,8 @@
               <div class="cert-title-group">
                 <i class="fa-brands fa-aws cert-logo neon-yellow"></i>
                 <div>
-                  <h3>AWS Certified Cloud Practitioner (CCP)</h3>
-                  <span class="cert-org neon-orange">Amazon Web Services (AWS) &bull; Active (2026)</span>
+                  <h3>AWS Certified Cloud Practitioner (CCP)[cite: 1, 2]</h3>
+                  <span class="cert-org neon-orange">Amazon Web Services (AWS) &bull; Active (2026)[cite: 1, 2]</span>
                 </div>
               </div>
               <a href="https://www.credly.com/badges/09ee341d-97aa-47b1-ac16-6ac2c0cfddc8/public_url" target="_blank" class="verify-badge-btn"><i class="fa-solid fa-award"></i> Verify Badge &nearr;</a>

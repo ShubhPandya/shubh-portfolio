@@ -72,10 +72,10 @@ function enterPortfolio(roleKey) {
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Switch to Screen 2 and load default About view
+  // Switch to Screen 2 and load the tailored landing dashboard directly
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
-  navigateToSection("about");
+  navigateToSection("dashboard");
 }
 
 /* ==========================================================================
@@ -106,7 +106,7 @@ function setupNavigation() {
   });
 }
 
-// Router for switching between the 5 dedicated section views
+// Router for switching between the dedicated section views
 function navigateToSection(sectionId) {
   document.querySelectorAll(".page-view").forEach((page) => {
     page.classList.remove("active");
