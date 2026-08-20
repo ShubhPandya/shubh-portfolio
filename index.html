@@ -3,103 +3,244 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shubh Pandya</title>
+  <title>Shubh Pandya | Cloud & Backend Systems</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-<body>
-  <div class="container">
-    <header>
-      <h1 id="name">Loading...</h1>
-      <div id="title" class="subtitle"></div>
-      <p id="bio" class="bio"></p>
-      <div id="social-links" class="links"></div>
-      
-      <!-- Serverless Visitor Counter -->
-      <div class="visitor-counter">
-        <span>👀 Live Views: </span><span id="view-count">Loading...</span>
+<body class="theme-black">
+
+  <!-- NAVBAR & BURGER DROPDOWN -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <span class="neon-orange">SP</span>.<span class="neon-blue">cloud</span>
+    </div>
+    <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
+    <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu">
+      <div class="bar bar-orange"></div>
+      <div class="bar bar-red"></div>
+      <div class="bar bar-blue"></div>
+    </button>
+  </header>
+
+  <nav class="dropdown-menu" id="dropdown-menu">
+    <ul>
+      <li><a href="#stats-view" class="nav-link"><i class="fa-solid fa-gauge-high neon-yellow"></i> Dashboard</a></li>
+      <li><a href="#about" class="nav-link"><i class="fa-solid fa-user-astronaut neon-orange"></i> About Me</a></li>
+      <li><a href="#skills" class="nav-link"><i class="fa-solid fa-microchip neon-blue"></i> Skills</a></li>
+      <li><a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase neon-red"></i> Experience</a></li>
+      <li><a href="#projects" class="nav-link"><i class="fa-solid fa-diagram-project neon-yellow"></i> Projects</a></li>
+      <li><a href="#certifications" class="nav-link"><i class="fa-solid fa-certificate neon-blue"></i> Certifications</a></li>
+      <li><button class="switch-role-btn" id="switch-role-btn"><i class="fa-solid fa-rotate neon-orange"></i> Switch Persona</button></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE 1: ROLE SELECTOR SCREEN -->
+  <main id="role-selector-screen" class="view-screen active">
+    <div class="role-container">
+      <h1 class="glitch-title">INITIALIZE <span class="neon-blue">SESSION</span></h1>
+      <p class="role-subtitle">Identify your intent to decrypt custom metrics.</p>
+
+      <div class="role-grid">
+        <!-- Recruiter Card -->
+        <div class="role-card card-orange" data-role="recruiter">
+          <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <h2>Recruiter / Hiring Manager</h2>
+          <p>Production AWS architecture, distributed backends, CI/CD pipelines, and ROI-driven metrics.</p>
+          <div class="counter-box">
+            <span class="counter-label">Recruiters Logged:</span>
+            <span class="counter-val" id="recruiter-count">...</span>
+          </div>
+          <button class="btn btn-orange">Enter as Recruiter &rarr;</button>
+        </div>
+
+        <!-- Admirer / Stalker Card -->
+        <div class="role-card card-red" data-role="admirer">
+          <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
+          <h2>Admirer / Stalker</h2>
+          <p>Curious observer? Tech stacks, non-tech personas, quirks, and live system footprints.</p>
+          <div class="counter-box">
+            <span class="counter-label">Stalkers Tracked:</span>
+            <span class="counter-val" id="admirer-count">...</span>
+          </div>
+          <button class="btn btn-red">Enter Stealth Mode &rarr;</button>
+        </div>
+
+        <!-- Batchmate Card -->
+        <div class="role-card card-blue" data-role="batchmate">
+          <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h2>Batchmate / Peer</h2>
+          <p>VIT CSE lineage, competitive programming logs, system projects, and mutual tech builds.</p>
+          <div class="counter-box">
+            <span class="counter-label">Peers Connected:</span>
+            <span class="counter-val" id="batchmate-count">...</span>
+          </div>
+          <button class="btn btn-blue">Enter Peer Hub &rarr;</button>
+        </div>
       </div>
-    </header>
+    </div>
+  </main>
 
-    <section>
-      <h2>Certifications</h2>
-      <div id="certifications-list" class="grid"></div>
+  <!-- PAGE 2: MAIN PORTFOLIO -->
+  <main id="main-content-screen" class="view-screen">
+    
+    <!-- DYNAMIC ROLE STATS HERO -->
+    <section id="stats-view" class="section stats-hero">
+      <div class="container" id="dynamic-stats-container">
+        <!-- Injected via JavaScript based on chosen role -->
+      </div>
     </section>
 
-    <section>
-      <h2>Technical Skills</h2>
-      <div id="skills-list" class="tags"></div>
+    <!-- ABOUT ME (2 SECTIONS) -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-orange">ABOUT</span> ME</h2>
+        <div class="about-grid">
+          <!-- Shubh When Tech -->
+          <div class="about-card border-blue">
+            <div class="about-header">
+              <i class="fa-solid fa-terminal neon-blue"></i>
+              <h3>Shubh <span class="neon-blue">[when tech]</span></h3>
+            </div>
+            <ul class="about-list">
+              <li><i class="fa-solid fa-angle-right neon-blue"></i> <strong>What I Build:</strong> Serverless architectures, event-driven streaming ETL pipelines, and high-performance microservices.</li>
+              <li><i class="fa-solid fa-angle-right neon-blue"></i> <strong>What I Like:</strong> Low-latency distributed systems, least-privilege IAM policies, CI/CD automation, and clean system design.</li>
+              <li><i class="fa-solid fa-angle-right neon-blue"></i> <strong>Current Focus:</strong> AWS Solutions Architect Associate (SAA) patterns and distributed systems fundamentals.</li>
+            </ul>
+          </div>
+
+          <!-- Shubh When No Tech -->
+          <div class="about-card border-yellow">
+            <div class="about-header">
+              <i class="fa-solid fa-gamepad neon-yellow"></i>
+              <h3>Shubh <span class="neon-yellow">[when no tech]</span></h3>
+            </div>
+            <ul class="about-list">
+              <li><i class="fa-solid fa-angle-right neon-yellow"></i> <strong>What I Do:</strong> Tactical FPS gaming, outdoor walks, fitness routines, and deep psychological thriller movie analysis.</li>
+              <li><i class="fa-solid fa-angle-right neon-yellow"></i> <strong>What I Like:</strong> Cricket strategy, analyzing auction dynamics, and high-adrenaline twists.</li>
+              <li><i class="fa-solid fa-angle-right neon-yellow"></i> <strong>Alternate Reality:</strong> If not in tech, likely running a high-energy beverage lounge or sports analytics venture.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Cloud & Engineering Projects</h2>
-      <div id="projects-list" class="grid"></div>
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-blue">TECH</span> STACK</h2>
+        <div class="skills-grid">
+          <div class="skill-item" data-tooltip="AWS Cloud (S3, CloudFront, Lambda, API GW, DynamoDB)"><i class="fa-brands fa-aws neon-orange"></i></div>
+          <div class="skill-item" data-tooltip="Python (FastAPI, Boto3, PyTorch)"><i class="fa-brands fa-python neon-yellow"></i></div>
+          <div class="skill-item" data-tooltip="Docker & Containerization"><i class="fa-brands fa-docker neon-blue"></i></div>
+          <div class="skill-item" data-tooltip="GitHub Actions CI/CD"><i class="fa-brands fa-github neon-red"></i></div>
+          <div class="skill-item" data-tooltip="PostgreSQL & Relational DBs"><i class="fa-solid fa-database neon-blue"></i></div>
+          <div class="skill-item" data-tooltip="Apache Kafka Streaming"><i class="fa-solid fa-network-wired neon-orange"></i></div>
+          <div class="skill-item" data-tooltip="Linux & Bash Scripting"><i class="fa-brands fa-linux neon-yellow"></i></div>
+          <div class="skill-item" data-tooltip="Modern RESTful APIs & Microservices"><i class="fa-solid fa-server neon-red"></i></div>
+        </div>
+      </div>
     </section>
+
+    <!-- EXPERIENCE SECTION (NON-CLICKABLE BANNERS) -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
+        <div class="experience-stack">
+          <!-- Genisys Group -->
+          <div class="exp-banner banner-red">
+            <div class="exp-meta">
+              <div class="exp-role">Software Engineer Intern</div>
+              <div class="exp-company neon-red">Genisys Group &bull; Bangalore, India</div>
+              <div class="exp-date">Feb 2025 – May 2025</div>
+            </div>
+            <div class="exp-body">
+              <p>Engineered an automated code quality engine integrating machine learning models into CI/CD pipelines to detect software anti-patterns and enforce maintainability standards across production codebases.</p>
+              <div class="tag-row">
+                <span class="tag">Python</span><span class="tag">ML Classification</span><span class="tag">CI/CD</span><span class="tag">Code Analytics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Squadron Technology -->
+          <div class="exp-banner banner-blue">
+            <div class="exp-meta">
+              <div class="exp-role">Cloud & Data Engineer Intern</div>
+              <div class="exp-company neon-blue">Squadron Technology &bull; Ahmedabad, India</div>
+              <div class="exp-date">Sept 2023 – Nov 2023</div>
+            </div>
+            <div class="exp-body">
+              <p>Architected real-time streaming ETL pipelines using Python and Apache Kafka to ingest, validate, and clean telemetry events into MySQL databases, cutting downstream pipeline latency.</p>
+              <div class="tag-row">
+                <span class="tag">Apache Kafka</span><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Streaming ETL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (CLICKABLE MODALS) -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card border-orange" onclick="openProjectModal('portfolio')">
+            <div class="project-thumb thumb-portfolio">
+              <i class="fa-solid fa-cloud neon-orange"></i>
+            </div>
+            <div class="project-info">
+              <h3>Serverless Cloud Architecture</h3>
+              <p>Globally distributed web app on CloudFront, private S3 via OAC, and real-time DynamoDB state tracking.</p>
+              <span class="modal-prompt neon-orange">Inspect Project &rarr;</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card border-blue" onclick="openProjectModal('cv')">
+            <div class="project-thumb thumb-cv">
+              <i class="fa-solid fa-brain neon-blue"></i>
+            </div>
+            <div class="project-info">
+              <h3>Urban Change Detection System</h3>
+              <p>U-Net deep learning framework for satellite imagery feature extraction and spatial transformation tracking.</p>
+              <span class="modal-prompt neon-blue">Inspect Project &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS (CLICKABLE MODALS) -->
+    <section id="certifications" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CREDENTIALS</h2>
+        <div class="certs-grid">
+          <div class="cert-card border-yellow" onclick="openCertModal('ccp')">
+            <i class="fa-brands fa-aws cert-icon neon-yellow"></i>
+            <h3>AWS Certified Cloud Practitioner</h3>
+            <p>Amazon Web Services &bull; Active (2026)</p>
+            <span class="modal-prompt neon-yellow">View Purpose & Proof &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DRAWER CONTAINER -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modal-content-body"></div>
+    </div>
   </div>
 
-  <script>
-    // 1. Fetch Profile and Portfolio Data
-    fetch('./data.json')
-      .then(response => response.json())
-      .then(data => {
-        // Render Profile Header
-        document.getElementById('name').textContent = data.profile.name;
-        document.getElementById('title').textContent = data.profile.title;
-        document.getElementById('bio').textContent = data.profile.bio;
-        
-        const linksContainer = document.getElementById('social-links');
-        linksContainer.innerHTML = `
-          <a href="${data.profile.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="${data.profile.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="mailto:${data.profile.email}">Email</a>
-        `;
+  <footer class="footer">
+    <div class="container">
+      <p>Built with AWS (CloudFront, S3, API Gateway, Lambda, DynamoDB) &bull; Shubh Pandya</p>
+    </div>
+  </footer>
 
-        // Render Certifications (with badge link support)
-        const certContainer = document.getElementById('certifications-list');
-        certContainer.innerHTML = data.certifications.map(cert => `
-          <div class="card">
-            <h3>${cert.name} <span class="status-badge">${cert.status}</span></h3>
-            <p>${cert.issuer} • ${cert.date}</p>
-            ${cert.badge_link ? `
-              <div class="card-links" style="margin-top: 8px;">
-                <a href="${cert.badge_link}" target="_blank" rel="noopener noreferrer">Verify Credly Badge ↗</a>
-              </div>
-            ` : ''}
-          </div>
-        `).join('');
-
-        // Render Skills
-        const skillsContainer = document.getElementById('skills-list');
-        skillsContainer.innerHTML = data.skills.map(skill => `
-          <span class="tag">${skill}</span>
-        `).join('');
-
-        // Render Projects
-        const projContainer = document.getElementById('projects-list');
-        projContainer.innerHTML = data.projects.map(proj => `
-          <div class="card">
-            <h3>${proj.title}</h3>
-            <p>${proj.description}</p>
-            <div class="tags">
-              ${proj.techStack.map(t => `<span class="tag">${t}</span>`).join('')}
-            </div>
-            <div class="card-links" style="margin-top: 12px;">
-              <a href="${proj.githubLink}" target="_blank" rel="noopener noreferrer">GitHub Repo →</a>
-            </div>
-          </div>
-        `).join('');
-      })
-      .catch(err => console.error("Error loading portfolio data:", err));
-
-    // 2. Fetch Live Visitor Count via API Gateway
-    fetch('https://fa2mm1z6id.execute-api.ap-south-1.amazonaws.com/views')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('view-count').textContent = data.views;
-      })
-      .catch(err => {
-        console.error('Error fetching live views:', err);
-        document.getElementById('view-count').textContent = '—';
-      });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
