@@ -315,14 +315,26 @@ body.role-screen-active .footer {
 .btn-orange { background: var(--neon-orange); color: #000; }
 .btn-red    { background: var(--neon-red);    color: #fff; }
 .btn-blue   { background: var(--neon-blue);   color: #000; }
+.btn-spotify { background: #1db954; color: #000; font-weight: 700; }
+.btn-insta   { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+.btn-discord { background: #5865f2; color: #fff; }
 .btn-outline-blue {
   background: transparent;
   color: var(--neon-blue);
   border: 1px solid var(--neon-blue);
 }
+.btn-outline-red {
+  background: transparent;
+  color: var(--neon-red);
+  border: 1px solid var(--neon-red);
+}
 .btn-outline-blue:hover {
   background: rgba(0, 180, 216, 0.1);
   box-shadow: var(--glow-blue);
+}
+.btn-outline-red:hover {
+  background: rgba(255, 42, 75, 0.1);
+  box-shadow: var(--glow-red);
 }
 .btn:hover { filter: brightness(1.15); }
 
@@ -360,14 +372,13 @@ body.role-screen-active .footer {
 }
 
 /* =========================================
-   RECRUITER DASHBOARD VIEW
+   DASHBOARD CARDS & HERO STYLING
 ========================================= */
-.recruiter-hero-card {
+.dashboard-hero-card {
   background: var(--bg-card);
   padding: 2rem;
   border-radius: 14px;
   margin-bottom: 1.8rem;
-  border-left: 5px solid var(--neon-orange);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   border-right: 1px solid rgba(255, 255, 255, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -425,7 +436,7 @@ body.role-screen-active .footer {
 }
 
 .kpi-number {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   font-family: var(--font-mono);
   margin-bottom: 0.2rem;
@@ -443,7 +454,7 @@ body.role-screen-active .footer {
   line-height: 1.45;
 }
 
-.recruiter-fast-grid {
+.dashboard-fast-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 1.8rem;
@@ -525,11 +536,104 @@ body.role-screen-active .footer {
   transform: translateX(4px);
 }
 
+/* =========================================
+   SPOTIFY RETRO BANNER & MOVIE POSTERS
+========================================= */
+.spotify-retro-banner {
+  background: linear-gradient(135deg, #11121c 0%, #1e1026 50%, #0d1e24 100%);
+  border: 1px solid rgba(29, 185, 84, 0.4);
+  box-shadow: 0 8px 25px rgba(29, 185, 84, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.spotify-cassette-art {
+  width: 75px;
+  height: 75px;
+  background: #000;
+  border: 2px solid #1db954;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.spotify-cassette-art i {
+  font-size: 2.4rem;
+  color: #1db954;
+}
+
+.spotify-banner-info {
+  flex-grow: 1;
+}
+
+.spotify-banner-info h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+
+.spotify-banner-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+/* Movie Posters Layout */
+.movie-posters-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.movie-poster-card {
+  display: flex;
+  gap: 1.2rem;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  align-items: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.movie-poster-card:hover {
+  transform: translateX(4px);
+  border-color: var(--neon-red);
+}
+
+.movie-poster-card img {
+  width: 60px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  flex-shrink: 0;
+}
+
+.movie-poster-details h4 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.movie-poster-details p {
+  font-size: 0.85rem;
+  color: #d1d5db;
+  font-style: italic;
+  line-height: 1.4;
+}
+
 /* Borders & Themes */
-.border-blue   { border-left-color: var(--neon-blue) !important; }
-.border-yellow { border-left-color: var(--neon-yellow) !important; }
-.border-orange { border-left-color: var(--neon-orange) !important; }
-.border-red    { border-left-color: var(--neon-red) !important; }
+.border-blue   { border-left: 4px solid var(--neon-blue) !important; }
+.border-yellow { border-left: 4px solid var(--neon-yellow) !important; }
+.border-orange { border-left: 4px solid var(--neon-orange) !important; }
+.border-red    { border-left: 4px solid var(--neon-red) !important; }
 
 /* =========================================
    ABOUT ME SECTION
@@ -698,6 +802,7 @@ body.role-screen-active .footer {
 .circle-red    { background: #e63946; }
 .circle-blue   { background: #0077b5; }
 .circle-orange { background: #24292e; border: 1px solid rgba(255, 255, 255, 0.2); }
+.circle-yellow { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 
 .social-circle:hover {
   transform: translateY(-3px) scale(1.06);
@@ -852,7 +957,7 @@ body.role-screen-active .footer {
   .screen-single-viewport { height: auto; max-height: none; overflow: auto; padding-top: 70px; padding-bottom: 2rem; }
   .role-grid { grid-template-columns: 1fr; }
   .role-card { height: auto; min-height: auto; }
-  .about-hero-layout, .about-split-row, .recruiter-fast-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+  .about-hero-layout, .about-split-row, .dashboard-fast-grid { grid-template-columns: 1fr; gap: 1.8rem; }
   .capability-row { grid-template-columns: 20px 1fr; }
   .cap-label { grid-column: 2; }
   .cap-desc { grid-column: 2; }
