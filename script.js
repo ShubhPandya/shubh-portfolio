@@ -10,16 +10,47 @@ const ROLE_CONFIG = {
   batchmate: { badge: "Peer Mode",      color: "neon-blue" }
 };
 
+let currentPersona = "recruiter";
+
 /* ==========================================================================
-   INITIALIZATION
+   INITIALIZATION & BROWSER HISTORY ROUTER
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  setupNavigation();
+  setupBurgerMenu();
   fetchRoleCounters();
   setupRoleCards();
+  handleInitialRoute();
+
+  // Listen for browser Back/Forward navigation
+  window.addEventListener("popstate", (e) => {
+    if (e.state && e.state.view) {
+      applyRoute(e.state.view, e.state.persona, false);
+    } else {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        applyRoute(hash, currentPersona, false);
+      } else {
+        switchPersonaScreen(false);
+      }
+    }
+  });
 });
 
-// Read-only fetch on initial screen load
+function handleInitialRoute() {
+  const hash = window.location.hash.replace("#", "");
+  if (["recruiter", "admirer", "batchmate"].includes(hash)) {
+    enterPortfolio(hash, false);
+  } else if (["dashboard", "about", "projects", "experience", "certifications", "tools"].includes(hash)) {
+    enterPortfolio("recruiter", false);
+    navigateTo(hash, false);
+  } else {
+    switchPersonaScreen(false);
+  }
+}
+
+/* ==========================================================================
+   API TELEMETRY
+   ========================================================================== */
 async function fetchRoleCounters() {
   try {
     const res = await fetch(API_URL);
@@ -34,7 +65,6 @@ async function fetchRoleCounters() {
   }
 }
 
-// Increment counter for chosen persona
 async function incrementRoleCounter(role) {
   try {
     const res = await fetch(`${API_URL}?role=${encodeURIComponent(role)}`);
@@ -53,41 +83,135 @@ function updateCounterUI(data) {
 }
 
 /* ==========================================================================
-   EXPLICIT DASHBOARD DISPLAY CONTROLLER
+   PAGE & PERSONA ROUTING (WITH HISTORY STATE)
    ========================================================================== */
+function setupRoleCards() {
+  document.querySelectorAll(".role-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const role = card.getAttribute("data-role");
+      incrementRoleCounter(role);
+      enterPortfolio(role, true);
+    });
+  });
+}
+
+function enterPortfolio(roleKey, pushToHistory = true) {
+  if (!ROLE_CONFIG[roleKey]) roleKey = "recruiter";
+  currentPersona = roleKey;
+
+  const role = ROLE_CONFIG[roleKey];
+  const badge = document.getElementById("current-role-badge");
+  badge.innerText = role.badge;
+  badge.className = `nav-role-badge ${role.color}`;
+
+  // Switch screens
+  document.body.classList.remove("role-screen-active");
+  document.getElementById("role-selector-screen").classList.remove("active");
+  document.getElementById("main-content-screen").classList.add("active");
+
+  // Activate only the selected dashboard sub-view
+  activatePersonaDashboard(roleKey);
+
+  // Navigate to dashboard view
+  navigateTo("dashboard", pushToHistory);
+}
+
+function switchPersonaScreen(pushToHistory = true) {
+  document.getElementById("dropdown-menu").classList.remove("active");
+  document.getElementById("main-content-screen").classList.remove("active");
+  document.getElementById("role-selector-screen").classList.add("active");
+  
+  document.body.classList.add("role-screen-active");
+  document.getElementById("current-role-badge").innerText = "Select Persona";
+  document.getElementById("current-role-badge").className = "nav-role-badge";
+
+  if (pushToHistory) {
+    history.pushState({ view: "home" }, "", window.location.pathname);
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function activatePersonaDashboard(roleKey) {
   const dashboards = ["recruiter", "admirer", "batchmate"];
-  
   dashboards.forEach((d) => {
     const el = document.getElementById(`persona-${d}`);
     if (el) {
       if (d === roleKey) {
-        el.style.display = "block";
+        el.classList.add("active");
       } else {
-        el.style.display = "none";
+        el.classList.remove("active");
       }
     }
   });
 }
 
-/* ==========================================================================
-   UTILITY ACTIONS (EMAIL & CLIPBOARD)
-   ========================================================================== */
+function navigateTo(sectionId, pushToHistory = true) {
+  applyRoute(sectionId, currentPersona, pushToHistory);
+}
+
+function applyRoute(sectionId, persona = currentPersona, pushToHistory = true) {
+  // Hide all sections
+  document.querySelectorAll(".page-view").forEach((page) => {
+    page.classList.remove("active");
+  });
+
+  // Show target section
+  const targetPage = document.getElementById(`page-${sectionId}`);
+  if (targetPage) {
+    targetPage.classList.add("active");
+  }
+
+  // Ensure selected persona dashboard is visible
+  if (sectionId === "dashboard" || sectionId === "") {
+    activatePersonaDashboard(persona);
+  }
+
+  // Update nav menu button active state
+  document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
+    btn.classList.remove("active");
+    if (btn.getAttribute("onclick")?.includes(sectionId)) {
+      btn.classList.add("active");
+    }
+  });
+
+  // Push to history state for native Back button support
+  if (pushToHistory) {
+    history.pushState({ view: sectionId, persona: persona }, "", `#${sectionId}`);
+  }
+
+  document.getElementById("dropdown-menu").classList.remove("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* =========================================
+   NAVBAR & UTILITY ACTIONS
+========================================= */
+function setupBurgerMenu() {
+  const burgerBtn = document.getElementById("burger-btn");
+  const dropdownMenu = document.getElementById("dropdown-menu");
+
+  burgerBtn.addEventListener("click", () => {
+    dropdownMenu.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!burgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.remove("active");
+    }
+  });
+}
+
 function openEmailClient() {
   const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  
   if (isMobile) {
     window.location.href = `mailto:${EMAIL_ADDRESS}?subject=Opportunity%20Discussion%20-%20Shubh%20Pandya`;
   } else {
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(EMAIL_ADDRESS)}&su=${encodeURIComponent("Opportunity Discussion - Shubh Pandya")}`;
     const win = window.open(gmailUrl, '_blank');
-    
     navigator.clipboard.writeText(EMAIL_ADDRESS).then(() => {
       showToast("Email copied to clipboard!");
     }).catch(() => {
-      if (!win) {
-        window.location.href = `mailto:${EMAIL_ADDRESS}`;
-      }
+      if (!win) window.location.href = `mailto:${EMAIL_ADDRESS}`;
     });
   }
 }
@@ -107,90 +231,4 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove("show");
   }, 2500);
-}
-
-/* ==========================================================================
-   ROLE HANDLING & SCREEN TRANSITION
-   ========================================================================== */
-function setupRoleCards() {
-  document.querySelectorAll(".role-card").forEach((card) => {
-    card.addEventListener("click", () => {
-      const role = card.getAttribute("data-role");
-      incrementRoleCounter(role);
-      enterPortfolio(role);
-    });
-  });
-}
-
-function enterPortfolio(roleKey) {
-  const role = ROLE_CONFIG[roleKey];
-  if (!role) return;
-
-  const badge = document.getElementById("current-role-badge");
-  badge.innerText = role.badge;
-  badge.className = `nav-role-badge ${role.color}`;
-
-  // Hardcode explicit display for only the selected persona dashboard
-  activatePersonaDashboard(roleKey);
-
-  // Remove viewport scroll lock
-  document.body.classList.remove("role-screen-active");
-
-  // Show main content and focus dashboard page
-  document.getElementById("role-selector-screen").classList.remove("active");
-  document.getElementById("main-content-screen").classList.add("active");
-  navigateToSection("dashboard");
-}
-
-/* ==========================================================================
-   MULTI-PAGE SECTION NAVIGATION
-   ========================================================================== */
-function setupNavigation() {
-  const burgerBtn = document.getElementById("burger-btn");
-  const dropdownMenu = document.getElementById("dropdown-menu");
-
-  burgerBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("active");
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!burgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.remove("active");
-    }
-  });
-
-  document.getElementById("switch-role-btn").addEventListener("click", () => {
-    dropdownMenu.classList.remove("active");
-    document.getElementById("main-content-screen").classList.remove("active");
-    document.getElementById("role-selector-screen").classList.add("active");
-    
-    // Re-enable strict viewport lock on Screen 1
-    document.body.classList.add("role-screen-active");
-
-    document.getElementById("current-role-badge").innerText = "Select Persona";
-    document.getElementById("current-role-badge").className = "nav-role-badge";
-    fetchRoleCounters();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-function navigateToSection(sectionId) {
-  document.querySelectorAll(".page-view").forEach((page) => {
-    page.classList.remove("active");
-  });
-
-  const targetPage = document.getElementById(`page-${sectionId}`);
-  if (targetPage) {
-    targetPage.classList.add("active");
-  }
-
-  document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
-    btn.classList.remove("active");
-    if (btn.getAttribute("onclick")?.includes(sectionId)) {
-      btn.classList.add("active");
-    }
-  });
-
-  document.getElementById("dropdown-menu").classList.remove("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
 }

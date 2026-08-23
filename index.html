@@ -11,7 +11,7 @@
 
   <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
-    <div class="nav-brand" onclick="navigateToSection('dashboard')">
+    <div class="nav-brand" onclick="navigateTo('dashboard')">
       <span class="neon-orange">Shubh</span>
     </div>
     <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
@@ -25,14 +25,14 @@
   <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
-      <li><button class="nav-menu-btn active" onclick="navigateToSection('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('about')"><i class="fa-solid fa-user-astronaut neon-yellow"></i> About Me</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('projects')"><i class="fa-solid fa-diagram-project neon-blue"></i> Projects</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('experience')"><i class="fa-solid fa-briefcase neon-red"></i> Experience</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('certifications')"><i class="fa-solid fa-certificate neon-yellow"></i> Certifications</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateToSection('tools')"><i class="fa-solid fa-toolbox neon-orange"></i> Tools & Skills</button></li>
+      <li><button class="nav-menu-btn active" onclick="navigateTo('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateTo('about')"><i class="fa-solid fa-user-astronaut neon-yellow"></i> About Me</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateTo('projects')"><i class="fa-solid fa-diagram-project neon-blue"></i> Projects</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateTo('experience')"><i class="fa-solid fa-briefcase neon-red"></i> Experience</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateTo('certifications')"><i class="fa-solid fa-certificate neon-yellow"></i> Certifications</button></li>
+      <li><button class="nav-menu-btn" onclick="navigateTo('tools')"><i class="fa-solid fa-toolbox neon-orange"></i> Tools & Skills</button></li>
       <li class="menu-divider"></li>
-      <li><button class="switch-role-btn" id="switch-role-btn"><i class="fa-solid fa-rotate neon-yellow"></i> Switch Persona</button></li>
+      <li><button class="switch-role-btn" onclick="switchPersonaScreen()"><i class="fa-solid fa-rotate neon-yellow"></i> Switch Persona</button></li>
     </ul>
   </nav>
 
@@ -103,13 +103,13 @@
   <main id="main-content-screen" class="view-screen">
     
     <!-- =========================================
-         PAGE 0: DYNAMIC DASHBOARDS (INDEPENDENT)
+         PAGE 0: DYNAMIC DASHBOARDS
     ========================================= -->
     <section id="page-dashboard" class="page-view active">
       <div class="container">
         
         <!-- DASHBOARD A: RECRUITER VIEW -->
-        <div id="persona-recruiter" class="persona-dashboard" style="display:none;">
+        <div id="persona-recruiter" class="persona-dashboard active">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
               <div>
@@ -181,19 +181,19 @@
             <div class="fast-card border-yellow">
               <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compass"></i> Detailed Candidate Files</h3>
               <div class="quick-nav-stack">
-                <button onclick="navigateToSection('experience')" class="quick-nav-btn">
+                <button onclick="navigateTo('experience')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-briefcase neon-red"></i> Verified Experience Logs[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateToSection('projects')" class="quick-nav-btn">
+                <button onclick="navigateTo('projects')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-diagram-project neon-yellow"></i> Production Architecture Projects[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateToSection('tools')" class="quick-nav-btn">
+                <button onclick="navigateTo('tools')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-toolbox neon-orange"></i> Full Tech Stack & Tooling[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateToSection('certifications')" class="quick-nav-btn">
+                <button onclick="navigateTo('certifications')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-certificate neon-blue"></i> AWS Badge & Verification[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -203,7 +203,7 @@
         </div>
 
         <!-- DASHBOARD B: ADMIRER / STALKER VIEW -->
-        <div id="persona-admirer" class="persona-dashboard" style="display:none;">
+        <div id="persona-admirer" class="persona-dashboard">
           <div class="dashboard-hero-card border-red">
             <div class="hero-top-row">
               <div>
@@ -248,50 +248,45 @@
           </div>
 
           <div class="dashboard-fast-grid">
-            <!-- Column 1: Top 5 Psychological Thrillers (Compact Side-by-Side Thumbnail Layout) -->
+            <!-- Column 1: Top 5 Psychological Thrillers (Compact Clean Layout) -->
             <div class="fast-card border-red">
               <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Top 5 Mind-Bending Thrillers</h3>
               <div class="movie-compact-stack">
                 
-                <!-- 1. Shutter Island -->
                 <div class="movie-compact-card">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg" alt="Shutter Island" class="movie-thumb" />
+                  <div class="movie-icon-box neon-orange"><i class="fa-solid fa-masks-theater"></i></div>
                   <div class="movie-compact-text">
                     <h4 class="neon-orange">1. Shutter Island</h4>
                     <p>"Proof that sanity is just a matter of perspective (and bad lighthouses)."</p>
                   </div>
                 </div>
 
-                <!-- 2. Fight Club (Censored) -->
                 <div class="movie-compact-card">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg" alt="***** ****" class="movie-thumb" />
+                  <div class="movie-icon-box neon-red"><i class="fa-solid fa-soap"></i></div>
                   <div class="movie-compact-text">
                     <h4 class="neon-red">2. ***** ****</h4>
                     <p>"Rule #1 broken instantly; soap has never been this disruptive."</p>
                   </div>
                 </div>
 
-                <!-- 3. Se7en -->
                 <div class="movie-compact-card">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/6/68/Seven_%28movie%29_poster.jpg" alt="Se7en" class="movie-thumb" />
+                  <div class="movie-icon-box neon-yellow"><i class="fa-solid fa-box-open"></i></div>
                   <div class="movie-compact-text">
                     <h4 class="neon-yellow">3. Se7en</h4>
                     <p>"Never ask what's in the box unless you're ready to question humanity."</p>
                   </div>
                 </div>
 
-                <!-- 4. Primal Fear -->
                 <div class="movie-compact-card">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/8/85/Primal_Fear_film_poster.jpg" alt="Primal Fear" class="movie-thumb" />
+                  <div class="movie-icon-box neon-blue"><i class="fa-solid fa-gavel"></i></div>
                   <div class="movie-compact-text">
                     <h4 class="neon-blue">4. Primal Fear</h4>
                     <p>"A masterclass in why stuttering defense clients need psychiatric therapy."</p>
                   </div>
                 </div>
 
-                <!-- 5. Zodiac -->
                 <div class="movie-compact-card">
-                  <img src="https://upload.wikimedia.org/wikipedia/en/3/3a/Zodiac2007Poster.jpg" alt="Zodiac" class="movie-thumb" />
+                  <div class="movie-icon-box neon-orange"><i class="fa-solid fa-magnifying-glass"></i></div>
                   <div class="movie-compact-text">
                     <h4 class="neon-orange">5. Zodiac</h4>
                     <p>"Obsession is a hell of a drug, especially when the cipher never ends."</p>
@@ -301,9 +296,8 @@
               </div>
             </div>
 
-            <!-- Column 2: Audio Spectrum (Yellow Border) & Digital Channels (Blue Border) -->
+            <!-- Column 2: Distinct Yellow/Blue Tile Colors -->
             <div class="right-stack-column">
-              <!-- Audio Spectrum Tile -->
               <div class="fast-card border-yellow" style="margin-bottom: 1.5rem;">
                 <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
                 <div class="spotify-retro-banner">
@@ -320,7 +314,6 @@
                 </div>
               </div>
 
-              <!-- Digital Channels Tile -->
               <div class="fast-card border-blue">
                 <h3 class="fast-heading neon-blue"><i class="fa-solid fa-share-nodes"></i> Digital Channels</h3>
                 <div class="quick-nav-stack">
@@ -332,7 +325,7 @@
                     <span><i class="fa-solid fa-rocket neon-orange"></i> LaunchLoop Tech Studio (@launchloop.team)</span>
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
-                  <button onclick="navigateToSection('about')" class="quick-nav-btn">
+                  <button onclick="navigateTo('about')" class="quick-nav-btn">
                     <span><i class="fa-solid fa-user neon-blue"></i> Full Bio & Academic Timeline</span>
                     <i class="fa-solid fa-arrow-right"></i>
                   </button>
@@ -344,7 +337,7 @@
         </div>
 
         <!-- DASHBOARD C: BATCHMATE VIEW -->
-        <div id="persona-batchmate" class="persona-dashboard" style="display:none;">
+        <div id="persona-batchmate" class="persona-dashboard">
           <div class="dashboard-hero-card border-blue">
             <div class="hero-top-row">
               <div>
@@ -416,15 +409,15 @@
             <div class="fast-card border-orange">
               <h3 class="fast-heading neon-orange"><i class="fa-solid fa-cubes"></i> Explore Tech Blueprints</h3>
               <div class="quick-nav-stack">
-                <button onclick="navigateToSection('projects')" class="quick-nav-btn">
+                <button onclick="navigateTo('projects')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-diagram-project neon-yellow"></i> Production Architecture Projects[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateToSection('tools')" class="quick-nav-btn">
+                <button onclick="navigateTo('tools')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-toolbox neon-orange"></i> Full Tech Stack & Skills Matrix[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateToSection('experience')" class="quick-nav-btn">
+                <button onclick="navigateTo('experience')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-briefcase neon-red"></i> Verified Internship Track Record[cite: 1]</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
