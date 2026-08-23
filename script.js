@@ -13,39 +13,36 @@ const ROLE_CONFIG = {
 let currentPersona = "recruiter";
 
 /* ==========================================================================
-   INITIALIZATION & BROWSER HISTORY ROUTER
+   INITIALIZATION
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   setupBurgerMenu();
   fetchRoleCounters();
-  setupRoleCards();
-  handleInitialRoute();
 
-  // Listen for browser/phone Back & Forward buttons
+  // Handle native Browser/Phone Back & Forward navigation
   window.addEventListener("popstate", (e) => {
     if (e.state && e.state.view) {
       if (e.state.view === "home") {
-        showPersonaSelectorScreen(false);
+        renderPersonaSelector(false);
       } else {
-        applyRoute(e.state.view, e.state.persona || currentPersona, false);
+        renderSection(e.state.view, e.state.persona || currentPersona, false);
       }
     } else {
-      showPersonaSelectorScreen(false);
+      renderPersonaSelector(false);
     }
   });
-});
 
-function handleInitialRoute() {
+  // Check initial URL hash on page load
   const hash = window.location.hash.replace("#", "");
   if (["recruiter", "admirer", "batchmate"].includes(hash)) {
-    enterPortfolio(hash, false);
+    selectPersona(hash, false);
   } else if (["dashboard", "about", "projects", "experience", "certifications", "tools"].includes(hash)) {
-    enterPortfolio("recruiter", false);
+    selectPersona("recruiter", false);
     navigateTo(hash, false);
   } else {
-    showPersonaSelectorScreen(false);
+    renderPersonaSelector(false);
   }
-}
+});
 
 /* ==========================================================================
    API TELEMETRY
@@ -82,56 +79,31 @@ function updateCounterUI(data) {
 }
 
 /* ==========================================================================
-   PAGE & PERSONA ROUTING
+   CORE PERSONA SELECTION & ROUTING
    ========================================================================== */
-function setupRoleCards() {
-  document.querySelectorAll(".role-card").forEach((card) => {
-    card.addEventListener("click", () => {
-      const role = card.getAttribute("data-role");
-      incrementRoleCounter(role);
-      enterPortfolio(role, true);
-    });
-  });
-}
-
-function enterPortfolio(roleKey, pushToHistory = true) {
+function selectPersona(roleKey, pushToHistory = true) {
   if (!ROLE_CONFIG[roleKey]) roleKey = "recruiter";
   currentPersona = roleKey;
 
+  // Increment counter in DynamoDB
+  incrementRoleCounter(roleKey);
+
+  // Update Navbar Badge
   const role = ROLE_CONFIG[roleKey];
   const badge = document.getElementById("current-role-badge");
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Switch from Screen 1 to Screen 2
+  // Switch View Screens
   document.body.classList.remove("role-screen-active");
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
 
-  // Activate matching persona sub-dashboard
+  // Show only matching sub-dashboard
   activatePersonaDashboard(roleKey);
 
-  // Navigate to dashboard
-  navigateTo("dashboard", pushToHistory);
-}
-
-function switchPersonaScreen(pushToHistory = true) {
-  showPersonaSelectorScreen(pushToHistory);
-}
-
-function showPersonaSelectorScreen(pushToHistory = true) {
-  document.getElementById("dropdown-menu").classList.remove("active");
-  document.getElementById("main-content-screen").classList.remove("active");
-  document.getElementById("role-selector-screen").classList.add("active");
-  
-  document.body.classList.add("role-screen-active");
-  document.getElementById("current-role-badge").innerText = "Select Persona";
-  document.getElementById("current-role-badge").className = "nav-role-badge";
-
-  if (pushToHistory) {
-    history.pushState({ view: "home" }, "", window.location.pathname);
-  }
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  // Focus dashboard section
+  renderSection("dashboard", roleKey, pushToHistory);
 }
 
 function activatePersonaDashboard(roleKey) {
@@ -149,31 +121,31 @@ function activatePersonaDashboard(roleKey) {
 }
 
 function navigateTo(sectionId, pushToHistory = true) {
-  applyRoute(sectionId, currentPersona, pushToHistory);
+  renderSection(sectionId, currentPersona, pushToHistory);
 }
 
-function applyRoute(sectionId, persona = currentPersona, pushToHistory = true) {
+function renderSection(sectionId, persona = currentPersona, pushToHistory = true) {
   document.body.classList.remove("role-screen-active");
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
 
-  // Hide all section views
+  // Hide all sections
   document.querySelectorAll(".page-view").forEach((page) => {
     page.classList.remove("active");
   });
 
-  // Show target page
+  // Show chosen section
   const targetPage = document.getElementById(`page-${sectionId}`);
   if (targetPage) {
     targetPage.classList.add("active");
   }
 
-  // Ensure selected persona sub-dashboard is activated
+  // Ensure chosen dashboard is active
   if (sectionId === "dashboard") {
     activatePersonaDashboard(persona);
   }
 
-  // Update nav menu active highlights
+  // Update Nav highlighting
   document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
     btn.classList.remove("active");
     if (btn.getAttribute("onclick")?.includes(sectionId)) {
@@ -181,7 +153,7 @@ function applyRoute(sectionId, persona = currentPersona, pushToHistory = true) {
     }
   });
 
-  // Update browser history state for native Back/Forward buttons
+  // Push to browser history
   if (pushToHistory) {
     history.pushState({ view: sectionId, persona: persona }, "", `#${sectionId}`);
   }
@@ -190,9 +162,28 @@ function applyRoute(sectionId, persona = currentPersona, pushToHistory = true) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* =========================================
-   NAVBAR & UTILITY ACTIONS
-========================================= */
+function switchPersonaScreen(pushToHistory = true) {
+  renderPersonaSelector(pushToHistory);
+}
+
+function renderPersonaSelector(pushToHistory = true) {
+  document.getElementById("dropdown-menu").classList.remove("active");
+  document.getElementById("main-content-screen").classList.remove("active");
+  document.getElementById("role-selector-screen").classList.add("active");
+  
+  document.body.classList.add("role-screen-active");
+  document.getElementById("current-role-badge").innerText = "Select Persona";
+  document.getElementById("current-role-badge").className = "nav-role-badge";
+
+  if (pushToHistory) {
+    history.pushState({ view: "home" }, "", window.location.pathname);
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ==========================================================================
+   BURGER MENU & UTILITIES
+   ========================================================================== */
 function setupBurgerMenu() {
   const burgerBtn = document.getElementById("burger-btn");
   const dropdownMenu = document.getElementById("dropdown-menu");

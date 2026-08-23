@@ -36,7 +36,7 @@
     </ul>
   </nav>
 
-  <!-- SCREEN 1: ZERO-SCROLL ROLE SELECTOR -->
+  <!-- SCREEN 1: ROLE SELECTOR -->
   <main id="role-selector-screen" class="view-screen screen-single-viewport active">
     <div class="role-container">
       
@@ -49,7 +49,7 @@
 
       <div class="role-grid">
         <!-- Recruiter Card -->
-        <div class="role-card card-orange" data-role="recruiter">
+        <div class="role-card card-orange" onclick="selectPersona('recruiter')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
             <h2>Recruiter</h2>
@@ -60,12 +60,12 @@
               <span class="counter-label">Recruiters Logged:</span>
               <span class="counter-val" id="recruiter-count">...</span>
             </div>
-            <button class="btn btn-orange">Enter as Recruiter &rarr;</button>
+            <button class="btn btn-orange" onclick="event.stopPropagation(); selectPersona('recruiter');">Enter as Recruiter &rarr;</button>
           </div>
         </div>
 
         <!-- Admirer / Stalker Card -->
-        <div class="role-card card-red" data-role="admirer">
+        <div class="role-card card-red" onclick="selectPersona('admirer')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
             <h2>Admirer / Stalker</h2>
@@ -76,12 +76,12 @@
               <span class="counter-label">Stalkers Tracked:</span>
               <span class="counter-val" id="admirer-count">...</span>
             </div>
-            <button class="btn btn-red">Enter Stealth Mode &rarr;</button>
+            <button class="btn btn-red" onclick="event.stopPropagation(); selectPersona('admirer');">Enter Stealth Mode &rarr;</button>
           </div>
         </div>
 
         <!-- Batchmate Card -->
-        <div class="role-card card-blue" data-role="batchmate">
+        <div class="role-card card-blue" onclick="selectPersona('batchmate')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <h2>Batchmate</h2>
@@ -92,14 +92,14 @@
               <span class="counter-label">Peers Connected:</span>
               <span class="counter-val" id="batchmate-count">...</span>
             </div>
-            <button class="btn btn-blue">Enter Peer Hub &rarr;</button>
+            <button class="btn btn-blue" onclick="event.stopPropagation(); selectPersona('batchmate');">Enter Peer Hub &rarr;</button>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- SCREEN 2: MULTI-PAGE DEDICATED SECTIONS -->
+  <!-- SCREEN 2: MAIN VIEWS -->
   <main id="main-content-screen" class="view-screen">
     
     <!-- =========================================
@@ -109,7 +109,7 @@
       <div class="container">
         
         <!-- DASHBOARD A: RECRUITER VIEW -->
-        <div id="persona-recruiter" class="persona-dashboard active">
+        <div id="persona-recruiter" class="persona-dashboard">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
               <div>

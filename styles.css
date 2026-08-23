@@ -191,6 +191,14 @@ body.role-screen-active .footer {
 /* =========================================
    SCREEN 1: ZERO-SCROLL VIEWPORT
 ========================================= */
+.view-screen {
+  display: none;
+}
+
+.view-screen.active {
+  display: block;
+}
+
 .screen-single-viewport {
   height: 100vh;
   max-height: 100vh;
@@ -341,13 +349,8 @@ body.role-screen-active .footer {
    SCREEN 2: MULTI-PAGE ROUTER
 ========================================= */
 #main-content-screen {
-  display: none;
   padding-top: 70px;
   min-height: 100vh;
-}
-
-#main-content-screen.active {
-  display: block;
 }
 
 .page-view {
@@ -358,7 +361,7 @@ body.role-screen-active .footer {
 
 .page-view.active { display: block; }
 
-/* Persona Dashboard Explicit Classes */
+/* Persona Dashboard Visibilities */
 .persona-dashboard {
   display: none;
 }
