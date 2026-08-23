@@ -358,13 +358,13 @@ body.role-screen-active .footer {
 
 .page-view.active { display: block; }
 
-/* Persona Dashboard Visibility */
+/* Persona Dashboard Explicit Classes */
 .persona-dashboard {
   display: none;
 }
 
 .persona-dashboard.active {
-  display: block;
+  display: block !important;
 }
 
 @keyframes fadeIn {

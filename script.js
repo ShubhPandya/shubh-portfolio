@@ -21,17 +21,16 @@ document.addEventListener("DOMContentLoaded", () => {
   setupRoleCards();
   handleInitialRoute();
 
-  // Listen for browser Back/Forward navigation
+  // Listen for browser/phone Back & Forward buttons
   window.addEventListener("popstate", (e) => {
     if (e.state && e.state.view) {
-      applyRoute(e.state.view, e.state.persona, false);
-    } else {
-      const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        applyRoute(hash, currentPersona, false);
+      if (e.state.view === "home") {
+        showPersonaSelectorScreen(false);
       } else {
-        switchPersonaScreen(false);
+        applyRoute(e.state.view, e.state.persona || currentPersona, false);
       }
+    } else {
+      showPersonaSelectorScreen(false);
     }
   });
 });
@@ -44,7 +43,7 @@ function handleInitialRoute() {
     enterPortfolio("recruiter", false);
     navigateTo(hash, false);
   } else {
-    switchPersonaScreen(false);
+    showPersonaSelectorScreen(false);
   }
 }
 
@@ -83,7 +82,7 @@ function updateCounterUI(data) {
 }
 
 /* ==========================================================================
-   PAGE & PERSONA ROUTING (WITH HISTORY STATE)
+   PAGE & PERSONA ROUTING
    ========================================================================== */
 function setupRoleCards() {
   document.querySelectorAll(".role-card").forEach((card) => {
@@ -104,19 +103,23 @@ function enterPortfolio(roleKey, pushToHistory = true) {
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Switch screens
+  // Switch from Screen 1 to Screen 2
   document.body.classList.remove("role-screen-active");
   document.getElementById("role-selector-screen").classList.remove("active");
   document.getElementById("main-content-screen").classList.add("active");
 
-  // Activate only the selected dashboard sub-view
+  // Activate matching persona sub-dashboard
   activatePersonaDashboard(roleKey);
 
-  // Navigate to dashboard view
+  // Navigate to dashboard
   navigateTo("dashboard", pushToHistory);
 }
 
 function switchPersonaScreen(pushToHistory = true) {
+  showPersonaSelectorScreen(pushToHistory);
+}
+
+function showPersonaSelectorScreen(pushToHistory = true) {
   document.getElementById("dropdown-menu").classList.remove("active");
   document.getElementById("main-content-screen").classList.remove("active");
   document.getElementById("role-selector-screen").classList.add("active");
@@ -150,23 +153,27 @@ function navigateTo(sectionId, pushToHistory = true) {
 }
 
 function applyRoute(sectionId, persona = currentPersona, pushToHistory = true) {
-  // Hide all sections
+  document.body.classList.remove("role-screen-active");
+  document.getElementById("role-selector-screen").classList.remove("active");
+  document.getElementById("main-content-screen").classList.add("active");
+
+  // Hide all section views
   document.querySelectorAll(".page-view").forEach((page) => {
     page.classList.remove("active");
   });
 
-  // Show target section
+  // Show target page
   const targetPage = document.getElementById(`page-${sectionId}`);
   if (targetPage) {
     targetPage.classList.add("active");
   }
 
-  // Ensure selected persona dashboard is visible
-  if (sectionId === "dashboard" || sectionId === "") {
+  // Ensure selected persona sub-dashboard is activated
+  if (sectionId === "dashboard") {
     activatePersonaDashboard(persona);
   }
 
-  // Update nav menu button active state
+  // Update nav menu active highlights
   document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
     btn.classList.remove("active");
     if (btn.getAttribute("onclick")?.includes(sectionId)) {
@@ -174,7 +181,7 @@ function applyRoute(sectionId, persona = currentPersona, pushToHistory = true) {
     }
   });
 
-  // Push to history state for native Back button support
+  // Update browser history state for native Back/Forward buttons
   if (pushToHistory) {
     history.pushState({ view: sectionId, persona: persona }, "", `#${sectionId}`);
   }
