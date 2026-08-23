@@ -56,12 +56,12 @@ function updateCounterUI(data) {
    PERSONA SWITCHING & DASHBOARD DISPLAY
    ========================================================================== */
 function activatePersonaDashboard(roleKey) {
-  // Hide all persona dashboard sub-views
+  // Hide all persona dashboards
   document.querySelectorAll(".persona-dashboard").forEach((dash) => {
     dash.classList.remove("active");
   });
 
-  // Show the matching persona view
+  // Exclusively show chosen persona dashboard
   const targetDashboard = document.getElementById(`persona-${roleKey}`);
   if (targetDashboard) {
     targetDashboard.classList.add("active");
