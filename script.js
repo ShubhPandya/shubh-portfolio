@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupBurgerMenu();
   fetchRoleCounters();
 
-  // Handle native Browser/Phone Back & Forward navigation
   window.addEventListener("popstate", (e) => {
     if (e.state && e.state.view) {
       if (e.state.view === "home") {
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Check initial URL hash on page load
   const hash = window.location.hash.replace("#", "");
   if (["recruiter", "admirer", "batchmate"].includes(hash)) {
     selectPersona(hash, false);
@@ -54,7 +52,6 @@ async function fetchRoleCounters() {
     const data = await res.json();
     updateCounterUI(data);
   } catch (err) {
-    console.warn("API offline, fallback counters initialized:", err);
     document.getElementById("recruiter-count").innerText = "0";
     document.getElementById("admirer-count").innerText = "0";
     document.getElementById("batchmate-count").innerText = "0";
@@ -68,7 +65,7 @@ async function incrementRoleCounter(role) {
     const data = await res.json();
     updateCounterUI(data);
   } catch (err) {
-    console.warn("Could not increment remote counter:", err);
+    console.warn("Telemetry offline:", err);
   }
 }
 
@@ -85,24 +82,18 @@ function selectPersona(roleKey, pushToHistory = true) {
   if (!ROLE_CONFIG[roleKey]) roleKey = "recruiter";
   currentPersona = roleKey;
 
-  // Increment counter in DynamoDB
   incrementRoleCounter(roleKey);
 
-  // Update Navbar Badge
   const role = ROLE_CONFIG[roleKey];
   const badge = document.getElementById("current-role-badge");
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Switch View Screens
   document.body.classList.remove("role-screen-active");
-  document.getElementById("role-selector-screen").classList.remove("active");
-  document.getElementById("main-content-screen").classList.add("active");
+  document.getElementById("role-selector-screen").style.display = "none";
+  document.getElementById("main-content-screen").style.display = "block";
 
-  // Show only matching sub-dashboard
   activatePersonaDashboard(roleKey);
-
-  // Focus dashboard section
   renderSection("dashboard", roleKey, pushToHistory);
 }
 
@@ -112,9 +103,9 @@ function activatePersonaDashboard(roleKey) {
     const el = document.getElementById(`persona-${d}`);
     if (el) {
       if (d === roleKey) {
-        el.classList.add("active");
+        el.style.display = "block";
       } else {
-        el.classList.remove("active");
+        el.style.display = "none";
       }
     }
   });
@@ -126,26 +117,24 @@ function navigateTo(sectionId, pushToHistory = true) {
 
 function renderSection(sectionId, persona = currentPersona, pushToHistory = true) {
   document.body.classList.remove("role-screen-active");
-  document.getElementById("role-selector-screen").classList.remove("active");
-  document.getElementById("main-content-screen").classList.add("active");
+  document.getElementById("role-selector-screen").style.display = "none";
+  document.getElementById("main-content-screen").style.display = "block";
 
-  // Hide all sections
   document.querySelectorAll(".page-view").forEach((page) => {
+    page.style.display = "none";
     page.classList.remove("active");
   });
 
-  // Show chosen section
   const targetPage = document.getElementById(`page-${sectionId}`);
   if (targetPage) {
+    targetPage.style.display = "block";
     targetPage.classList.add("active");
   }
 
-  // Ensure chosen dashboard is active
   if (sectionId === "dashboard") {
     activatePersonaDashboard(persona);
   }
 
-  // Update Nav highlighting
   document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
     btn.classList.remove("active");
     if (btn.getAttribute("onclick")?.includes(sectionId)) {
@@ -153,7 +142,6 @@ function renderSection(sectionId, persona = currentPersona, pushToHistory = true
     }
   });
 
-  // Push to browser history
   if (pushToHistory) {
     history.pushState({ view: sectionId, persona: persona }, "", `#${sectionId}`);
   }
@@ -168,8 +156,8 @@ function switchPersonaScreen(pushToHistory = true) {
 
 function renderPersonaSelector(pushToHistory = true) {
   document.getElementById("dropdown-menu").classList.remove("active");
-  document.getElementById("main-content-screen").classList.remove("active");
-  document.getElementById("role-selector-screen").classList.add("active");
+  document.getElementById("main-content-screen").style.display = "none";
+  document.getElementById("role-selector-screen").style.display = "flex";
   
   document.body.classList.add("role-screen-active");
   document.getElementById("current-role-badge").innerText = "Select Persona";
@@ -184,13 +172,14 @@ function renderPersonaSelector(pushToHistory = true) {
 /* ==========================================================================
    BURGER MENU & UTILITIES
    ========================================================================== */
+function toggleMenu() {
+  const dropdownMenu = document.getElementById("dropdown-menu");
+  dropdownMenu.classList.toggle("active");
+}
+
 function setupBurgerMenu() {
   const burgerBtn = document.getElementById("burger-btn");
   const dropdownMenu = document.getElementById("dropdown-menu");
-
-  burgerBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("active");
-  });
 
   document.addEventListener("click", (e) => {
     if (!burgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {

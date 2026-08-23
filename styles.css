@@ -36,7 +36,6 @@ body {
   line-height: 1.5;
 }
 
-/* Zero-Scroll Lock for Screen 1 */
 body.role-screen-active {
   height: 100vh;
   max-height: 100vh;
@@ -189,16 +188,8 @@ body.role-screen-active .footer {
 }
 
 /* =========================================
-   SCREEN 1: ZERO-SCROLL VIEWPORT
+   SCREENS & PAGES
 ========================================= */
-.view-screen {
-  display: none;
-}
-
-.view-screen.active {
-  display: block;
-}
-
 .screen-single-viewport {
   height: 100vh;
   max-height: 100vh;
@@ -345,9 +336,6 @@ body.role-screen-active .footer {
 }
 .btn:hover { filter: brightness(1.15); }
 
-/* =========================================
-   SCREEN 2: MULTI-PAGE ROUTER
-========================================= */
 #main-content-screen {
   padding-top: 70px;
   min-height: 100vh;
@@ -360,15 +348,6 @@ body.role-screen-active .footer {
 }
 
 .page-view.active { display: block; }
-
-/* Persona Dashboard Visibilities */
-.persona-dashboard {
-  display: none;
-}
-
-.persona-dashboard.active {
-  display: block !important;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
