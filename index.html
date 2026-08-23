@@ -4,16 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shubh Pandya | Cloud & Backend Systems</title>
-  <link rel="stylesheet" href="styles.css?v=5.0" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body class="theme-black role-screen-active">
 
+  <!-- NAVBAR & PERSONA DROPDOWN -->
   <header class="navbar">
-    <div class="nav-brand" onclick="window.navigateTo('dashboard')">
+    <!-- Brand Name (Navigates to active persona dashboard) -->
+    <div class="nav-brand" onclick="window.onBrandClick()">
       <span class="neon-orange">Shubh</span>
     </div>
-    <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
+
+    <!-- Interactive Persona Switcher Badge & Dropdown Menu -->
+    <div class="persona-switcher-wrapper">
+      <button class="nav-role-badge-btn" id="current-role-badge" onclick="window.togglePersonaMenu()">
+        <span id="role-badge-text">Select Persona</span>
+        <i class="fa-solid fa-chevron-down badge-caret"></i>
+      </button>
+
+      <div class="persona-dropdown-list" id="persona-dropdown-list">
+        <button class="persona-opt-btn" onclick="window.switchDirectPersona('recruiter')">
+          <i class="fa-solid fa-briefcase neon-orange"></i> Recruiter Mode
+        </button>
+        <button class="persona-opt-btn" onclick="window.switchDirectPersona('admirer')">
+          <i class="fa-solid fa-user-secret neon-red"></i> Stealth Mode
+        </button>
+        <button class="persona-opt-btn" onclick="window.switchDirectPersona('batchmate')">
+          <i class="fa-solid fa-graduation-cap neon-blue"></i> Peer Mode
+        </button>
+        <div class="menu-divider"></div>
+        <button class="persona-opt-btn text-muted" onclick="window.switchPersonaScreen()">
+          <i class="fa-solid fa-grid-2 neon-yellow"></i> All Personas Hub
+        </button>
+      </div>
+    </div>
+
+    <!-- Burger Menu Button -->
     <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu" onclick="window.toggleMenu()">
       <div class="bar bar-orange"></div>
       <div class="bar bar-red"></div>
@@ -21,6 +48,7 @@
     </button>
   </header>
 
+  <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
       <li><button class="nav-menu-btn active" onclick="window.navigateTo('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
@@ -34,6 +62,7 @@
     </ul>
   </nav>
 
+  <!-- SCREEN 1: ZERO-SCROLL ROLE SELECTOR -->
   <main id="role-selector-screen" class="view-screen screen-single-viewport active">
     <div class="role-container">
       
@@ -45,6 +74,7 @@
       <p class="role-subtitle">Select your persona to access tailored system insights.</p>
 
       <div class="role-grid">
+        <!-- Recruiter Card -->
         <div class="role-card card-orange" onclick="window.selectPersona('recruiter')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
@@ -60,6 +90,7 @@
           </div>
         </div>
 
+        <!-- Admirer / Stalker Card -->
         <div class="role-card card-red" onclick="window.selectPersona('admirer')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
@@ -75,6 +106,7 @@
           </div>
         </div>
 
+        <!-- Batchmate Card -->
         <div class="role-card card-blue" onclick="window.selectPersona('batchmate')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -93,11 +125,16 @@
     </div>
   </main>
 
+  <!-- SCREEN 2: MAIN CONTENT CONTAINER -->
   <main id="main-content-screen" class="view-screen">
     
+    <!-- =========================================
+         PAGE 0: DYNAMIC DASHBOARDS
+    ========================================= -->
     <section id="page-dashboard" class="page-view active">
       <div class="container">
         
+        <!-- DASHBOARD A: RECRUITER VIEW -->
         <div id="persona-recruiter" class="persona-dashboard active">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
@@ -191,6 +228,7 @@
           </div>
         </div>
 
+        <!-- DASHBOARD B: ADMIRER / STALKER VIEW -->
         <div id="persona-admirer" class="persona-dashboard">
           <div class="dashboard-hero-card border-red">
             <div class="hero-top-row">
@@ -236,6 +274,7 @@
           </div>
 
           <div class="dashboard-fast-grid">
+            <!-- Left Column: Pandya Recommends -->
             <div class="fast-card border-red">
               <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Pandya recommends</h3>
               <div class="movie-compact-stack">
@@ -283,6 +322,7 @@
               </div>
             </div>
 
+            <!-- Right Column: Curated Audio Spectrum -->
             <div class="fast-card border-yellow">
               <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
               
@@ -307,6 +347,7 @@
           </div>
         </div>
 
+        <!-- DASHBOARD C: BATCHMATE VIEW -->
         <div id="persona-batchmate" class="persona-dashboard">
           <div class="dashboard-hero-card border-blue">
             <div class="hero-top-row">
@@ -403,6 +444,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 1: ABOUT ME PAGE
+    ========================================= -->
     <section id="page-about" class="page-view">
       <div class="container">
         
@@ -498,6 +542,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 2: PROJECTS PAGE
+    ========================================= -->
     <section id="page-projects" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
@@ -559,6 +606,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 3: EXPERIENCE PAGE
+    ========================================= -->
     <section id="page-experience" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
@@ -606,6 +656,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 4: CERTIFICATIONS PAGE
+    ========================================= -->
     <section id="page-certifications" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
@@ -646,6 +699,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 5: TOOLS & SKILLS PAGE
+    ========================================= -->
     <section id="page-tools" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
@@ -695,6 +751,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=5.0"></script>
+  <script src="script.js?v=6.0"></script>
 </body>
 </html>

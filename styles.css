@@ -60,7 +60,7 @@ body.role-screen-active .footer {
 .text-muted  { color: var(--text-muted); }
 
 /* =========================================
-   NAVBAR
+   NAVBAR & PERSONA DROPDOWN BADGE
 ========================================= */
 .navbar {
   display: flex;
@@ -84,16 +84,87 @@ body.role-screen-active .footer {
   font-weight: 700;
   cursor: pointer;
   letter-spacing: 1px;
+  transition: transform 0.2s ease;
 }
 
-.nav-role-badge {
+.nav-brand:hover {
+  transform: scale(1.05);
+}
+
+.persona-switcher-wrapper {
+  position: relative;
+}
+
+.nav-role-badge-btn {
   font-size: 0.75rem;
   text-transform: uppercase;
   font-family: var(--font-mono);
-  padding: 0.2rem 0.7rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.nav-role-badge-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--neon-yellow);
+}
+
+.badge-caret {
+  font-size: 0.65rem;
+  transition: transform 0.25s ease;
+}
+
+.nav-role-badge-btn.open .badge-caret {
+  transform: rotate(180deg);
+}
+
+.persona-dropdown-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 0.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  display: none;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 190px;
+  z-index: 1001;
+}
+
+.persona-dropdown-list.active {
+  display: flex;
+}
+
+.persona-opt-btn {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  text-align: left;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.persona-opt-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
 }
 
 .burger-btn {

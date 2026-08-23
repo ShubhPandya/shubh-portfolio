@@ -12,25 +12,95 @@ const ROLE_CONFIG = {
   batchmate: { badge: "Peer Mode",      color: "neon-blue" }
 };
 
-window.currentPersona = "recruiter";
+window.currentPersona = localStorage.getItem("sp_persona") || null;
+window.currentView = localStorage.getItem("sp_view") || "home";
 
 /* ==========================================================================
-   GLOBAL PERSONA ROUTING (DIRECT CALLS)
+   INITIALIZATION & PERSISTENT ROUTER
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  setupOutsideClickListeners();
+  fetchRoleCounters();
+
+  // Parse state from URL hash and localStorage
+  const hash = window.location.hash.replace("#", "").trim();
+  const savedPersona = localStorage.getItem("sp_persona");
+  const savedView = localStorage.getItem("sp_view");
+
+  if (["recruiter", "admirer", "batchmate"].includes(hash)) {
+    window.selectPersona(hash, false);
+  } else if (["dashboard", "about", "projects", "experience", "certifications", "tools"].includes(hash)) {
+    const targetPersona = savedPersona && ROLE_CONFIG[savedPersona] ? savedPersona : "recruiter";
+    window.selectPersona(targetPersona, false);
+    window.navigateTo(hash, false);
+  } else if (savedView && savedView !== "home" && savedPersona && ROLE_CONFIG[savedPersona]) {
+    window.selectPersona(savedPersona, false);
+    window.navigateTo(savedView, false);
+  } else {
+    window.renderPersonaSelector(false);
+  }
+
+  // Handle native Browser Back/Forward navigation
+  window.addEventListener("popstate", (e) => {
+    if (e.state && e.state.view) {
+      if (e.state.view === "home") {
+        window.renderPersonaSelector(false);
+      } else {
+        window.renderSection(e.state.view, e.state.persona || window.currentPersona || "recruiter", false);
+      }
+    } else {
+      window.renderPersonaSelector(false);
+    }
+  });
+});
+
+/* ==========================================================================
+   BRAND LOGO CLICK ROUTING (CHANGE 1)
+   ========================================================================== */
+window.onBrandClick = function() {
+  if (window.currentPersona && ROLE_CONFIG[window.currentPersona]) {
+    window.navigateTo("dashboard", true);
+  } else {
+    window.switchPersonaScreen(true);
+  }
+};
+
+/* ==========================================================================
+   PERSONA BADGE DROPDOWN SWITCHER (CHANGE 2)
+   ========================================================================== */
+window.togglePersonaMenu = function() {
+  const dropdown = document.getElementById("persona-dropdown-list");
+  const badgeBtn = document.getElementById("current-role-badge");
+  if (dropdown) dropdown.classList.toggle("active");
+  if (badgeBtn) badgeBtn.classList.toggle("open");
+};
+
+window.switchDirectPersona = function(roleKey) {
+  const dropdown = document.getElementById("persona-dropdown-list");
+  const badgeBtn = document.getElementById("current-role-badge");
+  if (dropdown) dropdown.classList.remove("active");
+  if (badgeBtn) badgeBtn.classList.remove("open");
+
+  window.selectPersona(roleKey, true);
+};
+
+/* ==========================================================================
+   GLOBAL PERSONA ROUTING (STATE PERSISTENCE FIX - CHANGE 3)
    ========================================================================== */
 window.selectPersona = function(roleKey, pushToHistory = true) {
   if (!ROLE_CONFIG[roleKey]) roleKey = "recruiter";
   window.currentPersona = roleKey;
+  window.currentView = "dashboard";
 
-  // Telemetry API increment
+  // Persist choice across page refreshes
+  localStorage.setItem("sp_persona", roleKey);
+  localStorage.setItem("sp_view", "dashboard");
+
+  // Fire telemetry increment asynchronously
   incrementRoleCounter(roleKey);
 
-  // Update Navbar Badge
-  const role = ROLE_CONFIG[roleKey];
-  const badge = document.getElementById("current-role-badge");
-  if (badge) {
-    badge.innerText = role.badge;
-    badge.className = `nav-role-badge ${role.color}`;
-  }
+  // Update Navbar Badge UI
+  updateNavbarBadge(roleKey);
 
   // Switch Screen Views
   document.body.classList.remove("role-screen-active");
@@ -40,12 +110,26 @@ window.selectPersona = function(roleKey, pushToHistory = true) {
   if (roleScreen) roleScreen.classList.remove("active");
   if (mainScreen) mainScreen.classList.add("active");
 
-  // Activate only the selected dashboard sub-view
+  // Activate matching dashboard sub-view
   activatePersonaDashboard(roleKey);
 
   // Render dashboard page
   window.renderSection("dashboard", roleKey, pushToHistory);
 };
+
+function updateNavbarBadge(roleKey) {
+  const badgeText = document.getElementById("role-badge-text");
+  const badgeBtn = document.getElementById("current-role-badge");
+  
+  if (roleKey && ROLE_CONFIG[roleKey]) {
+    const role = ROLE_CONFIG[roleKey];
+    if (badgeText) badgeText.innerText = role.badge;
+    if (badgeBtn) badgeBtn.className = `nav-role-badge-btn ${role.color}`;
+  } else {
+    if (badgeText) badgeText.innerText = "Select Persona";
+    if (badgeBtn) badgeBtn.className = "nav-role-badge-btn";
+  }
+}
 
 window.activatePersonaDashboard = function(roleKey) {
   const dashboards = ["recruiter", "admirer", "batchmate"];
@@ -62,10 +146,14 @@ window.activatePersonaDashboard = function(roleKey) {
 };
 
 window.navigateTo = function(sectionId, pushToHistory = true) {
-  window.renderSection(sectionId, window.currentPersona, pushToHistory);
+  const persona = window.currentPersona || localStorage.getItem("sp_persona") || "recruiter";
+  window.renderSection(sectionId, persona, pushToHistory);
 };
 
-window.renderSection = function(sectionId, persona = window.currentPersona, pushToHistory = true) {
+window.renderSection = function(sectionId, persona = window.currentPersona || "recruiter", pushToHistory = true) {
+  window.currentView = sectionId;
+  localStorage.setItem("sp_view", sectionId);
+
   document.body.classList.remove("role-screen-active");
 
   const roleScreen = document.getElementById("role-selector-screen");
@@ -84,12 +172,12 @@ window.renderSection = function(sectionId, persona = window.currentPersona, push
     targetPage.classList.add("active");
   }
 
-  // Ensure sub-dashboard is correctly matched
+  // Ensure sub-dashboard is active
   if (sectionId === "dashboard") {
     window.activatePersonaDashboard(persona);
   }
 
-  // Update Nav highlighting
+  // Update Nav menu button active state
   document.querySelectorAll(".nav-menu-btn").forEach((btn) => {
     btn.classList.remove("active");
     if (btn.getAttribute("onclick") && btn.getAttribute("onclick").includes(sectionId)) {
@@ -113,8 +201,16 @@ window.switchPersonaScreen = function(pushToHistory = true) {
 };
 
 window.renderPersonaSelector = function(pushToHistory = true) {
+  window.currentView = "home";
+  localStorage.setItem("sp_view", "home");
+
   const dropdownMenu = document.getElementById("dropdown-menu");
+  const personaDropdown = document.getElementById("persona-dropdown-list");
+  const badgeBtn = document.getElementById("current-role-badge");
+  
   if (dropdownMenu) dropdownMenu.classList.remove("active");
+  if (personaDropdown) personaDropdown.classList.remove("active");
+  if (badgeBtn) badgeBtn.classList.remove("open");
 
   const mainScreen = document.getElementById("main-content-screen");
   const roleScreen = document.getElementById("role-selector-screen");
@@ -122,50 +218,13 @@ window.renderPersonaSelector = function(pushToHistory = true) {
   if (roleScreen) roleScreen.classList.add("active");
   
   document.body.classList.add("role-screen-active");
-
-  const badge = document.getElementById("current-role-badge");
-  if (badge) {
-    badge.innerText = "Select Persona";
-    badge.className = "nav-role-badge";
-  }
+  updateNavbarBadge(null);
 
   if (pushToHistory) {
     history.pushState({ view: "home" }, "", window.location.pathname);
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
-
-/* ==========================================================================
-   INITIALIZATION & HISTORY ROUTER
-   ========================================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-  setupBurgerMenu();
-  fetchRoleCounters();
-
-  // Handle native Browser Back/Forward navigation
-  window.addEventListener("popstate", (e) => {
-    if (e.state && e.state.view) {
-      if (e.state.view === "home") {
-        window.renderPersonaSelector(false);
-      } else {
-        window.renderSection(e.state.view, e.state.persona || window.currentPersona, false);
-      }
-    } else {
-      window.renderPersonaSelector(false);
-    }
-  });
-
-  // Check initial URL hash
-  const hash = window.location.hash.replace("#", "");
-  if (["recruiter", "admirer", "batchmate"].includes(hash)) {
-    window.selectPersona(hash, false);
-  } else if (["dashboard", "about", "projects", "experience", "certifications", "tools"].includes(hash)) {
-    window.selectPersona("recruiter", false);
-    window.navigateTo(hash, false);
-  } else {
-    window.renderPersonaSelector(false);
-  }
-});
 
 /* ==========================================================================
    API TELEMETRY
@@ -210,22 +269,26 @@ window.toggleMenu = function() {
   if (dropdownMenu) dropdownMenu.classList.toggle("active");
 };
 
-function setupBurgerMenu() {
+function setupOutsideClickListeners() {
   const burgerBtn = document.getElementById("burger-btn");
   const dropdownMenu = document.getElementById("dropdown-menu");
+  const badgeBtn = document.getElementById("current-role-badge");
+  const personaDropdown = document.getElementById("persona-dropdown-list");
 
   document.addEventListener("click", (e) => {
     if (burgerBtn && dropdownMenu && !burgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
       dropdownMenu.classList.remove("active");
     }
+    if (badgeBtn && personaDropdown && !badgeBtn.contains(e.target) && !personaDropdown.contains(e.target)) {
+      personaDropdown.classList.remove("active");
+      badgeBtn.classList.remove("open");
+    }
   });
 }
 
 window.handleDiscordClick = function() {
-  // Open direct Discord profile link
   window.open(`https://discord.com/users/${DISCORD_USER_ID}`, "_blank");
-  // Also copy username to clipboard for convenience
-  window.copyToClipboard(DISCORD_USERNAME, `Discord User (@${DISCORD_USERNAME}) copied & profile opened!`);
+  window.copyToClipboard(DISCORD_USERNAME, `Discord ID (@${DISCORD_USERNAME}) copied & profile opened!`);
 };
 
 window.openEmailClient = function() {
