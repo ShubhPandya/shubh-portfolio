@@ -3,7 +3,8 @@
    ========================================================================== */
 const API_URL = "https://fa2mm1z6id.execute-api.ap-south-1.amazonaws.com/views";
 const EMAIL_ADDRESS = "shubhaiml1@gmail.com";
-const DISCORD_TAG = "shubh_pandya"; // Set to your Discord username or profile handle
+const DISCORD_USER_ID = "690536566774431794";
+const DISCORD_USERNAME = "ryuk2714";
 
 const ROLE_CONFIG = {
   recruiter: { badge: "Recruiter Mode", color: "neon-orange" },
@@ -221,7 +222,10 @@ function setupBurgerMenu() {
 }
 
 window.handleDiscordClick = function() {
-  window.copyToClipboard(DISCORD_TAG, `Discord ID (${DISCORD_TAG}) copied!`);
+  // Open direct Discord profile link
+  window.open(`https://discord.com/users/${DISCORD_USER_ID}`, "_blank");
+  // Also copy username to clipboard for convenience
+  window.copyToClipboard(DISCORD_USERNAME, `Discord User (@${DISCORD_USERNAME}) copied & profile opened!`);
 };
 
 window.openEmailClient = function() {

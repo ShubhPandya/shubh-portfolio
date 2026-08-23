@@ -553,7 +553,7 @@ body.role-screen-active .footer {
 }
 
 /* =========================================
-   COMPACT MOVIE LIST & SPOTIFY CLEAN BUTTON
+   COMPACT MOVIE LIST & ENHANCED SPOTIFY CARDS
 ========================================= */
 .movie-compact-stack {
   display: flex;
@@ -603,31 +603,38 @@ body.role-screen-active .footer {
   line-height: 1.35;
 }
 
-/* Clean Spotify Clickable Pill Button */
+/* Enhanced Vibrant Spotify Clickable Card */
 .spotify-clean-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: #12131a;
+  justify-content: space-between;
+  gap: 15px;
+  background: linear-gradient(135deg, #101c14 0%, #15291e 50%, #0d1218 100%);
   border: 1px solid #1ed760;
-  padding: 1.2rem 1.8rem;
+  padding: 1.2rem 1.5rem;
   border-radius: 12px;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(30, 215, 96, 0.15);
+  box-shadow: 0 4px 20px rgba(30, 215, 96, 0.2);
   transition: all 0.25s ease;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .spotify-clean-btn:hover {
-  background: #1a1c26;
-  box-shadow: 0 6px 25px rgba(30, 215, 96, 0.35);
+  background: linear-gradient(135deg, #152b1f 0%, #1a3829 50%, #101720 100%);
+  box-shadow: 0 8px 30px rgba(30, 215, 96, 0.4);
   transform: translateY(-3px);
 }
 
 .spotify-pure-icon {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   color: #1ed760;
+  filter: drop-shadow(0 0 8px rgba(30, 215, 96, 0.6));
+}
+
+.spotify-btn-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .spotify-btn-text {
@@ -635,6 +642,59 @@ body.role-screen-active .footer {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.5px;
+}
+
+.spotify-btn-sub {
+  font-size: 0.8rem;
+  color: var(--neon-yellow);
+  font-family: var(--font-mono);
+}
+
+.spotify-launch-icon {
+  color: #1ed760;
+  font-size: 1.1rem;
+}
+
+/* Static "More Incoming" Banner */
+.spotify-incoming-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  padding: 0.9rem 1.4rem;
+  border-radius: 10px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.incoming-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spotify-faded-icon {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.incoming-text {
+  font-size: 0.92rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.incoming-badge {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-muted);
 }
 
 /* Borders & Themes */
