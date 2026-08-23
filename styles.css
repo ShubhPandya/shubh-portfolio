@@ -190,6 +190,14 @@ body.role-screen-active .footer {
 /* =========================================
    SCREENS & PAGES
 ========================================= */
+.view-screen {
+  display: none;
+}
+
+.view-screen.active {
+  display: block;
+}
+
 .screen-single-viewport {
   height: 100vh;
   max-height: 100vh;
@@ -314,8 +322,8 @@ body.role-screen-active .footer {
 .btn-orange { background: var(--neon-orange); color: #000; }
 .btn-red    { background: var(--neon-red);    color: #fff; }
 .btn-blue   { background: var(--neon-blue);   color: #000; }
-.btn-spotify { background: #1ed760; color: #000; font-weight: 700; }
 .btn-insta   { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+.btn-discord { background: #5865f2; color: #fff; font-weight: 600; }
 .btn-outline-blue {
   background: transparent;
   color: var(--neon-blue);
@@ -348,6 +356,15 @@ body.role-screen-active .footer {
 }
 
 .page-view.active { display: block; }
+
+/* Persona Dashboard Visibilities */
+.persona-dashboard {
+  display: none;
+}
+
+.persona-dashboard.active {
+  display: block;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
@@ -426,7 +443,7 @@ body.role-screen-active .footer {
 }
 
 .kpi-number {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   font-family: var(--font-mono);
   margin-bottom: 0.2rem;
@@ -536,7 +553,7 @@ body.role-screen-active .footer {
 }
 
 /* =========================================
-   COMPACT MOVIE LIST & AUDIO BANNER
+   COMPACT MOVIE LIST & SPOTIFY CLEAN BUTTON
 ========================================= */
 .movie-compact-stack {
   display: flex;
@@ -586,48 +603,38 @@ body.role-screen-active .footer {
   line-height: 1.35;
 }
 
-.spotify-retro-banner {
-  background: linear-gradient(135deg, #0e1913 0%, #121f18 50%, #0d0f14 100%);
-  border: 1px solid rgba(30, 215, 96, 0.35);
-  box-shadow: 0 8px 25px rgba(30, 215, 96, 0.12);
-  border-radius: 12px;
-  padding: 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.spotify-cassette-art {
-  width: 55px;
-  height: 55px;
-  background: #000;
-  border: 2px solid #1ed760;
-  border-radius: 8px;
+/* Clean Spotify Clickable Pill Button */
+.spotify-clean-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  gap: 12px;
+  background: #12131a;
+  border: 1px solid #1ed760;
+  padding: 1.2rem 1.8rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(30, 215, 96, 0.15);
+  transition: all 0.25s ease;
+  margin-top: 1rem;
 }
 
-.spotify-cassette-art i {
-  font-size: 1.8rem;
+.spotify-clean-btn:hover {
+  background: #1a1c26;
+  box-shadow: 0 6px 25px rgba(30, 215, 96, 0.35);
+  transform: translateY(-3px);
+}
+
+.spotify-pure-icon {
+  font-size: 2.2rem;
   color: #1ed760;
 }
 
-.spotify-banner-info {
-  flex-grow: 1;
-}
-
-.spotify-banner-info h4 {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 0.15rem;
-}
-
-.spotify-banner-info p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 0.6rem;
+.spotify-btn-text {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 /* Borders & Themes */

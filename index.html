@@ -4,39 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shubh Pandya | Cloud & Backend Systems</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=4.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body class="theme-black role-screen-active">
 
-  <!-- NAVBAR & BURGER DROPDOWN -->
   <header class="navbar">
-    <div class="nav-brand" onclick="navigateTo('dashboard')">
+    <div class="nav-brand" onclick="window.navigateTo('dashboard')">
       <span class="neon-orange">Shubh</span>
     </div>
     <div class="nav-role-badge" id="current-role-badge">Select Persona</div>
-    <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu" onclick="toggleMenu()">
+    <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu" onclick="window.toggleMenu()">
       <div class="bar bar-orange"></div>
       <div class="bar bar-red"></div>
       <div class="bar bar-blue"></div>
     </button>
   </header>
 
-  <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
-      <li><button class="nav-menu-btn active" onclick="navigateTo('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateTo('about')"><i class="fa-solid fa-user-astronaut neon-yellow"></i> About Me</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateTo('projects')"><i class="fa-solid fa-diagram-project neon-blue"></i> Projects</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateTo('experience')"><i class="fa-solid fa-briefcase neon-red"></i> Experience</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateTo('certifications')"><i class="fa-solid fa-certificate neon-yellow"></i> Certifications</button></li>
-      <li><button class="nav-menu-btn" onclick="navigateTo('tools')"><i class="fa-solid fa-toolbox neon-orange"></i> Tools & Skills</button></li>
+      <li><button class="nav-menu-btn active" onclick="window.navigateTo('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
+      <li><button class="nav-menu-btn" onclick="window.navigateTo('about')"><i class="fa-solid fa-user-astronaut neon-yellow"></i> About Me</button></li>
+      <li><button class="nav-menu-btn" onclick="window.navigateTo('projects')"><i class="fa-solid fa-diagram-project neon-blue"></i> Projects</button></li>
+      <li><button class="nav-menu-btn" onclick="window.navigateTo('experience')"><i class="fa-solid fa-briefcase neon-red"></i> Experience</button></li>
+      <li><button class="nav-menu-btn" onclick="window.navigateTo('certifications')"><i class="fa-solid fa-certificate neon-yellow"></i> Certifications</button></li>
+      <li><button class="nav-menu-btn" onclick="window.navigateTo('tools')"><i class="fa-solid fa-toolbox neon-orange"></i> Tools & Skills</button></li>
       <li class="menu-divider"></li>
-      <li><button class="switch-role-btn" onclick="switchPersonaScreen()"><i class="fa-solid fa-rotate neon-yellow"></i> Switch Persona</button></li>
+      <li><button class="switch-role-btn" onclick="window.switchPersonaScreen()"><i class="fa-solid fa-rotate neon-yellow"></i> Switch Persona</button></li>
     </ul>
   </nav>
 
-  <!-- SCREEN 1: ROLE SELECTOR -->
   <main id="role-selector-screen" class="view-screen screen-single-viewport active">
     <div class="role-container">
       
@@ -48,8 +45,7 @@
       <p class="role-subtitle">Select your persona to access tailored system insights.</p>
 
       <div class="role-grid">
-        <!-- Recruiter Card -->
-        <div class="role-card card-orange" onclick="selectPersona('recruiter')">
+        <div class="role-card card-orange" onclick="window.selectPersona('recruiter')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
             <h2>Recruiter</h2>
@@ -58,70 +54,63 @@
           <div class="card-bottom">
             <div class="counter-box">
               <span class="counter-label">Recruiters Logged:</span>
-              <span class="counter-val" id="recruiter-count">...</span>
+              <span class="counter-val" id="recruiter-count">0</span>
             </div>
-            <button type="button" class="btn btn-orange">Enter as Recruiter &rarr;</button>
+            <button type="button" class="btn btn-orange">Enter as Recruiter →</button>
           </div>
         </div>
 
-        <!-- Admirer / Stalker Card -->
-        <div class="role-card card-red" onclick="selectPersona('admirer')">
+        <div class="role-card card-red" onclick="window.selectPersona('admirer')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
             <h2>Admirer / Stalker</h2>
-            <p>Curious observer? Technical builds, offline pursuits, tactical gaming, and system footprints.</p>
+            <p>Do I know you? Yes? No entry.<br />No? You are invited.</p>
           </div>
           <div class="card-bottom">
             <div class="counter-box">
               <span class="counter-label">Stalkers Tracked:</span>
-              <span class="counter-val" id="admirer-count">...</span>
+              <span class="counter-val" id="admirer-count">0</span>
             </div>
-            <button type="button" class="btn btn-red">Enter Stealth Mode &rarr;</button>
+            <button type="button" class="btn btn-red">Enter Stealth Mode →</button>
           </div>
         </div>
 
-        <!-- Batchmate Card -->
-        <div class="role-card card-blue" onclick="selectPersona('batchmate')">
+        <div class="role-card card-blue" onclick="window.selectPersona('batchmate')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <h2>Batchmate</h2>
-            <p>VIT CSE lineage, competitive programming logs, backend systems, and collaborative projects.</p>
+            <p>Another VIT survivor? Another AIS survivor?<br />Hi! Come on in maaaaaannnnnnn.</p>
           </div>
           <div class="card-bottom">
             <div class="counter-box">
               <span class="counter-label">Peers Connected:</span>
-              <span class="counter-val" id="batchmate-count">...</span>
+              <span class="counter-val" id="batchmate-count">0</span>
             </div>
-            <button type="button" class="btn btn-blue">Enter Peer Hub &rarr;</button>
+            <button type="button" class="btn btn-blue">Enter Peer Hub →</button>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- SCREEN 2: MAIN CONTENT CONTAINER -->
-  <main id="main-content-screen" class="view-screen" style="display: none;">
+  <main id="main-content-screen" class="view-screen">
     
-    <!-- =========================================
-         PAGE 0: DYNAMIC DASHBOARDS
-    ========================================= -->
     <section id="page-dashboard" class="page-view active">
       <div class="container">
         
-        <!-- DASHBOARD A: RECRUITER VIEW -->
-        <div id="persona-recruiter" class="persona-dashboard" style="display: none;">
+        <div id="persona-recruiter" class="persona-dashboard active">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
               <div>
                 <div class="badge-role-tag neon-orange">Candidate Executive Overview</div>
                 <h2 class="hero-name">Shubh Udaybhai Pandya</h2>
-                <p class="hero-sub neon-blue">Cloud & Backend Systems Engineer &bull; AWS Certified</p>
+                <p class="hero-sub neon-blue">Cloud & Backend Systems Engineer • AWS Certified</p>
               </div>
               <div class="hero-cta-group">
                 <a href="https://drive.google.com/file/d/1XseiKJG_uYXwTU4zkX6z93Fh7KUhqfiE/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-orange">
                   <i class="fa-solid fa-file-arrow-down"></i> One-Page Resume
                 </a>
-                <button onclick="openEmailClient()" class="btn btn-outline-blue">
+                <button onclick="window.openEmailClient()" class="btn btn-outline-blue">
                   <i class="fa-solid fa-envelope"></i> Quick Connect
                 </button>
               </div>
@@ -132,7 +121,7 @@
             <div class="kpi-card border-blue">
               <span class="kpi-number neon-blue">AWS CCP</span>
               <span class="kpi-title">Certified Practitioner</span>
-              <p class="kpi-detail">Active 2026 &bull; IAM, VPC, S3, CloudFront & Serverless Architecture</p>
+              <p class="kpi-detail">Active 2026 • IAM, VPC, S3, CloudFront & Serverless Architecture</p>
             </div>
             <div class="kpi-card border-yellow">
               <span class="kpi-number neon-yellow">2 Internships</span>
@@ -142,7 +131,7 @@
             <div class="kpi-card border-orange">
               <span class="kpi-number neon-orange">7.70 CGPA</span>
               <span class="kpi-title">B.Tech Computer Science</span>
-              <p class="kpi-detail">Vellore Institute of Technology (VIT Chennai) &bull; Graduated 2025</p>
+              <p class="kpi-detail">Vellore Institute of Technology (VIT Chennai) • Graduated 2025</p>
             </div>
             <div class="kpi-card border-red">
               <span class="kpi-number neon-red">100%</span>
@@ -181,19 +170,19 @@
             <div class="fast-card border-yellow">
               <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compass"></i> Detailed Candidate Files</h3>
               <div class="quick-nav-stack">
-                <button onclick="navigateTo('experience')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('experience')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-briefcase neon-red"></i> Verified Experience Logs</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateTo('projects')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('projects')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-diagram-project neon-yellow"></i> Production Architecture Projects</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateTo('tools')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('tools')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-toolbox neon-orange"></i> Full Tech Stack & Tooling</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateTo('certifications')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('certifications')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-certificate neon-blue"></i> AWS Badge & Verification</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -202,22 +191,21 @@
           </div>
         </div>
 
-        <!-- DASHBOARD B: ADMIRER / STALKER VIEW -->
-        <div id="persona-admirer" class="persona-dashboard" style="display: none;">
+        <div id="persona-admirer" class="persona-dashboard">
           <div class="dashboard-hero-card border-red">
             <div class="hero-top-row">
               <div>
-                <div class="badge-role-tag neon-red">SURVEILLANCE DOSSIER // UNRESTRICTED</div>
-                <h2 class="hero-name">Observation Mode: Shubh Pandya</h2>
+                <div class="badge-role-tag neon-red">SURVEILLANCE DOSSIER</div>
+                <h2 class="hero-name">Observation Mode</h2>
                 <p class="hero-sub neon-yellow">Footprints, Vinyl Grooves, Psychological Thrillers & Gaming Roster</p>
               </div>
               <div class="hero-cta-group">
                 <a href="https://www.instagram.com/w_pandya108" target="_blank" class="btn btn-insta">
                   <i class="fa-brands fa-instagram"></i> @w_pandya108
                 </a>
-                <a href="https://open.spotify.com/playlist/2ZzM6HDXX13IuSpX8wkJKI?si=70125441173f4b50" target="_blank" class="btn btn-spotify">
-                  <i class="fa-brands fa-spotify"></i> 70s-80s-90s Mix
-                </a>
+                <button onclick="window.handleDiscordClick()" class="btn btn-discord">
+                  <i class="fa-brands fa-discord"></i> Discord
+                </button>
               </div>
             </div>
           </div>
@@ -226,19 +214,19 @@
             <div class="kpi-card border-red">
               <span class="riot-id-text neon-red">@iYoungLord#5710</span>
               <span class="kpi-title">Valorant Tactical Roster</span>
-              <button onclick="copyToClipboard('iYoungLord#5710', 'Valorant Riot ID Copied!')" class="btn btn-outline-red" style="margin-top:0.4rem; padding:0.35rem 0.6rem; font-size:0.75rem;">
+              <button onclick="window.copyToClipboard('iYoungLord#5710', 'Valorant Riot ID Copied!')" class="btn btn-outline-red" style="margin-top:0.4rem; padding:0.35rem 0.6rem; font-size:0.75rem;">
                 <i class="fa-regular fa-copy"></i> Copy Riot ID
               </button>
             </div>
             <div class="kpi-card border-yellow">
               <span class="kpi-number neon-yellow">70s–90s Mix</span>
               <span class="kpi-title">Vintage Audio Waves</span>
-              <p class="kpi-detail">Classic retro chords, timeless songwriting & late-night coding playlists.</p>
+              <p class="kpi-detail">currently into the "dhurandhars" from our parent's timeline</p>
             </div>
             <div class="kpi-card border-orange">
-              <span class="kpi-number neon-orange">Top 5 Thrillers</span>
+              <span class="kpi-number neon-orange">Pandya's top 5</span>
               <span class="kpi-title">Cinema Twist Index</span>
-              <p class="kpi-detail">Mind-bending plots, unreliable narrators & high-tension storytelling.</p>
+              <p class="kpi-detail">all ready to talk about mind bending thrillers and Meticulously written crime thrillers</p>
             </div>
             <div class="kpi-card border-blue">
               <span class="kpi-number neon-blue">Active Builder</span>
@@ -249,7 +237,7 @@
 
           <div class="dashboard-fast-grid">
             <div class="fast-card border-red">
-              <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Top 5 Mind-Bending Thrillers</h3>
+              <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Pandya recommends</h3>
               <div class="movie-compact-stack">
                 
                 <div class="movie-compact-card">
@@ -295,47 +283,18 @@
               </div>
             </div>
 
-            <div class="right-stack-column">
-              <div class="fast-card border-yellow" style="margin-bottom: 1.5rem;">
-                <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
-                <div class="spotify-retro-banner">
-                  <div class="spotify-cassette-art">
-                    <i class="fa-solid fa-record-vinyl"></i>
-                  </div>
-                  <div class="spotify-banner-info">
-                    <h4>70s • 80s • 90s Golden Era</h4>
-                    <p>Analog synth riffs, classic rock anthems & vintage grooves on loop.</p>
-                    <a href="https://open.spotify.com/playlist/2ZzM6HDXX13IuSpX8wkJKI?si=70125441173f4b50" target="_blank" class="btn btn-spotify" style="display:inline-flex; width:auto; padding:0.4rem 1rem;">
-                      <i class="fa-solid fa-play"></i> Open in Spotify
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="fast-card border-blue">
-                <h3 class="fast-heading neon-blue"><i class="fa-solid fa-share-nodes"></i> Digital Channels</h3>
-                <div class="quick-nav-stack">
-                  <a href="https://www.instagram.com/w_pandya108" target="_blank" class="quick-nav-btn" style="text-decoration:none;">
-                    <span><i class="fa-brands fa-instagram neon-red"></i> Personal Instagram (@w_pandya108)</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                  <a href="https://www.instagram.com/launchloop.team" target="_blank" class="quick-nav-btn" style="text-decoration:none;">
-                    <span><i class="fa-solid fa-rocket neon-orange"></i> LaunchLoop Tech Studio (@launchloop.team)</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </a>
-                  <button onclick="navigateTo('about')" class="quick-nav-btn">
-                    <span><i class="fa-solid fa-user neon-blue"></i> Full Bio & Academic Timeline</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </button>
-                </div>
-              </div>
+            <div class="fast-card border-yellow">
+              <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
+              <a href="https://open.spotify.com/playlist/2ZzM6HDXX13IuSpX8wkJKI?si=70125441173f4b50" target="_blank" class="spotify-clean-btn">
+                <i class="fa-brands fa-spotify spotify-pure-icon"></i>
+                <span class="spotify-btn-text">Boomer? Yes</span>
+              </a>
             </div>
 
           </div>
         </div>
 
-        <!-- DASHBOARD C: BATCHMATE VIEW -->
-        <div id="persona-batchmate" class="persona-dashboard" style="display: none;">
+        <div id="persona-batchmate" class="persona-dashboard">
           <div class="dashboard-hero-card border-blue">
             <div class="hero-top-row">
               <div>
@@ -347,7 +306,7 @@
                 <a href="https://www.instagram.com/launchloop.team" target="_blank" class="btn btn-orange">
                   <i class="fa-solid fa-rocket"></i> LaunchLoop Studio
                 </a>
-                <button onclick="copyToClipboard('iYoungLord#5710', 'Valorant ID Copied! Ready to queue.')" class="btn btn-blue">
+                <button onclick="window.copyToClipboard('iYoungLord#5710', 'Valorant ID Copied! Ready to queue.')" class="btn btn-blue">
                   <i class="fa-solid fa-gamepad"></i> Queue Valorant
                 </button>
               </div>
@@ -363,7 +322,7 @@
             <div class="kpi-card border-yellow">
               <span class="kpi-number neon-yellow">7.70 CGPA</span>
               <span class="kpi-title">VIT Chennai CSE</span>
-              <p class="kpi-detail">Class of 2025 &bull; Core CS foundations: OS, DBMS, Networks & Architecture.</p>
+              <p class="kpi-detail">Class of 2025 • Core CS foundations: OS, DBMS, Networks & Architecture.</p>
             </div>
             <div class="kpi-card border-red">
               <span class="riot-id-text neon-red">@iYoungLord#5710</span>
@@ -407,15 +366,15 @@
             <div class="fast-card border-orange">
               <h3 class="fast-heading neon-orange"><i class="fa-solid fa-cubes"></i> Explore Tech Blueprints</h3>
               <div class="quick-nav-stack">
-                <button onclick="navigateTo('projects')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('projects')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-diagram-project neon-yellow"></i> Production Architecture Projects</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateTo('tools')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('tools')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-toolbox neon-orange"></i> Full Tech Stack & Skills Matrix</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
-                <button onclick="navigateTo('experience')" class="quick-nav-btn">
+                <button onclick="window.navigateTo('experience')" class="quick-nav-btn">
                   <span><i class="fa-solid fa-briefcase neon-red"></i> Verified Internship Track Record</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -431,15 +390,12 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 1: ABOUT ME PAGE
-    ========================================= -->
     <section id="page-about" class="page-view">
       <div class="container">
         
         <div class="about-page-header">
           <h2 class="about-main-title">About Me</h2>
-          <p class="about-sub-title neon-blue">Systems Engineering &bull; Cloud Infrastructure &bull; Core Computing</p>
+          <p class="about-sub-title neon-blue">Systems Engineering • Cloud Infrastructure • Core Computing</p>
         </div>
 
         <div class="about-hero-layout">
@@ -470,7 +426,7 @@
             <div class="edu-card border-blue">
               <h4 class="edu-degree">Bachelor of Technology in Computer Science & Engineering</h4>
               <p class="edu-institute">Vellore Institute of Technology (VIT Chennai)</p>
-              <p class="edu-meta"><span class="neon-yellow">2021 &ndash; 2025</span> &bull; <strong>CGPA: 7.70</strong></p>
+              <p class="edu-meta"><span class="neon-yellow">2021 – 2025</span> • <strong>CGPA: 7.70</strong></p>
               <p class="edu-coursework"><strong>Key Focus:</strong> Distributed Systems, Operating Systems, Database Management Systems, Data Structures & Algorithms</p>
             </div>
           </div>
@@ -511,7 +467,7 @@
           <p class="get-touch-subtitle">Open for conversations on cloud architecture, backend systems, and engineering roles.</p>
           
           <div class="social-circle-row">
-            <button onclick="openEmailClient()" class="social-circle circle-red" title="Send Email (shubhaiml1@gmail.com)">
+            <button onclick="window.openEmailClient()" class="social-circle circle-red" title="Send Email (shubhaiml1@gmail.com)">
               <i class="fa-solid fa-envelope"></i>
             </button>
             <a href="https://www.linkedin.com/in/shubh-pandya-sp" target="_blank" class="social-circle circle-blue" title="LinkedIn Profile">
@@ -529,9 +485,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 2: PROJECTS PAGE
-    ========================================= -->
     <section id="page-projects" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
@@ -559,7 +512,7 @@
               <span class="tag">GitHub Actions</span>
             </div>
             <div class="project-footer">
-              <a href="https://github.com/ShubhPandya/shubh-portfolio" target="_blank" class="repo-link neon-orange"><i class="fa-brands fa-github"></i> Inspect GitHub Repository &rarr;</a>
+              <a href="https://github.com/ShubhPandya/shubh-portfolio" target="_blank" class="repo-link neon-orange"><i class="fa-brands fa-github"></i> Inspect GitHub Repository →</a>
             </div>
           </div>
 
@@ -585,7 +538,7 @@
               <span class="tag">Scikit-Learn</span>
             </div>
             <div class="project-footer">
-              <a href="https://github.com/ShubhPandya" target="_blank" class="repo-link neon-blue"><i class="fa-brands fa-github"></i> Inspect GitHub Repository &rarr;</a>
+              <a href="https://github.com/ShubhPandya" target="_blank" class="repo-link neon-blue"><i class="fa-brands fa-github"></i> Inspect GitHub Repository →</a>
             </div>
           </div>
 
@@ -593,9 +546,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 3: EXPERIENCE PAGE
-    ========================================= -->
     <section id="page-experience" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
@@ -607,7 +557,7 @@
                 <h3 class="exp-org neon-red">Genisys Group</h3>
                 <div class="exp-role">Software Engineer Intern</div>
               </div>
-              <div class="exp-timeline neon-yellow">Feb 2025 &ndash; May 2025 &bull; Bangalore, India</div>
+              <div class="exp-timeline neon-yellow">Feb 2025 – May 2025 • Bangalore, India</div>
             </div>
             <div class="exp-desc">
               <p>Contributed to an automated code quality validation engine to detect software anti-patterns and maintainability metrics across codebases. Integrated machine learning classification models into active CI/CD pipelines to assess syntax structure and enforce code readability standards automatically.</p>
@@ -626,7 +576,7 @@
                 <h3 class="exp-org neon-blue">Squadron Technology</h3>
                 <div class="exp-role">Cloud & Data Engineer Intern</div>
               </div>
-              <div class="exp-timeline neon-yellow">Sept 2023 &ndash; Nov 2023 &bull; Ahmedabad, India</div>
+              <div class="exp-timeline neon-yellow">Sept 2023 – Nov 2023 • Ahmedabad, India</div>
             </div>
             <div class="exp-desc">
               <p>Built real-time streaming ETL pipelines using Python and Apache Kafka to ingest, validate, and clean event data for low-latency analytics. Designed structured schemas and automated ingestion workflows into MySQL databases with alerting hooks to eliminate pipeline downtime.</p>
@@ -643,9 +593,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 4: CERTIFICATIONS PAGE
-    ========================================= -->
     <section id="page-certifications" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
@@ -657,7 +604,7 @@
                 <i class="fa-brands fa-aws cert-logo neon-yellow"></i>
                 <div>
                   <h3>AWS Certified Cloud Practitioner (CCP)</h3>
-                  <span class="cert-org neon-orange">Amazon Web Services (AWS) &bull; Active (2026)</span>
+                  <span class="cert-org neon-orange">Amazon Web Services (AWS) • Active (2026)</span>
                 </div>
               </div>
               <a href="https://www.credly.com/badges/09ee341d-97aa-47b1-ac16-6ac2c0cfddc8/public_url" target="_blank" class="verify-badge-btn"><i class="fa-solid fa-award"></i> Verify Badge &nearr;</a>
@@ -686,9 +633,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 5: TOOLS & SKILLS PAGE
-    ========================================= -->
     <section id="page-tools" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
@@ -734,10 +678,10 @@
 
   <footer class="footer" id="app-footer">
     <div class="container">
-      <p>&copy; 2026 Shubh Pandya. All rights reserved &bull; Hosted on AWS Serverless</p>
+      <p>© 2026 Shubh Pandya. All rights reserved • Hosted on AWS Serverless</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4.0"></script>
 </body>
 </html>
