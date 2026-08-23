@@ -317,7 +317,6 @@ body.role-screen-active .footer {
 .btn-blue   { background: var(--neon-blue);   color: #000; }
 .btn-spotify { background: #1db954; color: #000; font-weight: 700; }
 .btn-insta   { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
-.btn-discord { background: #5865f2; color: #fff; }
 .btn-outline-blue {
   background: transparent;
   color: var(--neon-blue);
@@ -358,6 +357,15 @@ body.role-screen-active .footer {
 }
 
 .page-view.active { display: block; }
+
+/* Persona sub-dashboard display controller */
+.persona-dashboard {
+  display: none;
+}
+
+.persona-dashboard.active {
+  display: block;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
