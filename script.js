@@ -53,19 +53,21 @@ function updateCounterUI(data) {
 }
 
 /* ==========================================================================
-   PERSONA SWITCHING & DASHBOARD DISPLAY
+   EXPLICIT DASHBOARD DISPLAY CONTROLLER
    ========================================================================== */
 function activatePersonaDashboard(roleKey) {
-  // Hide all persona dashboards
-  document.querySelectorAll(".persona-dashboard").forEach((dash) => {
-    dash.classList.remove("active");
+  const dashboards = ["recruiter", "admirer", "batchmate"];
+  
+  dashboards.forEach((d) => {
+    const el = document.getElementById(`persona-${d}`);
+    if (el) {
+      if (d === roleKey) {
+        el.style.display = "block";
+      } else {
+        el.style.display = "none";
+      }
+    }
   });
-
-  // Exclusively show chosen persona dashboard
-  const targetDashboard = document.getElementById(`persona-${roleKey}`);
-  if (targetDashboard) {
-    targetDashboard.classList.add("active");
-  }
 }
 
 /* ==========================================================================
@@ -128,7 +130,7 @@ function enterPortfolio(roleKey) {
   badge.innerText = role.badge;
   badge.className = `nav-role-badge ${role.color}`;
 
-  // Mount the chosen dashboard sub-view
+  // Hardcode explicit display for only the selected persona dashboard
   activatePersonaDashboard(roleKey);
 
   // Remove viewport scroll lock

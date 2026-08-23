@@ -103,13 +103,13 @@
   <main id="main-content-screen" class="view-screen">
     
     <!-- =========================================
-         PAGE 0: DYNAMIC DASHBOARD CONTAINER
+         PAGE 0: DYNAMIC DASHBOARDS (INDEPENDENT)
     ========================================= -->
     <section id="page-dashboard" class="page-view active">
       <div class="container">
         
         <!-- DASHBOARD A: RECRUITER VIEW -->
-        <div id="persona-recruiter" class="persona-dashboard active">
+        <div id="persona-recruiter" class="persona-dashboard" style="display:none;">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
               <div>
@@ -203,7 +203,7 @@
         </div>
 
         <!-- DASHBOARD B: ADMIRER / STALKER VIEW -->
-        <div id="persona-admirer" class="persona-dashboard">
+        <div id="persona-admirer" class="persona-dashboard" style="display:none;">
           <div class="dashboard-hero-card border-red">
             <div class="hero-top-row">
               <div>
@@ -248,52 +248,52 @@
           </div>
 
           <div class="dashboard-fast-grid">
-            <!-- Column 1: Top 5 Psychological Thrillers (Clean Aesthetic Poster Cards) -->
+            <!-- Column 1: Top 5 Psychological Thrillers (Compact Side-by-Side Thumbnail Layout) -->
             <div class="fast-card border-red">
               <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Top 5 Mind-Bending Thrillers</h3>
-              <div class="movie-posters-stack">
+              <div class="movie-compact-stack">
                 
                 <!-- 1. Shutter Island -->
-                <div class="movie-poster-card">
-                  <img src="https://image.tmdb.org/t/p/w300/4GDy0PHYX3VRXUtwK5ysagvkpEj.jpg" alt="Shutter Island" />
-                  <div class="movie-poster-details">
-                    <h4 class="neon-orange">1. Shutter Island (2010)</h4>
+                <div class="movie-compact-card">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Shutterislandposter.jpg" alt="Shutter Island" class="movie-thumb" />
+                  <div class="movie-compact-text">
+                    <h4 class="neon-orange">1. Shutter Island</h4>
                     <p>"Proof that sanity is just a matter of perspective (and bad lighthouses)."</p>
                   </div>
                 </div>
 
                 <!-- 2. Fight Club (Censored) -->
-                <div class="movie-poster-card">
-                  <img src="https://image.tmdb.org/t/p/w300/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg" alt="***** ****" />
-                  <div class="movie-poster-details">
-                    <h4 class="neon-red">2. ***** **** (1999)</h4>
+                <div class="movie-compact-card">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg" alt="***** ****" class="movie-thumb" />
+                  <div class="movie-compact-text">
+                    <h4 class="neon-red">2. ***** ****</h4>
                     <p>"Rule #1 broken instantly; soap has never been this disruptive."</p>
                   </div>
                 </div>
 
                 <!-- 3. Se7en -->
-                <div class="movie-poster-card">
-                  <img src="https://image.tmdb.org/t/p/w300/6yoghtyTpznpBik8EngEmJskVUO.jpg" alt="Se7en" />
-                  <div class="movie-poster-details">
-                    <h4 class="neon-yellow">3. Se7en (1995)</h4>
+                <div class="movie-compact-card">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/6/68/Seven_%28movie%29_poster.jpg" alt="Se7en" class="movie-thumb" />
+                  <div class="movie-compact-text">
+                    <h4 class="neon-yellow">3. Se7en</h4>
                     <p>"Never ask what's in the box unless you're ready to question humanity."</p>
                   </div>
                 </div>
 
                 <!-- 4. Primal Fear -->
-                <div class="movie-poster-card">
-                  <img src="https://image.tmdb.org/t/p/w300/eI4UvWz8i1c2sPZz8O74xWl72hK.jpg" alt="Primal Fear" />
-                  <div class="movie-poster-details">
-                    <h4 class="neon-blue">4. Primal Fear (1996)</h4>
+                <div class="movie-compact-card">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/8/85/Primal_Fear_film_poster.jpg" alt="Primal Fear" class="movie-thumb" />
+                  <div class="movie-compact-text">
+                    <h4 class="neon-blue">4. Primal Fear</h4>
                     <p>"A masterclass in why stuttering defense clients need psychiatric therapy."</p>
                   </div>
                 </div>
 
                 <!-- 5. Zodiac -->
-                <div class="movie-poster-card">
-                  <img src="https://image.tmdb.org/t/p/w300/6YmeNuH4RKn8SR0ZaqA2Z9qOmcv.jpg" alt="Zodiac" />
-                  <div class="movie-poster-details">
-                    <h4 class="neon-orange">5. Zodiac (2007)</h4>
+                <div class="movie-compact-card">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/3/3a/Zodiac2007Poster.jpg" alt="Zodiac" class="movie-thumb" />
+                  <div class="movie-compact-text">
+                    <h4 class="neon-orange">5. Zodiac</h4>
                     <p>"Obsession is a hell of a drug, especially when the cipher never ends."</p>
                   </div>
                 </div>
@@ -301,44 +301,50 @@
               </div>
             </div>
 
-            <!-- Column 2: Vintage Spotify Banner & Digital Channels -->
-            <div class="fast-card border-yellow">
-              <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
-              
-              <div class="spotify-retro-banner">
-                <div class="spotify-cassette-art">
-                  <i class="fa-solid fa-record-vinyl"></i>
-                </div>
-                <div class="spotify-banner-info">
-                  <h4>70s • 80s • 90s Golden Era</h4>
-                  <p>Analog synth riffs, classic rock anthems & vintage grooves on loop.</p>
-                  <a href="https://open.spotify.com/playlist/2ZzM6HDXX13IuSpX8wkJKI?si=70125441173f4b50" target="_blank" class="btn btn-spotify" style="display:inline-flex; width:auto; padding:0.4rem 1rem;">
-                    <i class="fa-solid fa-play"></i> Open in Spotify
-                  </a>
+            <!-- Column 2: Audio Spectrum (Yellow Border) & Digital Channels (Blue Border) -->
+            <div class="right-stack-column">
+              <!-- Audio Spectrum Tile -->
+              <div class="fast-card border-yellow" style="margin-bottom: 1.5rem;">
+                <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
+                <div class="spotify-retro-banner">
+                  <div class="spotify-cassette-art">
+                    <i class="fa-solid fa-record-vinyl"></i>
+                  </div>
+                  <div class="spotify-banner-info">
+                    <h4>70s • 80s • 90s Golden Era</h4>
+                    <p>Analog synth riffs, classic rock anthems & vintage grooves on loop.</p>
+                    <a href="https://open.spotify.com/playlist/2ZzM6HDXX13IuSpX8wkJKI?si=70125441173f4b50" target="_blank" class="btn btn-spotify" style="display:inline-flex; width:auto; padding:0.4rem 1rem;">
+                      <i class="fa-solid fa-play"></i> Open in Spotify
+                    </a>
+                  </div>
                 </div>
               </div>
 
-              <h3 class="fast-heading neon-blue" style="margin-top:1.5rem;"><i class="fa-solid fa-share-nodes"></i> Digital Channels</h3>
-              <div class="quick-nav-stack">
-                <a href="https://www.instagram.com/w_pandya108" target="_blank" class="quick-nav-btn" style="text-decoration:none;">
-                  <span><i class="fa-brands fa-instagram neon-red"></i> Personal Instagram (@w_pandya108)</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-                <a href="https://www.instagram.com/launchloop.team" target="_blank" class="quick-nav-btn" style="text-decoration:none;">
-                  <span><i class="fa-solid fa-rocket neon-orange"></i> LaunchLoop Tech Studio (@launchloop.team)</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-                <button onclick="navigateToSection('about')" class="quick-nav-btn">
-                  <span><i class="fa-solid fa-user neon-blue"></i> Full Bio & Academic Timeline</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
+              <!-- Digital Channels Tile -->
+              <div class="fast-card border-blue">
+                <h3 class="fast-heading neon-blue"><i class="fa-solid fa-share-nodes"></i> Digital Channels</h3>
+                <div class="quick-nav-stack">
+                  <a href="https://www.instagram.com/w_pandya108" target="_blank" class="quick-nav-btn" style="text-decoration:none;">
+                    <span><i class="fa-brands fa-instagram neon-red"></i> Personal Instagram (@w_pandya108)</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                  <a href="https://www.instagram.com/launchloop.team" target="_blank" class="quick-nav-btn" style="text-decoration:none;">
+                    <span><i class="fa-solid fa-rocket neon-orange"></i> LaunchLoop Tech Studio (@launchloop.team)</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                  <button onclick="navigateToSection('about')" class="quick-nav-btn">
+                    <span><i class="fa-solid fa-user neon-blue"></i> Full Bio & Academic Timeline</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
         <!-- DASHBOARD C: BATCHMATE VIEW -->
-        <div id="persona-batchmate" class="persona-dashboard">
+        <div id="persona-batchmate" class="persona-dashboard" style="display:none;">
           <div class="dashboard-hero-card border-blue">
             <div class="hero-top-row">
               <div>

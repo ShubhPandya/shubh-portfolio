@@ -315,7 +315,7 @@ body.role-screen-active .footer {
 .btn-orange { background: var(--neon-orange); color: #000; }
 .btn-red    { background: var(--neon-red);    color: #fff; }
 .btn-blue   { background: var(--neon-blue);   color: #000; }
-.btn-spotify { background: #1db954; color: #000; font-weight: 700; }
+.btn-spotify { background: #1ed760; color: #000; font-weight: 700; }
 .btn-insta   { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
 .btn-outline-blue {
   background: transparent;
@@ -357,15 +357,6 @@ body.role-screen-active .footer {
 }
 
 .page-view.active { display: block; }
-
-/* STRICT PERSONA DASHBOARD SCOPING (BUG 1 FIX) */
-.persona-dashboard {
-  display: none !important;
-}
-
-.persona-dashboard.active {
-  display: block !important;
-}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }
@@ -450,7 +441,6 @@ body.role-screen-active .footer {
   margin-bottom: 0.2rem;
 }
 
-/* RIOT ID TEXT OVERFLOW FIX (BUG 2 FIX) */
 .riot-id-text {
   font-size: clamp(0.95rem, 1.2vw, 1.25rem);
   font-weight: 800;
@@ -555,26 +545,70 @@ body.role-screen-active .footer {
 }
 
 /* =========================================
-   SPOTIFY RETRO BANNER & MOVIE POSTERS
+   COMPACT MOVIE POSTER LIST & AUDIO BANNER
 ========================================= */
-.spotify-retro-banner {
-  background: linear-gradient(135deg, #11121c 0%, #1e1026 50%, #0d1e24 100%);
-  border: 1px solid rgba(29, 185, 84, 0.4);
-  box-shadow: 0 8px 25px rgba(29, 185, 84, 0.15);
-  border-radius: 12px;
-  padding: 1.5rem;
+.movie-compact-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.movie-compact-card {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.movie-compact-card:hover {
+  transform: translateX(4px);
+  border-color: var(--neon-red);
+}
+
+.movie-thumb {
+  width: 42px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  background: #111;
+}
+
+.movie-compact-text h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+  font-weight: 700;
+}
+
+.movie-compact-text p {
+  font-size: 0.8rem;
+  color: #cfd4df;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+.spotify-retro-banner {
+  background: linear-gradient(135deg, #0e1913 0%, #121f18 50%, #0d0f14 100%);
+  border: 1px solid rgba(30, 215, 96, 0.35);
+  box-shadow: 0 8px 25px rgba(30, 215, 96, 0.12);
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .spotify-cassette-art {
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   background: #000;
-  border: 2px solid #1db954;
-  border-radius: 10px;
+  border: 2px solid #1ed760;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -582,8 +616,8 @@ body.role-screen-active .footer {
 }
 
 .spotify-cassette-art i {
-  font-size: 2.4rem;
-  color: #1db954;
+  font-size: 2rem;
+  color: #1ed760;
 }
 
 .spotify-banner-info {
@@ -591,61 +625,15 @@ body.role-screen-active .footer {
 }
 
 .spotify-banner-info h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #fff;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .spotify-banner-info p {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  margin-bottom: 0.8rem;
-}
-
-/* Movie Posters Layout (BUG 3 & 4 FIX) */
-.movie-posters-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.movie-poster-card {
-  display: flex;
-  gap: 1.2rem;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  align-items: center;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.movie-poster-card:hover {
-  transform: translateX(4px);
-  border-color: var(--neon-red);
-}
-
-.movie-poster-card img {
-  width: 60px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-  flex-shrink: 0;
-  background: #151620;
-}
-
-.movie-poster-details h4 {
-  font-size: 1rem;
-  color: #fff;
-  margin-bottom: 0.3rem;
-}
-
-.movie-poster-details p {
-  font-size: 0.85rem;
-  color: #d1d5db;
-  font-style: italic;
-  line-height: 1.4;
+  margin-bottom: 0.6rem;
 }
 
 /* Borders & Themes */
