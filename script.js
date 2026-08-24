@@ -112,7 +112,7 @@ window.selectPersona = function(roleKey, pushToHistory = true) {
   if (roleScreen) roleScreen.classList.remove("active");
   if (mainScreen) mainScreen.classList.add("active");
 
-  activatePersonaDashboard(roleKey);
+  window.activatePersonaDashboard(roleKey);
   window.renderSection("dashboard", roleKey, pushToHistory);
 };
 
@@ -130,7 +130,7 @@ function updateNavbarBadge(roleKey) {
   }
 }
 
-window.activatePersonaDashboard(roleKey) {
+window.activatePersonaDashboard = function(roleKey) {
   const dashboards = ["recruiter", "admirer", "batchmate"];
   dashboards.forEach((d) => {
     const el = document.getElementById(`persona-${d}`);
@@ -142,7 +142,7 @@ window.activatePersonaDashboard(roleKey) {
       }
     }
   });
-}
+};
 
 window.navigateTo = function(sectionId, pushToHistory = true) {
   const persona = window.currentPersona || localStorage.getItem("sp_persona") || "recruiter";
