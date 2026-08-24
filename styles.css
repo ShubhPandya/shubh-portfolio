@@ -36,13 +36,17 @@ body {
   line-height: 1.5;
 }
 
+/* Zero-Scroll Lock for Screen 1 & Hide Navigation Elements on Selector */
 body.role-screen-active {
   height: 100vh;
   max-height: 100vh;
   overflow: hidden;
 }
 
-body.role-screen-active .footer {
+body.role-screen-active .footer,
+body.role-screen-active .persona-switcher-wrapper,
+body.role-screen-active .burger-btn,
+body.role-screen-active .dropdown-menu {
   display: none !important;
 }
 

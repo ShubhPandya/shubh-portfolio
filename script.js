@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ==========================================================================
-   BRAND LOGO CLICK ROUTING (CHANGE 1)
+   BRAND LOGO CLICK ROUTING
    ========================================================================== */
 window.onBrandClick = function() {
   if (window.currentPersona && ROLE_CONFIG[window.currentPersona]) {
@@ -66,7 +66,7 @@ window.onBrandClick = function() {
 };
 
 /* ==========================================================================
-   PERSONA BADGE DROPDOWN SWITCHER (CHANGE 2)
+   PERSONA BADGE DROPDOWN SWITCHER
    ========================================================================== */
 window.togglePersonaMenu = function() {
   const dropdown = document.getElementById("persona-dropdown-list");
@@ -85,7 +85,7 @@ window.switchDirectPersona = function(roleKey) {
 };
 
 /* ==========================================================================
-   GLOBAL PERSONA ROUTING (STATE PERSISTENCE FIX - CHANGE 3)
+   GLOBAL PERSONA ROUTING (STATE PERSISTENCE FIX)
    ========================================================================== */
 window.selectPersona = function(roleKey, pushToHistory = true) {
   if (!ROLE_CONFIG[roleKey]) roleKey = "recruiter";
@@ -226,9 +226,9 @@ window.renderPersonaSelector = function(pushToHistory = true) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-/* ==========================================================================
+/* ==========================================
    API TELEMETRY
-   ========================================================================== */
+   ========================================== */
 async function fetchRoleCounters() {
   try {
     const res = await fetch(API_URL);
@@ -261,9 +261,9 @@ function updateCounterUI(data) {
   if (bat) bat.innerText = data.batchmate_views ?? 0;
 }
 
-/* ==========================================================================
+/* ==========================================
    BURGER MENU & UTILITIES
-   ========================================================================== */
+   ========================================== */
 window.toggleMenu = function() {
   const dropdownMenu = document.getElementById("dropdown-menu");
   if (dropdownMenu) dropdownMenu.classList.toggle("active");
