@@ -56,13 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ==========================================================================
-   BRAND LOGO CLICK ROUTING
+   BRAND LOGO CLICK ROUTING (DO NOTHING ON PERSONA SCREEN)
    ========================================================================== */
 window.onBrandClick = function() {
+  const roleScreen = document.getElementById("role-selector-screen");
+  
+  // If user is currently on the select persona screen, do nothing
+  if (roleScreen && roleScreen.classList.contains("active")) {
+    return;
+  }
+
+  // Only navigate to dashboard if already inside an active persona
   if (window.currentPersona && ROLE_CONFIG[window.currentPersona]) {
     window.navigateTo("dashboard", true);
-  } else {
-    window.switchPersonaScreen(true);
   }
 };
 
@@ -124,7 +130,7 @@ function updateNavbarBadge(roleKey) {
   }
 }
 
-window.activatePersonaDashboard = function(roleKey) {
+window.activatePersonaDashboard(roleKey) {
   const dashboards = ["recruiter", "admirer", "batchmate"];
   dashboards.forEach((d) => {
     const el = document.getElementById(`persona-${d}`);
@@ -136,7 +142,7 @@ window.activatePersonaDashboard = function(roleKey) {
       }
     }
   });
-};
+}
 
 window.navigateTo = function(sectionId, pushToHistory = true) {
   const persona = window.currentPersona || localStorage.getItem("sp_persona") || "recruiter";
