@@ -20,6 +20,7 @@ window.currentView = localStorage.getItem("sp_view") || "home";
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   setupOutsideClickListeners();
+  setupTouchTooltips();
   fetchRoleCounters();
 
   // Parse state from URL hash and localStorage
@@ -92,17 +93,12 @@ window.selectPersona = function(roleKey, pushToHistory = true) {
   window.currentPersona = roleKey;
   window.currentView = "dashboard";
 
-  // Persist choice across page refreshes
   localStorage.setItem("sp_persona", roleKey);
   localStorage.setItem("sp_view", "dashboard");
 
-  // Fire telemetry increment asynchronously
   incrementRoleCounter(roleKey);
-
-  // Update Navbar Badge UI
   updateNavbarBadge(roleKey);
 
-  // Switch Screen Views
   document.body.classList.remove("role-screen-active");
   
   const roleScreen = document.getElementById("role-selector-screen");
@@ -110,10 +106,7 @@ window.selectPersona = function(roleKey, pushToHistory = true) {
   if (roleScreen) roleScreen.classList.remove("active");
   if (mainScreen) mainScreen.classList.add("active");
 
-  // Activate matching dashboard sub-view
   activatePersonaDashboard(roleKey);
-
-  // Render dashboard page
   window.renderSection("dashboard", roleKey, pushToHistory);
 };
 
@@ -225,6 +218,20 @@ window.renderPersonaSelector = function(pushToHistory = true) {
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+/* ==========================================
+   MOBILE TOOLTIP TOUCH HANDLER
+   ========================================== */
+function setupTouchTooltips() {
+  document.querySelectorAll(".skill-item").forEach((item) => {
+    item.addEventListener("touchstart", function() {
+      document.querySelectorAll(".skill-item").forEach((el) => {
+        if (el !== item) el.blur();
+      });
+      item.focus();
+    }, { passive: true });
+  });
+}
 
 /* ==========================================
    API TELEMETRY

@@ -772,6 +772,12 @@ body.role-screen-active .dropdown-menu {
   color: var(--text-muted);
 }
 
+/* Custom Inline SVG for Cricket */
+.cricket-icon-svg {
+  display: block;
+  color: var(--neon-blue);
+}
+
 /* Borders & Themes */
 .border-blue   { border-left: 4px solid var(--neon-blue) !important; }
 .border-yellow { border-left: 4px solid var(--neon-yellow) !important; }
@@ -907,7 +913,15 @@ body.role-screen-active .dropdown-menu {
   align-items: flex-start;
 }
 
-.pointer-badge { font-size: 1rem; margin-top: 2px; }
+.pointer-badge { 
+  font-size: 1rem; 
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  flex-shrink: 0;
+}
 
 .get-in-touch-section {
   text-align: center;
@@ -1050,8 +1064,14 @@ body.role-screen-active .dropdown-menu {
 
 .tools-group { margin-bottom: 2.2rem; }
 .group-title { font-size: 1.05rem; font-family: var(--font-mono); margin-bottom: 0.9rem; display: flex; align-items: center; gap: 8px; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 1rem; }
+.skills-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); 
+  gap: 1.2rem; 
+  position: relative;
+}
 
+/* FIXED MOBILE/DESKTOP TOOLTIP STACKING (NEVER OVERLAPS ROWS) */
 .skill-item {
   background: var(--bg-card);
   aspect-ratio: 1;
@@ -1064,28 +1084,45 @@ body.role-screen-active .dropdown-menu {
   border: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.skill-item:hover { transform: translateY(-4px); border-color: var(--neon-blue); }
+.skill-item:hover,
+.skill-item:focus,
+.skill-item:active {
+  transform: translateY(-4px);
+  border-color: var(--neon-blue);
+  z-index: 100 !important; /* Elevated above all other cards */
+}
+
 .skill-item::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: -32px;
+  bottom: calc(100% + 10px); /* Displayed ABOVE the icon */
   left: 50%;
   transform: translateX(-50%);
-  background: #000;
+  background: #0d0e14;
   color: #fff;
-  padding: 3px 7px;
-  font-size: 0.72rem;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
   white-space: nowrap;
-  border-radius: 4px;
+  border-radius: 6px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   border: 1px solid var(--neon-blue);
-  z-index: 10;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.85);
+  z-index: 101 !important;
 }
-.skill-item:hover::after { opacity: 1; }
+
+.skill-item:hover::after,
+.skill-item:focus::after,
+.skill-item:active::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-3px);
+}
 
 .footer {
   text-align: center;
