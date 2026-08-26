@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shubh Pandya | Cloud & Backend Systems</title>
-  <link rel="stylesheet" href="styles.css?v=8.0" />
+  <link rel="stylesheet" href="styles.css?v=9.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Devicon Library for Frontend, Framework & Cloud Logos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body class="theme-black role-screen-active">
 
@@ -498,7 +500,6 @@
                 </div>
               </li>
               <li>
-                <!-- Clean Inline SVG Cricket Bat & Ball -->
                 <div class="pointer-badge neon-blue">
                   <svg class="cricket-icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                     <path d="M19.4 2.6a1.5 1.5 0 0 0-2.1 0l-1.8 1.8 2.1 2.1 1.8-1.8a1.5 1.5 0 0 0 0-2.1zM14.1 5.8l-8.6 8.6c-.4.4-.7 1-.7 1.6v3.5c0 .8.7 1.5 1.5 1.5h3.5c.6 0 1.2-.3 1.6-.7l8.6-8.6-5.9-5.9z"/>
@@ -556,8 +557,37 @@
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
         <div class="projects-tile-grid">
+          
+          <!-- Project 1: CloudVault -->
+          <div class="project-tile border-yellow">
+            <div class="project-tile-header">
+              <div class="project-title-group">
+                <i class="fa-solid fa-vault neon-yellow project-icon"></i>
+                <div>
+                  <h3>CloudVault: Secure Cloud Storage & Access System</h3>
+                  <span class="badge-tag neon-yellow">Cloud Infrastructure & Security</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-summary">
+              Architected a high-security, resilient cloud storage management system leveraging AWS core primitives and granular IAM security postures. Engineered secure object lifecycle policies, encrypted data access channels, and fine-grained access control to prevent unauthorized data exposure.
+            </p>
+            <div class="tech-stack-row">
+              <span class="tag">Next.js</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">AWS S3</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">AWS SQS</span>
+              <span class="tag">Redis</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/ShubhPandya/CloudVault" target="_blank" class="repo-link neon-yellow">
+                <i class="fa-brands fa-github"></i> Inspect GitHub Repository →
+              </a>
+            </div>
+          </div>
 
-          <!-- Project 1: Serverless Cloud Portfolio Architecture -->
+          <!-- Project 2: Serverless Cloud Portfolio Architecture -->
           <div class="project-tile border-orange">
             <div class="project-tile-header">
               <div class="project-title-group">
@@ -581,35 +611,6 @@
             </div>
             <div class="project-footer">
               <a href="https://github.com/ShubhPandya/shubh-portfolio" target="_blank" class="repo-link neon-orange">
-                <i class="fa-brands fa-github"></i> Inspect GitHub Repository →
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 2: CloudVault -->
-          <div class="project-tile border-yellow">
-            <div class="project-tile-header">
-              <div class="project-title-group">
-                <i class="fa-solid fa-vault neon-yellow project-icon"></i>
-                <div>
-                  <h3>CloudVault: Serverless Digital Asset Management Pipeline</h3>
-                  <span class="badge-tag neon-yellow">Full-Stack Cloud & Event-Driven Serverless</span>
-                </div>
-              </div>
-            </div>
-            <p class="project-summary">
-              Architected an event-driven asset management platform streaming direct-to-S3 uploads via presigned URLs to bypass API server bottlenecks. Decoupled background media processing asynchronously using Amazon SQS and AWS Lambda (Pillow) with single-table DynamoDB metadata indexing. Enforced zero-trust asset distribution with Amazon CloudFront Origin Access Control (OAC) and JWT-authenticated access controls.
-            </p>
-            <div class="tech-stack-row">
-              <span class="tag">Next.js 14</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">AWS S3</span>
-              <span class="tag">Amazon SQS</span>
-              <span class="tag">AWS Lambda</span>
-              <span class="tag">AWS SAM</span>
-            </div>
-            <div class="project-footer">
-              <a href="https://github.com/ShubhPandya/CloudVault" target="_blank" class="repo-link neon-yellow">
                 <i class="fa-brands fa-github"></i> Inspect GitHub Repository →
               </a>
             </div>
@@ -713,41 +714,85 @@
     </section>
 
     <!-- =========================================
-         SECTION 5: TOOLS & SKILLS PAGE
+         SECTION 5: TOOLS & SKILLS PAGE (COMPREHENSIVE)
     ========================================= -->
     <section id="page-tools" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
         
+        <!-- Category 1: AWS Cloud & Serverless Infrastructure -->
         <div class="tools-group">
-          <h3 class="group-title neon-orange"><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h3>
+          <h3 class="group-title neon-orange"><i class="fa-solid fa-cloud"></i> AWS Cloud & Serverless Infrastructure</h3>
           <div class="skills-grid">
-            <div class="skill-item" data-tooltip="AWS Cloud Infrastructure" tabindex="0"><i class="fa-brands fa-aws neon-orange"></i></div>
-            <div class="skill-item" data-tooltip="Docker Containerization" tabindex="0"><i class="fa-brands fa-docker neon-blue"></i></div>
-            <div class="skill-item" data-tooltip="GitHub Actions CI/CD" tabindex="0"><i class="fa-brands fa-github neon-red"></i></div>
-            <div class="skill-item" data-tooltip="Git Version Control" tabindex="0"><i class="fa-brands fa-git-alt neon-orange"></i></div>
-            <div class="skill-item" data-tooltip="Linux & Bash Scripting" tabindex="0"><i class="fa-brands fa-linux neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Amazon CloudFront (CDN)" tabindex="0"><i class="fa-solid fa-network-wired neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Amazon S3 Object Storage" tabindex="0"><i class="fa-solid fa-box-archive neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="AWS Lambda (Serverless Compute)" tabindex="0"><i class="fa-solid fa-bolt neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Amazon API Gateway (REST APIs)" tabindex="0"><i class="fa-solid fa-server neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Amazon DynamoDB (NoSQL Single-Table)" tabindex="0"><i class="fa-solid fa-cubes neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Amazon SQS (Task Queues & DLQ)" tabindex="0"><i class="fa-solid fa-layer-group neon-red"></i></div>
+            <div class="skill-item" data-tooltip="AWS IAM (Least-Privilege Security)" tabindex="0"><i class="fa-solid fa-user-shield neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Amazon Cognito (JWKS Auth & Verification)" tabindex="0"><i class="fa-solid fa-key neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="AWS SAM & CloudFormation (IaC)" tabindex="0"><i class="fa-solid fa-file-code neon-red"></i></div>
+            <div class="skill-item" data-tooltip="AWS SSM Parameter Store" tabindex="0"><i class="fa-solid fa-sliders neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Boto3 & Aioboto3 (AWS SDK for Python)" tabindex="0"><i class="fa-brands fa-python neon-yellow"></i></div>
           </div>
         </div>
 
+        <!-- Category 2: Backend & API Development -->
         <div class="tools-group">
-          <h3 class="group-title neon-blue"><i class="fa-solid fa-code"></i> Languages & Backend</h3>
+          <h3 class="group-title neon-blue"><i class="fa-solid fa-code"></i> Backend & API Systems</h3>
           <div class="skills-grid">
-            <div class="skill-item" data-tooltip="Python Programming" tabindex="0"><i class="fa-brands fa-python neon-yellow"></i></div>
-            <div class="skill-item" data-tooltip="C++" tabindex="0"><i class="fa-solid fa-c neon-blue"></i></div>
-            <div class="skill-item" data-tooltip="FastAPI Microservices" tabindex="0"><i class="fa-solid fa-bolt neon-yellow"></i></div>
-            <div class="skill-item" data-tooltip="RESTful APIs Architecture" tabindex="0"><i class="fa-solid fa-server neon-orange"></i></div>
-            <div class="skill-item" data-tooltip="PostgreSQL" tabindex="0"><i class="fa-solid fa-database neon-blue"></i></div>
-            <div class="skill-item" data-tooltip="MySQL" tabindex="0"><i class="fa-solid fa-table neon-red"></i></div>
+            <div class="skill-item" data-tooltip="FastAPI Microservices" tabindex="0"><i class="devicon-fastapi-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Python 3.11+" tabindex="0"><i class="devicon-python-plain neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="C++" tabindex="0"><i class="devicon-cplusplus-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Uvicorn (ASGI Server)" tabindex="0"><i class="fa-solid fa-microchip neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Pydantic v2 (Data Validation)" tabindex="0"><i class="fa-solid fa-shield-halved neon-red"></i></div>
+            <div class="skill-item" data-tooltip="JWT (JSON Web Tokens & Passlib)" tabindex="0"><i class="fa-solid fa-lock neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Event-Driven Architecture (EDA)" tabindex="0"><i class="fa-solid fa-arrows-split-up-and-left neon-blue"></i></div>
           </div>
         </div>
 
+        <!-- Category 3: Frontend & Client-Side Engineering -->
         <div class="tools-group">
-          <h3 class="group-title neon-yellow"><i class="fa-solid fa-network-wired"></i> Streaming & Data Systems</h3>
+          <h3 class="group-title neon-yellow"><i class="fa-solid fa-laptop-code"></i> Frontend & Client-Side Engineering</h3>
           <div class="skills-grid">
-            <div class="skill-item" data-tooltip="Apache Kafka Streaming" tabindex="0"><i class="fa-solid fa-layer-group neon-red"></i></div>
-            <div class="skill-item" data-tooltip="ETL Data Pipelines" tabindex="0"><i class="fa-solid fa-arrows-split-up-and-left neon-yellow"></i></div>
-            <div class="skill-item" data-tooltip="Amazon DynamoDB" tabindex="0"><i class="fa-solid fa-cubes neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Next.js 14+ (App Router)" tabindex="0"><i class="devicon-nextjs-original neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="React 18+" tabindex="0"><i class="devicon-react-original neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="TypeScript" tabindex="0"><i class="devicon-typescript-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="JavaScript (ES6+ & Vanilla SPA)" tabindex="0"><i class="devicon-javascript-plain neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Tailwind CSS" tabindex="0"><i class="devicon-tailwindcss-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="PostCSS" tabindex="0"><i class="devicon-postcss-plain neon-red"></i></div>
+            <div class="skill-item" data-tooltip="HTML5 Semantic & File APIs" tabindex="0"><i class="devicon-html5-plain neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="CSS3 Cyber Themes & Responsive Grid" tabindex="0"><i class="devicon-css3-plain neon-blue"></i></div>
+          </div>
+        </div>
+
+        <!-- Category 4: Data Stores, Caching & Media Processing -->
+        <div class="tools-group">
+          <h3 class="group-title neon-red"><i class="fa-solid fa-database"></i> Data Stores, Caching & Media Pipelines</h3>
+          <div class="skills-grid">
+            <div class="skill-item" data-tooltip="Upstash Redis (Serverless Caching)" tabindex="0"><i class="devicon-redis-plain neon-red"></i></div>
+            <div class="skill-item" data-tooltip="PostgreSQL" tabindex="0"><i class="devicon-postgresql-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="MySQL" tabindex="0"><i class="devicon-mysql-plain neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Apache Kafka Streaming" tabindex="0"><i class="devicon-apachekafka-original neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Pillow / PIL (Image Optimization)" tabindex="0"><i class="fa-solid fa-image neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="FFmpeg (Video Frame Extraction)" tabindex="0"><i class="fa-solid fa-film neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="pypdf (Metadata & Document Parsing)" tabindex="0"><i class="fa-solid fa-file-pdf neon-red"></i></div>
+          </div>
+        </div>
+
+        <!-- Category 5: DevOps, Deployment & Cloud Tooling -->
+        <div class="tools-group">
+          <h3 class="group-title neon-orange"><i class="fa-solid fa-toolbox"></i> DevOps, CI/CD & Cloud Tooling</h3>
+          <div class="skills-grid">
+            <div class="skill-item" data-tooltip="GitHub Actions (CI/CD Pipelines)" tabindex="0"><i class="devicon-githubactions-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Git Version Control & GitHub Secrets" tabindex="0"><i class="devicon-git-plain neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Docker Containerization" tabindex="0"><i class="devicon-docker-plain neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="AWS CLI Headless Automation" tabindex="0"><i class="devicon-amazonwebservices-plain-wordmark neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Linux & Bash Scripting" tabindex="0"><i class="devicon-linux-plain neon-yellow"></i></div>
+            <div class="skill-item" data-tooltip="Vercel (Edge Frontend Hosting)" tabindex="0"><i class="devicon-vercel-original neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Render (ASGI Cloud Hosting)" tabindex="0"><i class="fa-solid fa-server neon-blue"></i></div>
+            <div class="skill-item" data-tooltip="Node.js & npm" tabindex="0"><i class="devicon-npm-original-wordmark neon-red"></i></div>
           </div>
         </div>
 
@@ -764,6 +809,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=8.0"></script>
+  <script src="script.js?v=9.0"></script>
 </body>
 </html>
