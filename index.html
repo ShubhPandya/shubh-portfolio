@@ -4,21 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shubh Pandya | Cloud & Backend Systems</title>
-  <link rel="stylesheet" href="styles.css?v=9.0" />
+  <link rel="stylesheet" href="styles.css?v=9.1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <!-- Devicon Library for Frontend, Framework & Cloud Logos -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body class="theme-black role-screen-active">
 
-  <!-- NAVBAR & PERSONA DROPDOWN -->
   <header class="navbar">
-    <!-- Brand Name (Navigates to active persona dashboard) -->
     <div class="nav-brand" onclick="window.onBrandClick()">
       <span class="neon-orange">Shubh</span>
     </div>
 
-    <!-- Interactive Persona Switcher Badge & Dropdown Menu (Hidden on Screen 1) -->
     <div class="persona-switcher-wrapper" id="persona-switcher-wrapper">
       <button class="nav-role-badge-btn" id="current-role-badge" onclick="window.togglePersonaMenu()">
         <span id="role-badge-text">Select Persona</span>
@@ -42,7 +38,6 @@
       </div>
     </div>
 
-    <!-- Burger Menu Button (Hidden on Screen 1) -->
     <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu" onclick="window.toggleMenu()">
       <div class="bar bar-orange"></div>
       <div class="bar bar-red"></div>
@@ -50,7 +45,6 @@
     </button>
   </header>
 
-  <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
       <li><button class="nav-menu-btn active" onclick="window.navigateTo('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
@@ -64,7 +58,6 @@
     </ul>
   </nav>
 
-  <!-- SCREEN 1: ZERO-SCROLL ROLE SELECTOR -->
   <main id="role-selector-screen" class="view-screen screen-single-viewport active">
     <div class="role-container">
       
@@ -76,7 +69,6 @@
       <p class="role-subtitle">Select your persona to access tailored system insights.</p>
 
       <div class="role-grid">
-        <!-- Recruiter Card -->
         <div class="role-card card-orange" onclick="window.selectPersona('recruiter')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
@@ -92,7 +84,6 @@
           </div>
         </div>
 
-        <!-- Admirer / Stalker Card -->
         <div class="role-card card-red" onclick="window.selectPersona('admirer')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
@@ -108,7 +99,6 @@
           </div>
         </div>
 
-        <!-- Batchmate Card -->
         <div class="role-card card-blue" onclick="window.selectPersona('batchmate')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -127,16 +117,11 @@
     </div>
   </main>
 
-  <!-- SCREEN 2: MAIN CONTENT CONTAINER -->
   <main id="main-content-screen" class="view-screen">
     
-    <!-- =========================================
-         PAGE 0: DYNAMIC DASHBOARDS
-    ========================================= -->
     <section id="page-dashboard" class="page-view active">
       <div class="container">
         
-        <!-- DASHBOARD A: RECRUITER VIEW -->
         <div id="persona-recruiter" class="persona-dashboard active">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
@@ -230,7 +215,6 @@
           </div>
         </div>
 
-        <!-- DASHBOARD B: ADMIRER / STALKER VIEW -->
         <div id="persona-admirer" class="persona-dashboard">
           <div class="dashboard-hero-card border-red">
             <div class="hero-top-row">
@@ -276,7 +260,6 @@
           </div>
 
           <div class="dashboard-fast-grid">
-            <!-- Left Column: Pandya Recommends -->
             <div class="fast-card border-red">
               <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Pandya recommends</h3>
               <div class="movie-compact-stack">
@@ -324,7 +307,6 @@
               </div>
             </div>
 
-            <!-- Right Column: Curated Audio Spectrum -->
             <div class="fast-card border-yellow">
               <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
               
@@ -349,7 +331,6 @@
           </div>
         </div>
 
-        <!-- DASHBOARD C: BATCHMATE VIEW -->
         <div id="persona-batchmate" class="persona-dashboard">
           <div class="dashboard-hero-card border-blue">
             <div class="hero-top-row">
@@ -446,9 +427,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 1: ABOUT ME PAGE
-    ========================================= -->
     <section id="page-about" class="page-view">
       <div class="container">
         
@@ -550,15 +528,11 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 2: PROJECTS PAGE
-    ========================================= -->
     <section id="page-projects" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
         <div class="projects-tile-grid">
           
-          <!-- Project 1: CloudVault -->
           <div class="project-tile border-yellow">
             <div class="project-tile-header">
               <div class="project-title-group">
@@ -587,7 +561,6 @@
             </div>
           </div>
 
-          <!-- Project 2: Serverless Cloud Portfolio Architecture -->
           <div class="project-tile border-orange">
             <div class="project-tile-header">
               <div class="project-title-group">
@@ -620,9 +593,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 3: EXPERIENCE PAGE
-    ========================================= -->
     <section id="page-experience" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
@@ -670,9 +640,6 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 4: CERTIFICATIONS PAGE
-    ========================================= -->
     <section id="page-certifications" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
@@ -713,14 +680,10 @@
       </div>
     </section>
 
-    <!-- =========================================
-         SECTION 5: TOOLS & SKILLS PAGE (COMPREHENSIVE)
-    ========================================= -->
     <section id="page-tools" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
         
-        <!-- Category 1: AWS Cloud & Serverless Infrastructure -->
         <div class="tools-group">
           <h3 class="group-title neon-orange"><i class="fa-solid fa-cloud"></i> AWS Cloud & Serverless Infrastructure</h3>
           <div class="skills-grid">
@@ -738,7 +701,6 @@
           </div>
         </div>
 
-        <!-- Category 2: Backend & API Development -->
         <div class="tools-group">
           <h3 class="group-title neon-blue"><i class="fa-solid fa-code"></i> Backend & API Systems</h3>
           <div class="skills-grid">
@@ -752,11 +714,21 @@
           </div>
         </div>
 
-        <!-- Category 3: Frontend & Client-Side Engineering -->
         <div class="tools-group">
           <h3 class="group-title neon-yellow"><i class="fa-solid fa-laptop-code"></i> Frontend & Client-Side Engineering</h3>
           <div class="skills-grid">
-            <div class="skill-item" data-tooltip="Next.js 14+ (App Router)" tabindex="0"><i class="devicon-nextjs-original neon-orange"></i></div>
+            <div class="skill-item" data-tooltip="Next.js 14+ (App Router)" tabindex="0">
+              <svg class="neon-orange" viewBox="0 0 180 180" width="32" height="32" fill="currentColor">
+                <mask height="180" id="mask-next" maskUnits="userSpaceOnUse" width="180" x="0" y="0" style="mask-type:alpha">
+                  <circle cx="90" cy="90" fill="currentColor" r="90"></circle>
+                </mask>
+                <g mask="url(#mask-next)">
+                  <circle cx="90" cy="90" fill="none" stroke="currentColor" stroke-width="12" r="84"></circle>
+                  <path d="M149.508 157.52L69.142 54H54v71.97h12.114V69.384l73.885 95.461a90.304 90.304 0 009.509-7.325z" fill="currentColor"></path>
+                  <path d="M115 54h12v72h-12z" fill="currentColor"></path>
+                </g>
+              </svg>
+            </div>
             <div class="skill-item" data-tooltip="React 18+" tabindex="0"><i class="devicon-react-original neon-blue"></i></div>
             <div class="skill-item" data-tooltip="TypeScript" tabindex="0"><i class="devicon-typescript-plain neon-blue"></i></div>
             <div class="skill-item" data-tooltip="JavaScript (ES6+ & Vanilla SPA)" tabindex="0"><i class="devicon-javascript-plain neon-yellow"></i></div>
@@ -767,7 +739,6 @@
           </div>
         </div>
 
-        <!-- Category 4: Data Stores, Caching & Media Processing -->
         <div class="tools-group">
           <h3 class="group-title neon-red"><i class="fa-solid fa-database"></i> Data Stores, Caching & Media Pipelines</h3>
           <div class="skills-grid">
@@ -781,7 +752,6 @@
           </div>
         </div>
 
-        <!-- Category 5: DevOps, Deployment & Cloud Tooling -->
         <div class="tools-group">
           <h3 class="group-title neon-orange"><i class="fa-solid fa-toolbox"></i> DevOps, CI/CD & Cloud Tooling</h3>
           <div class="skills-grid">
@@ -809,6 +779,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=9.0"></script>
+  <script src="script.js?v=9.1"></script>
 </body>
 </html>
