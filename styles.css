@@ -1071,7 +1071,7 @@ body.role-screen-active .dropdown-menu {
   position: relative;
 }
 
-/* FIXED MOBILE/DESKTOP TOOLTIP STACKING (NEVER OVERLAPS ROWS) */
+/* FIXED MOBILE/DESKTOP TOOLTIP STACKING */
 .skill-item {
   background: var(--bg-card);
   aspect-ratio: 1;
@@ -1093,18 +1093,18 @@ body.role-screen-active .dropdown-menu {
 .skill-item:active {
   transform: translateY(-4px);
   border-color: var(--neon-blue);
-  z-index: 100 !important; /* Elevated above all other cards */
+  z-index: 1000 !important;
 }
 
 .skill-item::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: calc(100% + 10px); /* Displayed ABOVE the icon */
+  bottom: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
   background: #0d0e14;
   color: #fff;
-  padding: 5px 10px;
+  padding: 6px 12px;
   font-size: 0.75rem;
   font-family: var(--font-mono);
   white-space: nowrap;
@@ -1113,8 +1113,8 @@ body.role-screen-active .dropdown-menu {
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
   border: 1px solid var(--neon-blue);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.85);
-  z-index: 101 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.95);
+  z-index: 1001 !important;
 }
 
 .skill-item:hover::after,
