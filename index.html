@@ -9,11 +9,14 @@
 </head>
 <body class="theme-black role-screen-active">
 
+  <!-- NAVBAR & PERSONA DROPDOWN -->
   <header class="navbar">
+    <!-- Brand Name (Navigates to active persona dashboard) -->
     <div class="nav-brand" onclick="window.onBrandClick()">
       <span class="neon-orange">Shubh</span>
     </div>
 
+    <!-- Interactive Persona Switcher Badge & Dropdown Menu (Hidden on Screen 1) -->
     <div class="persona-switcher-wrapper" id="persona-switcher-wrapper">
       <button class="nav-role-badge-btn" id="current-role-badge" onclick="window.togglePersonaMenu()">
         <span id="role-badge-text">Select Persona</span>
@@ -37,6 +40,7 @@
       </div>
     </div>
 
+    <!-- Burger Menu Button (Hidden on Screen 1) -->
     <button class="burger-btn" id="burger-btn" aria-label="Toggle Menu" onclick="window.toggleMenu()">
       <div class="bar bar-orange"></div>
       <div class="bar bar-red"></div>
@@ -44,6 +48,7 @@
     </button>
   </header>
 
+  <!-- BURGER DROPDOWN NAVIGATION -->
   <nav class="dropdown-menu" id="dropdown-menu">
     <ul>
       <li><button class="nav-menu-btn active" onclick="window.navigateTo('dashboard')"><i class="fa-solid fa-gauge-high neon-orange"></i> Dashboard</button></li>
@@ -57,6 +62,7 @@
     </ul>
   </nav>
 
+  <!-- SCREEN 1: ZERO-SCROLL ROLE SELECTOR -->
   <main id="role-selector-screen" class="view-screen screen-single-viewport active">
     <div class="role-container">
       
@@ -68,6 +74,7 @@
       <p class="role-subtitle">Select your persona to access tailored system insights.</p>
 
       <div class="role-grid">
+        <!-- Recruiter Card -->
         <div class="role-card card-orange" onclick="window.selectPersona('recruiter')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-briefcase"></i></div>
@@ -83,6 +90,7 @@
           </div>
         </div>
 
+        <!-- Admirer / Stalker Card -->
         <div class="role-card card-red" onclick="window.selectPersona('admirer')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-user-secret"></i></div>
@@ -98,6 +106,7 @@
           </div>
         </div>
 
+        <!-- Batchmate Card -->
         <div class="role-card card-blue" onclick="window.selectPersona('batchmate')">
           <div class="card-top">
             <div class="role-icon"><i class="fa-solid fa-graduation-cap"></i></div>
@@ -116,11 +125,16 @@
     </div>
   </main>
 
+  <!-- SCREEN 2: MAIN CONTENT CONTAINER -->
   <main id="main-content-screen" class="view-screen">
     
+    <!-- =========================================
+         PAGE 0: DYNAMIC DASHBOARDS
+    ========================================= -->
     <section id="page-dashboard" class="page-view active">
       <div class="container">
         
+        <!-- DASHBOARD A: RECRUITER VIEW -->
         <div id="persona-recruiter" class="persona-dashboard active">
           <div class="dashboard-hero-card border-orange">
             <div class="hero-top-row">
@@ -214,6 +228,7 @@
           </div>
         </div>
 
+        <!-- DASHBOARD B: ADMIRER / STALKER VIEW -->
         <div id="persona-admirer" class="persona-dashboard">
           <div class="dashboard-hero-card border-red">
             <div class="hero-top-row">
@@ -259,6 +274,7 @@
           </div>
 
           <div class="dashboard-fast-grid">
+            <!-- Left Column: Pandya Recommends -->
             <div class="fast-card border-red">
               <h3 class="fast-heading neon-red"><i class="fa-solid fa-film"></i> Pandya recommends</h3>
               <div class="movie-compact-stack">
@@ -306,6 +322,7 @@
               </div>
             </div>
 
+            <!-- Right Column: Curated Audio Spectrum -->
             <div class="fast-card border-yellow">
               <h3 class="fast-heading neon-yellow"><i class="fa-solid fa-compact-disc"></i> Curated Audio Spectrum</h3>
               
@@ -330,6 +347,7 @@
           </div>
         </div>
 
+        <!-- DASHBOARD C: BATCHMATE VIEW -->
         <div id="persona-batchmate" class="persona-dashboard">
           <div class="dashboard-hero-card border-blue">
             <div class="hero-top-row">
@@ -426,6 +444,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 1: ABOUT ME PAGE
+    ========================================= -->
     <section id="page-about" class="page-view">
       <div class="container">
         
@@ -477,6 +498,7 @@
                 </div>
               </li>
               <li>
+                <!-- Clean Inline SVG Cricket Bat & Ball -->
                 <div class="pointer-badge neon-blue">
                   <svg class="cricket-icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
                     <path d="M19.4 2.6a1.5 1.5 0 0 0-2.1 0l-1.8 1.8 2.1 2.1 1.8-1.8a1.5 1.5 0 0 0 0-2.1zM14.1 5.8l-8.6 8.6c-.4.4-.7 1-.7 1.6v3.5c0 .8.7 1.5 1.5 1.5h3.5c.6 0 1.2-.3 1.6-.7l8.6-8.6-5.9-5.9z"/>
@@ -527,11 +549,43 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 2: PROJECTS PAGE
+    ========================================= -->
     <section id="page-projects" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-yellow">FEATURED</span> PROJECTS</h2>
         <div class="projects-tile-grid">
           
+          <!-- Project 1: CloudVault -->
+          <div class="project-tile border-yellow">
+            <div class="project-tile-header">
+              <div class="project-title-group">
+                <i class="fa-solid fa-vault neon-yellow project-icon"></i>
+                <div>
+                  <h3>CloudVault: Secure Cloud Storage & Access System</h3>
+                  <span class="badge-tag neon-yellow">Cloud Infrastructure & Security</span>
+                </div>
+              </div>
+            </div>
+            <p class="project-summary">
+              Architected a high-security, resilient cloud storage management system leveraging AWS core primitives and granular IAM security postures. Engineered secure object lifecycle policies, encrypted data access channels, and fine-grained access control to prevent unauthorized data exposure.
+            </p>
+            <div class="tech-stack-row">
+              <span class="tag">AWS S3</span>
+              <span class="tag">IAM</span>
+              <span class="tag">Cloud Security</span>
+              <span class="tag">Python</span>
+              <span class="tag">Access Governance</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/ShubhPandya/CloudVault" target="_blank" class="repo-link neon-yellow">
+                <i class="fa-brands fa-github"></i> Inspect GitHub Repository →
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: Serverless Cloud Portfolio Architecture -->
           <div class="project-tile border-orange">
             <div class="project-tile-header">
               <div class="project-title-group">
@@ -554,7 +608,9 @@
               <span class="tag">GitHub Actions</span>
             </div>
             <div class="project-footer">
-              <a href="https://github.com/ShubhPandya/shubh-portfolio" target="_blank" class="repo-link neon-orange"><i class="fa-brands fa-github"></i> Inspect GitHub Repository →</a>
+              <a href="https://github.com/ShubhPandya/shubh-portfolio" target="_blank" class="repo-link neon-orange">
+                <i class="fa-brands fa-github"></i> Inspect GitHub Repository →
+              </a>
             </div>
           </div>
 
@@ -562,6 +618,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 3: EXPERIENCE PAGE
+    ========================================= -->
     <section id="page-experience" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-red">EXPERIENCE</span> LOGS</h2>
@@ -609,6 +668,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 4: CERTIFICATIONS PAGE
+    ========================================= -->
     <section id="page-certifications" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-blue">VERIFIED</span> CERTIFICATIONS</h2>
@@ -649,6 +711,9 @@
       </div>
     </section>
 
+    <!-- =========================================
+         SECTION 5: TOOLS & SKILLS PAGE
+    ========================================= -->
     <section id="page-tools" class="page-view">
       <div class="container">
         <h2 class="section-title"><span class="neon-orange">TOOLS</span> & SKILLS</h2>
